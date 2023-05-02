@@ -38,7 +38,7 @@ const Login = () => {
           <label for="password">Password</label>
           <input name="password" value={password} onChange={(e) => setPassword(e.target.value)} type="password"></input>
           </div>
-          
+
           <div class="col-lg-12 mt-5">
           <button class="dark-btn-standard" type="submit">SIGN IN</button>
           </div>

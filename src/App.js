@@ -7,9 +7,9 @@ import Login from "./components/views/login/Login";
 function App() {
   return (
     <>
-      <RegistrationProvider>
+      {/* <RegistrationProvider>
         <Registration />
-      </RegistrationProvider>
+      </RegistrationProvider> */}
 
       <LoginProvider>
         <Login />
