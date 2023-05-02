@@ -17,7 +17,7 @@ const Registration = () => {
     <div class="container mt-5">
 
           <div class="row">
-          <div class="col-4"><i class="fa-solid fa-angle-left"></i></div>
+          <div class="col-4"><NavLink to="/"><i className="fa-solid fa-angle-left nav-standard"></i></NavLink></div>
           <div style={{textAlign : 'center'}} class="col-4">Sign Up</div>
           <div class="col-4"></div>
           </div>
@@ -44,6 +44,11 @@ const Registration = () => {
       <label for="email">Email</label>
       <input name="email" value={email} onChange={(e) => {setEmail(e.target.value)}} type="text"></input>
       </div>
+
+      <div class="col-lg-6 mt-3 input-wrapper">
+      <label for="phone">Phone</label>
+      <input name="phone" value={phone} onChange={(e) => setPhone(e.target.value)} type="text"></input>
+      </div>
       
       <div class="col-lg-6 mt-3 input-wrapper">
       <label for="password">Password</label>
@@ -55,11 +60,6 @@ const Registration = () => {
       <input name="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} type="password"></input>
       </div>
       
-      <div class="col-lg-6 mt-3 input-wrapper">
-      <label for="phone">Phone</label>
-      <input name="phone" value={phone} onChange={(e) => setPhone(e.target.value)} type="text"></input>
-      </div>
-  
       <div class="col-lg-12 mt-5">
       <button class="dark-btn-standard" type="submit">SIGN UP</button>
       </div>
@@ -68,7 +68,7 @@ const Registration = () => {
       </form>  
 
        <div class="row">
-      <div class="mt-3 box-registration col-lg-12">Already have an account? Sign In.</div>
+      <div class="mt-3 box-registration col-lg-12">Already have an account? <NavLink to="/" className="nav-standard">Sign In.</NavLink></div>
       <div class="mt-5 box-registration col-lg-12">
 
       <i class="fa-brands fa-facebook icon-standard" style={{color: '#00235B'}}></i>

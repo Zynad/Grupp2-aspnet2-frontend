@@ -1,19 +1,20 @@
 import "../login/login.css"
 import { useContext, useState } from "react";
+import { NavLink } from "react-router-dom";
 import { LoginContext } from "../../../contexts/LoginProvider"
 
 const Login = () => {
 
     const { handleSubmit } = useContext(LoginContext)
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
+    const [rememberMe, setRememberMe] = useState(false);
 
     return (
         <div class="container mt-5">
           
           <div class="row">
-          <div class="col-4"><i class="fa-solid fa-angle-left"></i></div>
+          <div class="col-4"><NavLink className="nav-standard" to="/"><i class="fa-solid fa-angle-left"></i></NavLink></div>
           <div style={{textAlign : 'center'}} class="col-4">Sign In</div>
           <div class="col-4"></div>
           </div>
@@ -25,7 +26,6 @@ const Login = () => {
          </div>
         
         
-
         <form onSubmit={handleSubmit}>
           <div class="row">
 
@@ -38,8 +38,17 @@ const Login = () => {
           <label for="password">Password</label>
           <input name="password" value={password} onChange={(e) => setPassword(e.target.value)} type="password"></input>
           </div>
-
+      
+           <div style={{textAlign : 'left'}} class="col mt-5">
+           <input name="remember" style={{width : "20px", cursor : "pointer"}} type="checkbox" value={rememberMe} onChange={(e) => setRememberMe(true)} />
+           Remember Me
+           </div>
+           <div style={{textAlign : 'right'}} class="col mt-5">
+            <NavLink className="nav-standard" to="">Forgot Password?</NavLink>
+           </div>  
+        
           <div class="col-lg-12 mt-5">
+
           <button class="dark-btn-standard" type="submit">SIGN IN</button>
           </div>
 
@@ -47,7 +56,7 @@ const Login = () => {
         </form>  
     
            <div class="row">
-          <div class="mt-3 box-registration col-lg-12">Don't have and account? Sign Up.</div>
+          <div class="mt-3 box-registration col-lg-12">Don't have and account? <NavLink className="nav-standard" to="/">Sign Up.</NavLink></div>
           <div class="mt-5 box-registration col-lg-12">
     
           <i class="fa-brands fa-facebook icon-standard" style={{color: '#00235B'}}></i>

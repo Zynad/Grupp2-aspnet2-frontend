@@ -59,3 +59,14 @@ opacity: 1;
     padding: 20px;
     border: 1px solid lightgray;
 }
+
+/* NavLink */
+.nav-standard{
+  color: black;
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+.nav-standard:hover{
+  opacity: 1;
+}
