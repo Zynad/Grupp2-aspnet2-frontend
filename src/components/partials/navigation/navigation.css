@@ -1,0 +1,15 @@
+.link {
+  font-size: 50px;
+  color: black;
+  margin-right: 5px;
+}
+
+.footer-nav {
+  position: fixed;
+  bottom: 0;
+}
+
+.footer-nav i {
+  height: 50px;
+  width: 50px;
+}
