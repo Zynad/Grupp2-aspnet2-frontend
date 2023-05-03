@@ -19,7 +19,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route
-          path="/profile"
+          path="/registration"
           element={
             <RegistrationProvider>
               <Registration />
@@ -34,6 +34,7 @@ function App() {
             </LoginProvider>
           }
         />
+
       </Routes>
     </>
   );
