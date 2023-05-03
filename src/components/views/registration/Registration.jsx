@@ -68,7 +68,7 @@ const Registration = () => {
       </form>  
 
        <div class="row">
-      <div class="mt-3 box-registration col-lg-12">Already have an account? <NavLink to="/" className="nav-standard">Sign In.</NavLink></div>
+      <div class="mt-3 box-registration col-lg-12">Already have an account? <NavLink to="/login" className="nav-standard">Sign In.</NavLink></div>
       <div class="mt-5 box-registration col-lg-12">
 
       <i class="fa-brands fa-facebook icon-standard" style={{color: '#00235B'}}></i>

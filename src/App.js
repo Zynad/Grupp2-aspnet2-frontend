@@ -8,7 +8,7 @@ import Search from "./components/views/search/Search";
 import Cart from "./components/views/cart/Cart";
 import Favorites from "./components/views/favorites/Favorites";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navigation from "./components/partials/navigation/Navigation";
+import ForgotPassword from "./components/views/forgotpassword/ForgotPassword";
 
 function App() {
   return (
@@ -18,6 +18,7 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/favorites" element={<Favorites />} />
+        <Route path="/forgotpassword" element={<ForgotPassword/>}/>
         <Route
           path="/registration"
           element={

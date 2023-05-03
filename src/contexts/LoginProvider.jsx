@@ -12,7 +12,6 @@ const LoginProvider = (props) => {
     const data = {email : email, password : password, remember : remember}
     const url = ''
 
-
   };
 
 

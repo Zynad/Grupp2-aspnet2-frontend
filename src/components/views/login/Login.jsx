@@ -44,7 +44,7 @@ const Login = () => {
            Remember Me
            </div>
            <div style={{textAlign : 'right'}} class="col mt-5">
-            <NavLink className="nav-standard" to="">Forgot Password?</NavLink>
+            <NavLink className="nav-standard" to="/forgotpassword">Forgot Password?</NavLink>
            </div>  
         
           <div class="col-lg-12 mt-5">
