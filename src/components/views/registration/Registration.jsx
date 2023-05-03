@@ -14,7 +14,7 @@ const Registration = () => {
 
   return (
 
-    <div class="container mt-5">
+    <div className="container mt-5">
 
           <div class="row">
           <div class="col-4"><NavLink to="/"><i className="fa-solid fa-angle-left nav-standard"></i></NavLink></div>

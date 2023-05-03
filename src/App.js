@@ -3,17 +3,24 @@ import RegistrationProvider from "./contexts/RegistrationProvider";
 import Registration from "./components/views/registration/Registration";
 import LoginProvider from "./contexts/LoginProvider";
 import Login from "./components/views/login/Login";
+import ApiProvider from "./contexts/ApiProvider";
 
 function App() {
   return (
     <>
-      <RegistrationProvider>
+
+   
+
+    <RegistrationProvider>
         <Registration />
       </RegistrationProvider>
 
       <LoginProvider>
         <Login />
       </LoginProvider>
+  
+
+      
     </>
   );
 }
