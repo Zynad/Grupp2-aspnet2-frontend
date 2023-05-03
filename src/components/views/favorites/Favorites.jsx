@@ -4,7 +4,8 @@ import Navigation from '../../partials/navigation/Navigation'
 
 const Favorites = () => {
   return (
-     <>      <Navigation />
+     <>      
+     <Navigation />
     </>
   )
 }
