@@ -70,3 +70,10 @@ opacity: 1;
 .nav-standard:hover{
   opacity: 1;
 }
+
+
+/* Text */
+.standard-text{
+  color: grey;
+  text-align: center;
+}

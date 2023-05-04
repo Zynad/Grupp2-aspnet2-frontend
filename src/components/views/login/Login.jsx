@@ -1,15 +1,19 @@
 import "../login/login.css"
 import { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Navigate } from "react-router-dom";
 import { LoginContext } from "../../../contexts/LoginProvider"
 
 const Login = () => {
 
-    const { handleSubmit } = useContext(LoginContext)
+    const { handleSubmit, loginResult } = useContext(LoginContext)
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
     const [rememberMe, setRememberMe] = useState(false);
 
+    // if(loginResult == "Request Succeded"){
+    //     return <Navigate to="/"/>;
+    //   }
+      
     return (
         <div className="container mt-5">
           
@@ -46,9 +50,10 @@ const Login = () => {
            <div style={{textAlign : 'right'}} className="col mt-5">
             <NavLink className="nav-standard" to="/forgotpassword">Forgot Password?</NavLink>
            </div>  
+
+           <div className="mt-3" style={{textAlign : 'center'}}>{loginResult}</div>
         
           <div className="col-lg-12 mt-5">
-
           <button className="dark-btn-standard" type="submit">SIGN IN</button>
           </div>
 

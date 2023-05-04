@@ -1,11 +1,16 @@
-import { createContext, useState } from "react";
+import { createContext, useContext } from 'react';
+import { ApiContext } from "../contexts/ApiProvider"
 export const ForgotPasswordContext = createContext();
 
 const ForgotPasswordProvider = (props) => {
 
+    const {postData} = useContext(ApiContext);
+
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const email = event.target.elements.email.value;
+        const url = "xd";
+        const data = {email : event.target.elements.email.value}
+        const response = await postData(url, data)
     }
 
     return (
@@ -15,7 +20,6 @@ const ForgotPasswordProvider = (props) => {
             </ForgotPasswordContext.Provider>
         </>
     )
-
 
 
 }

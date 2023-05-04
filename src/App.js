@@ -10,18 +10,22 @@ import Favorites from "./components/views/favorites/Favorites";
 import { Routes, Route } from "react-router-dom";
 import ForgotPassword from "./components/views/forgotpassword/ForgotPassword";
 import ForgotPasswordProvider from "./contexts/ForgotPasswordProvider";
+import ApiProvider from "./contexts/ApiProvider";
+import RegistrationSuccess from "./components/views/registration/RegistrationSuccess"
 
 function App() {
   return (
     <>
+    <ApiProvider>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<Search />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/favorites" element={<Favorites />} />
+        <Route path="/registrationsuccess" element= {<RegistrationSuccess/>} />
         <Route path="/forgotpassword" element={
-          <ForgotPasswordProvider>
-           <ForgotPassword/>
+          <ForgotPasswordProvider>       
+          <ForgotPassword/>       
           </ForgotPasswordProvider>
         }/>
         <Route
@@ -42,6 +46,7 @@ function App() {
         />
 
       </Routes>
+      </ApiProvider>
     </>
   );
 }

@@ -1,10 +1,10 @@
-import "../registration/registration.css"
-import { NavLink } from 'react-router-dom'
+import "./registration.css"
+import { NavLink, Navigate } from 'react-router-dom'
 import { useContext, useState } from "react";
 import { RegistrationContext } from "../../../contexts/RegistrationProvider";
 
 const Registration = () => {
-  const {handleSubmit} = useContext(RegistrationContext);
+  const {handleSubmit, registrationResult} = useContext(RegistrationContext);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastname] = useState("");
   const [email, setEmail] = useState("");
@@ -12,12 +12,15 @@ const Registration = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [phone, setPhone] = useState("");
 
-  return (
+  if(registrationResult == "true"){
+    return <Navigate to="/registrationsuccess"/>;
+  }
 
-    <div className="container mt-5">
+  return (
+    <div className="container mt-5 mb-5">
 
           <div className="row">
-          <div className="col-4"><NavLink to="/"><i className="fa-solid fa-angle-left nav-standard"></i></NavLink></div>
+          <div className="col-4"><NavLink to="/login"><i className="fa-solid fa-angle-left nav-standard"></i></NavLink></div>
           <div style={{textAlign : 'center'}} className="col-4">Sign Up</div>
           <div className="col-4"></div>
           </div>
@@ -59,6 +62,8 @@ const Registration = () => {
       <label for="confirmPassword">Confirm Password</label>
       <input name="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} type="password"></input>
       </div>
+
+      <div className="mt-3" style={{textAlign : 'center'}}>{registrationResult != "false"? "" : "Registration faild"}</div>
       
       <div className="col-lg-12 mt-5">
       <button className="dark-btn-standard" type="submit">SIGN UP</button>
