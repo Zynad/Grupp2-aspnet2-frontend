@@ -58,10 +58,11 @@ const Login = () => {
           </div>
         </form>  
     
-           <div className="row">
-          <div className="mt-3 box-registration col-lg-12">Don't have and account? <NavLink className="nav-standard" to="/registration">Sign Up.</NavLink></div>
-          <div className="mt-5 box-registration col-lg-12">
-    
+
+           <div class="row">
+          <div class="mt-3 box-registration col-lg-12">Don't have an account? <NavLink className="nav-standard" to="/registration">Sign Up.</NavLink></div>
+          <div class="mt-5 box-registration col-lg-12">
+
           <i className="fa-brands fa-facebook icon-standard" style={{color: '#00235B'}}></i>
           <i className="fa-brands fa-google-plus-g icon-standard" style={{color: '#FF6969'}}></i>
           <i className="fa-brands fa-twitter icon-standard" style={{color: '#6DA9E4'}}></i>
