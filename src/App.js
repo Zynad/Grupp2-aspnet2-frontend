@@ -7,17 +7,27 @@ import Home from "./components/views/home/Home";
 import Search from "./components/views/search/Search";
 import Cart from "./components/views/cart/Cart";
 import Favorites from "./components/views/favorites/Favorites";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navigation from "./components/partials/navigation/Navigation";
+import { Routes, Route } from "react-router-dom";
+import ForgotPassword from "./components/views/forgotpassword/ForgotPassword";
+import ForgotPasswordProvider from "./contexts/ForgotPasswordProvider";
+import ApiProvider from "./contexts/ApiProvider";
+import RegistrationSuccess from "./components/views/registration/RegistrationSuccess"
 
 function App() {
   return (
     <>
+    <ApiProvider>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<Search />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/favorites" element={<Favorites />} />
+        <Route path="/registrationsuccess" element= {<RegistrationSuccess/>} />
+        <Route path="/forgotpassword" element={
+          <ForgotPasswordProvider>       
+          <ForgotPassword/>       
+          </ForgotPasswordProvider>
+        }/>
         <Route
           path="/registration"
           element={
@@ -36,6 +46,7 @@ function App() {
         />
 
       </Routes>
+      </ApiProvider>
     </>
   );
 }

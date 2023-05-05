@@ -1,34 +1,30 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useContext, useState } from "react";
+import { ApiContext } from "./ApiProvider";
 export const LoginContext = createContext();
 
 const LoginProvider = (props) => {
+  const [loginResult, SetLoginResult] = useState("");
+  const {loginAsync} = useContext(ApiContext);
+
+  const handleLogin = (response) => {
+    SetLoginResult(response);
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const email = event.target.elements.email.value;
     const password = event.target.elements.password.value;
-    const remember = event.target.elements.remember.value;
-    
+    const remember = event.target.elements.remember.value; 
+
     const data = {email : email, password : password, remember : remember}
-    const url = ''
+    const url = 'https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/account/login?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c'
 
-    const response = await postData(url, data);
-    console.log(response);
+    loginAsync(url, data, handleLogin)
   };
-
-  async function postData (url = '', data = {}) {
-    const response = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type' : 'application/json' },
-        body : JSON.stringify(data)
-    });
-    return response.json();
-    };
-    
-
+  
   return (
     <>
-      <LoginContext.Provider value={{ handleSubmit }}>
+      <LoginContext.Provider value={{ handleSubmit, loginResult }}>
         {props.children}
       </LoginContext.Provider>
     </>
@@ -36,3 +32,11 @@ const LoginProvider = (props) => {
 };
 
 export default LoginProvider;
+
+
+
+
+
+
+
+
