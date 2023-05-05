@@ -34,41 +34,66 @@ const Registration = () => {
       <div className="row">
       
       <div className="col-lg-6 mt-3 input-wrapper">
-      <label for="firstName">Firstname</label>
-      <input name="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} type="text"></input>
-      </div>
-      
-      <div className="col-lg-6 mt-3 input-wrapper">
-      <label for="lastName">Lastname</label>
-      <input name="lastName" value={lastName} onChange={(e) => setLastname(e.target.value)} type="text"></input>
-      </div>
-      
-      <div className="col-lg-6 mt-3 input-wrapper">
-      <label for="email">Email</label>
-      <input name="email" value={email} onChange={(e) => {setEmail(e.target.value)}} type="text"></input>
+      <label htmlFor="firstName">Firstname</label>
+      <input name="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} type="text" onKeyUp={(event) => {
+      if (event.target.value.length <= 1) {document.querySelector("#firstName").innerHTML = "Not a valid firstname"} else {document.querySelector("#firstName").innerHTML = ""};
+      }}></input>
+      <span id="firstName"></span>
       </div>
 
       <div className="col-lg-6 mt-3 input-wrapper">
-      <label for="phone">Phone</label>
-      <input name="phone" value={phone} onChange={(e) => setPhone(e.target.value)} type="text"></input>
+      <label htmlFor="lastName">Lastname</label>
+      <input name="lastName" value={lastName} onChange={(e) => setLastname(e.target.value)} onKeyUp={(event) => {if (event.target.value.length <= 1) {document.querySelector("#lastName").innerHTML = "Not a valid lastname"}else{document.querySelector("#lastName").innerHTML = ""}}} type="text"></input>
+      <span id="lastName"></span>
       </div>
       
       <div className="col-lg-6 mt-3 input-wrapper">
-      <label for="password">Password</label>
-      <input name="password" value={password} onChange={(e) => setPassword(e.target.value)} type="password"></input>
-      </div>
-      
-      <div className="col-lg-6 mt-3 input-wrapper">
-      <label for="confirmPassword">Confirm Password</label>
-      <input name="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} type="password"></input>
+      <label htmlFor="email">Email</label>
+      <input name="email" value={email} onChange={(e) => {setEmail(e.target.value)}} type="text" onKeyUp={(event) => {
+       const regEx = new RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$');
+        if(!regEx.test(event.target.value)){
+          document.querySelector("#email").innerHTML = "Not a valid email";
+        } else {document.querySelector("#email").innerHTML = "";}
+      }}></input>
+      <span id="email"></span>
       </div>
 
-      <div className="mt-3" style={{textAlign : 'center'}}>{registrationResult != "false"? "" : "Registration faild"}</div>
+      <div className="col-lg-6 mt-3 input-wrapper">
+      <label htmlFor="phone">Phone</label>
+      <input name="phone" value={phone} onChange={(e) => setPhone(e.target.value)} onKeyUp={(event) => {if(event.target.value.length < 10){document.querySelector("#phone").innerHTML = "Not a valid phone number"}else{document.querySelector("#phone").innerHTML = ""}}} type="text"></input>
+      <span id="phone"></span>
+      </div>
       
+      <div className="col-lg-6 mt-3 input-wrapper">
+      <label htmlFor="password">Password</label>
+      <input name="password" value={password} onChange={(e) => setPassword(e.target.value)} type="password" onKeyUp={(event) => {
+        const regPassword = new RegExp('^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^a-zA-Z0-9]).{8,}$');
+        if (!regPassword.test(event.target.value)){
+          document.querySelector("#password").innerHTML = "Not a valid password";
+        } else {document.querySelector("#password").innerHTML = "";}
+      }}></input>
+      <span id="password"></span>
+      </div>
+      
+      <div className="col-lg-6 mt-3 input-wrapper">
+      <label htmlFor="confirmPassword">Confirm Password</label>
+      <input name="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} type="password" onKeyUp = {(event) => {
+
+        if(event.target.value != password){
+          document.querySelector("#confirmPassword").innerHTML = "Password and confirm password do not match"
+        }
+        else {
+          document.querySelector("#confirmPassword").innerHTML = ""
+        }
+      }}></input>
+      <span id="confirmPassword"></span>
+      </div>
+
+      <div className="mt-3" style={{textAlign : 'center'}}>{registrationResult != "false"? "" : "Registration Faild!"}</div>
+  
       <div className="col-lg-12 mt-5">
       <button className="dark-btn-standard" type="submit">SIGN UP</button>
       </div>
-
       </div>
       </form>  
 

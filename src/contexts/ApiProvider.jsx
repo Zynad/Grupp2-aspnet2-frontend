@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import jwt from 'jwt-decode'
 import Cookies from 'js-cookie'
-import { json } from "react-router-dom";
+
 
 export const ApiContext = createContext();
 
@@ -107,12 +107,3 @@ const putAsync = async (url = '', data = {}, handlePut) => {
 export default ApiProvider
 
 
-
- // async function postData (url = '', data = {}) {
-    // const response = await fetch(url, {
-    //     method: 'POST',
-    //     headers: { 'Content-Type' : 'application/json' },
-    //     body : JSON.stringify(data)
-    // });
-    // return response.json();
-    // };
