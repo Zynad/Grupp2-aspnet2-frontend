@@ -4,13 +4,12 @@ export const ForgotPasswordContext = createContext();
 
 const ForgotPasswordProvider = (props) => {
 
-    const {postData} = useContext(ApiContext);
+    const {} = useContext(ApiContext);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const url = "xd";
+        const url = "";
         const data = {email : event.target.elements.email.value}
-        const response = await postData(url, data)
     }
 
     return (
@@ -20,8 +19,6 @@ const ForgotPasswordProvider = (props) => {
             </ForgotPasswordContext.Provider>
         </>
     )
-
-
 }
 
 export default ForgotPasswordProvider;

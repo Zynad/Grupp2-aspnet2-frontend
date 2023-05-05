@@ -4,9 +4,9 @@ export const LoginContext = createContext();
 
 const LoginProvider = (props) => {
   const [loginResult, SetLoginResult] = useState("");
-  const {postData} = useContext(ApiContext);
+  const {loginAsync} = useContext(ApiContext);
 
-  const handleRequest = (response) => {
+  const handleLogin = (response) => {
     SetLoginResult(response);
   }
 
@@ -19,8 +19,7 @@ const LoginProvider = (props) => {
     const data = {email : email, password : password, remember : remember}
     const url = 'https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/account/login?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c'
 
-    // await postData(url, data, handleRequest);
-    
+    loginAsync(url, data, handleLogin)
   };
   
   return (

@@ -4,7 +4,7 @@ export const RegistrationContext = createContext();
 
 const RegistrationProvider = (props) => {
 
-  const {registrationPost} = useContext(ApiContext);
+  const {registrationAsync} = useContext(ApiContext);
   const [registrationResult, setRegistrationResult] = useState("");
 
   const handleRegistration = (response) => {
@@ -22,8 +22,7 @@ const RegistrationProvider = (props) => {
     const data = {firstName : firstName, lastName : lastName, email : email, password : password, phoneNumber : phone}
     const url = "https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/account/register?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c";
 
-    await registrationPost(url, data, handleRegistration);
-
+    await registrationAsync(url, data, handleRegistration);
   };
 
   return (

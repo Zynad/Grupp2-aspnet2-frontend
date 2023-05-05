@@ -24,16 +24,11 @@ const RegistrationSuccess = () => {
 
             <div className="col-lg-12 standard-text">
             Your account had been created successfully.
-           </div>
+            </div>
 
-           <div className="col-lg-12">
-
+            <div className="col-lg-12">
            <NavLink to="/"><button className="dark-btn-standard mt-5">SHOP NOW</button></NavLink>
-
-           
-
-           </div>
-            
+            </div>
 
             </div>
             </div>

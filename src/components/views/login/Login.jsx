@@ -10,13 +10,13 @@ const Login = () => {
     const [password, setPassword] = useState("")
     const [rememberMe, setRememberMe] = useState(false);
 
-    // if(loginResult == "Request Succeded"){
-    //     return <Navigate to="/"/>;
-    //   }
+    if(loginResult == "true"){
+        return <Navigate to="/"/>;
+      }
       
     return (
         <div className="container mt-5">
-          
+
           <div className="row">
           <div className="col-4"><NavLink className="nav-standard" to="/"><i className="fa-solid fa-angle-left"></i></NavLink></div>
           <div style={{textAlign : 'center'}} className="col-4">Sign In</div>
@@ -50,8 +50,6 @@ const Login = () => {
            <div style={{textAlign : 'right'}} className="col mt-5">
             <NavLink className="nav-standard" to="/forgotpassword">Forgot Password?</NavLink>
            </div>  
-
-           <div className="mt-3" style={{textAlign : 'center'}}>{loginResult}</div>
         
           <div className="col-lg-12 mt-5">
           <button className="dark-btn-standard" type="submit">SIGN IN</button>
