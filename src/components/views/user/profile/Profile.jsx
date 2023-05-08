@@ -79,8 +79,7 @@ const Profile = () => {
             </div>       
          <hr className="mt-4 mb-4"/>
          </div>
-        </div>
-            
+        </div> 
         <Navigation />
         </>
     )
