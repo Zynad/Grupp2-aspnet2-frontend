@@ -13,6 +13,7 @@ import ForgotPasswordProvider from "./contexts/ForgotPasswordProvider";
 import ApiProvider from "./contexts/ApiProvider";
 import RegistrationSuccess from "./components/views/user/registration/RegistrationSuccess"
 import Profile from "./components/views/user/profile/Profile"
+import SignOut from "./components/views/user/signout/SignOut";
 
 function App() {
   return (
@@ -25,7 +26,8 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/registrationsuccess" element= {<RegistrationSuccess/>} />
-        <Route path="/profile" element= {<Profile/>} />
+        <Route path="/profile" element = {<Profile/>} />
+        <Route path="/signout" element = {<SignOut/>}/>
         <Route path="/forgotpassword" element={
           <ForgotPasswordProvider>       
           <ForgotPassword/>       
