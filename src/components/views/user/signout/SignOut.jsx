@@ -1,8 +1,8 @@
-import "./profile.css"
+import "./signout.css"
 import { LoginContext } from "../../../../contexts/LoginProvider"
 import { useContext, useState } from "react"
 import { Navigate } from "react-router-dom"
-import Profile from "./Profile"
+import Profile from "../profile/Profile"
 
 const SignOut = () => {
 

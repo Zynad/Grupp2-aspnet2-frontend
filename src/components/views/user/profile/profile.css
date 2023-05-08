@@ -38,63 +38,6 @@
 }
 
 
-/* SignOut Section */
-
-#sign-out{
-    background-color: gray !important;
-    min-height: 850px;
-}
-
-.sign-out-content{
-    text-align: center;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 220px;
-}
-
-.outer-circle{
-    border: 4px solid white;
-    height: 330px;
-    width: 330px;
-    border-radius: 50%;
-    margin-left: 22px;
-}
-
-.inner-circle{
-    border: 2px solid #f7f7f7;
-    background-color: #f7f7f7;
-    margin-top: 20px;
-    height: 280px;
-    width: 280px;
-    border-radius: 50%;
-}
-
-.text-inner-circle{
-    margin: 10px 10px;
-    font-weight: bold;
-    font-size: 1rem;
-}
-
-.button-inner-circle{
-    width: 50%;
-    border-radius: 25px;
-    height: 45px;
-    font-size: 1rem;
-    border: 0;
-}
-
-.black-button{
-    background-color: black;
-    color: white;
-}
-
-.white-button{
-    background-color: #f7f7f7;
-}
-
 
 
 
