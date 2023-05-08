@@ -1,8 +1,8 @@
 import "./forgotpassword.css"
 import { useState, useContext } from 'react';
 import { NavLink  } from "react-router-dom";
-import { ForgotPasswordContext } from "../../../contexts/ForgotPasswordProvider";
-import { ApiContext } from "../../../contexts/ApiProvider"
+import { ForgotPasswordContext } from "../../../../contexts/ForgotPasswordProvider";
+import { ApiContext } from "../../../../contexts/ApiProvider"
 
 const ForgotPassword = () => {
 

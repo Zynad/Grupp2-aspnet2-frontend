@@ -3,16 +3,19 @@ import { ApiContext } from "./ApiProvider";
 export const LoginContext = createContext();
 
 const LoginProvider = (props) => {
-  const [loginResult, SetLoginResult] = useState("");
+  const [loginResult, setLoginResult] = useState("");
+  const [email, setEmail] = useState("");
   const {loginAsync} = useContext(ApiContext);
 
+
   const handleLogin = (response) => {
-    SetLoginResult(response);
+    setLoginResult(response);
   }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const email = event.target.elements.email.value;
+    setEmail(email);
     const password = event.target.elements.password.value;
     const remember = event.target.elements.remember.value; 
 
@@ -24,7 +27,7 @@ const LoginProvider = (props) => {
   
   return (
     <>
-      <LoginContext.Provider value={{ handleSubmit, loginResult }}>
+      <LoginContext.Provider value={{ handleSubmit, loginResult, email, handleLogin }}>
         {props.children}
       </LoginContext.Provider>
     </>

@@ -1,0 +1,36 @@
+.upper-profile-content{
+    text-align: center;
+}
+
+.profile-content {
+
+}
+
+.profile-text{
+    text-align: left;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.profile-icon{
+    margin: 0 25px;
+}
+
+.profile-arrow{
+    text-align: right;
+}
+
+.profile-arrow i {
+    font-weight: bold;
+    margin-right: 10px;
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.profile-arrow i:hover{
+    opacity: 1;
+}
+
+.log-out{
+    cursor: pointer;
+}
