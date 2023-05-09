@@ -23,7 +23,7 @@ const SignOut = () => {
 </div>
 
    <div class="sign-out-content">
-            <div className="outer-circle">
+        <div className="outer-circle">
             <div className="container inner-circle">
             
             <div className="mt-5">
@@ -41,7 +41,7 @@ const SignOut = () => {
             </div>
             </div>
             </div>
-           </div>
+        </div>
    </div>
  </div>
 </div>       
