@@ -1,0 +1,19 @@
+.link {
+  font-size: 50px;
+  color: black;
+  margin-right: 15px;
+}
+
+.footer-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.footer-nav i {
+  height: 50px;
+  width: 50px;
+}
