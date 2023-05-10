@@ -7,8 +7,6 @@ export const ApiContext = createContext();
 
 const ApiProvider = (props) => {
 
-   
-
 // GET ALL
 const getAllProductsAsync = async () => {
     const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Products/All?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c');
@@ -23,7 +21,7 @@ const getProductByIdAsync = async (id = "") => {
     return data;
 }
 
-// Registration
+// REGISTRATION
 const registrationAsync = async (url = '', data = {}, handleRegistration) => {    
  const requestOptions = {
        method: 'POST',
