@@ -27,4 +27,6 @@ img {
   width: 50px;
   font-size: 1.4em;
   display: grid;
+  border-radius: 50%;
+  align-items: center;
 }
