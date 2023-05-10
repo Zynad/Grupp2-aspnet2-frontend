@@ -1,12 +1,14 @@
-import "./signout.css"
+import "./profile.css"
 import { LoginContext } from "../../../../contexts/LoginProvider"
+import { ApiContext } from "../../../../contexts/ApiProvider"
 import { useContext, useState } from "react"
 import { Navigate } from "react-router-dom"
-import Profile from "../profile/Profile"
+import Profile from "./Profile"
 
 const SignOut = () => {
 
     const { handleLogin, loginResult } = useContext(LoginContext);
+    const { logoutAsync } = useContext (ApiContext);
     const [cancel, setCancel] = useState("");
 
     if(loginResult == "false"){ return <Navigate to="/"/> }
@@ -22,7 +24,7 @@ const SignOut = () => {
     <Profile/>
 </div>
 
-   <div class="sign-out-content">
+   <div className="sign-out-content">
         <div className="outer-circle">
             <div className="container inner-circle">
             
@@ -32,7 +34,11 @@ const SignOut = () => {
 
             <div className="row">
             <div className="col-lg-12">
-            <button className="button-inner-circle black-button" onClick={(event) => {handleLogin("false")}}>Sure</button>
+            <button className="button-inner-circle black-button" onClick={(event) => 
+            {
+                if (logoutAsync()) { handleLogin("false") }           
+            }
+                }>Sure</button>
             </div>
 
             <div className="col-lg-12">
