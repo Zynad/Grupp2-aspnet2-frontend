@@ -13,7 +13,9 @@ import ForgotPasswordProvider from "./contexts/ForgotPasswordProvider";
 import ApiProvider from "./contexts/ApiProvider";
 import RegistrationSuccess from "./components/views/user/registration/RegistrationSuccess"
 import Profile from "./components/views/user/profile/Profile"
-import SignOut from "./components/views/user/signout/SignOut";
+import SignOut from "./components/views/user/profile/SignOut";
+import Address from "./components/views/user/profile/Address";
+import AddNewAdress from "./components/views/user/profile/AddNewAddress";
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
         <Route path="/registrationsuccess" element= {<RegistrationSuccess/>} />
         <Route path="/profile" element = {<Profile/>} />
         <Route path="/signout" element = {<SignOut/>}/>
+        <Route path="/addadress" element = { <AddNewAdress/> }/>
+        <Route path="/address" element = { <Address/> }/>
         <Route path="/forgotpassword" element={
           <ForgotPasswordProvider>       
           <ForgotPassword/>       
