@@ -1,0 +1,125 @@
+/*Första slide*/
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    background-color: lightblue;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.outer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+    border: solid;
+    border-color: white;
+    border-radius: 50%;
+}
+
+.inner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    width: 115px;
+    height: 115px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.manero{
+    font-size: 60px;
+    font-family: monospace;
+}
+
+
+
+
+
+/*Andra 3 slides*/
+.Slide-container{
+    position: absolute;
+    overflow: hidden;
+    background-color: lightblue;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Slide-outer{
+    position: absolute;
+    border: solid white;
+    height: 600px;
+    width: 600px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Slide-inner{
+    background-color: white;
+    width: 550px;
+    height: 550px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Slide-header{
+    font-size: 40px;
+    width: 200px;
+    text-align: center;
+}
+
+.Slide-info{
+    padding: 40px;
+    text-align: center;
+}
+
+.Slide-button{
+    background-color: black;
+    color: white;
+    border-radius: 50px;
+    border: none;
+    width: 350px;
+    height: 60px;
+    font-family: sans-serif;
+}
+
+@media (max-width: 768px){
+    .firstSlide-outer{
+        margin-top: 300px;
+    }
+    .Slide-outer{
+        width: 400px;
+        height: 400px;
+        margin-top: 280px;
+    }
+    .Slide-inner{
+        width: 350px;
+        height: 350px;
+    }
+    .Slide-button{
+        width: 200px;
+        height: 45px;
+    }
+    .Slide-info{
+        padding: 20px;
+    }
+    .Slide-header{
+        font-size: 25px;
+    }
+}
