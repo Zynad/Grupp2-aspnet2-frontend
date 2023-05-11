@@ -14,7 +14,9 @@ const getAllProductsAsync = async () => {
     const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Products/All?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c');
       if (response.ok) {
         const result = await response.json();
-        console.log('Request success: ');
+          console.log('Request success');
+          console.log(result);
+          
         return result;
     }
     else {
