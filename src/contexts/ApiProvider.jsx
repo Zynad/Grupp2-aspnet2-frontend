@@ -123,7 +123,7 @@ const recoverPassword = async (password = {}) => {
         headers: { 'Authorization' : `Bearer ${ token }` },
         body: JSON.stringify(password)
         };
-    const response = await fetch ('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/account/recoverpassword?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    const response = await fetch ('https://grupp2-aspnet2-inl-alex-test.azurewebsites.net/api/account/recoverpassword?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
     if(response.statusText == "OK") { return true } else { return false }
 }
 
