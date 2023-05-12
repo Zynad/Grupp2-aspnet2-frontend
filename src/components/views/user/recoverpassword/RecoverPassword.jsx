@@ -46,7 +46,7 @@ const ResetPassword = () => {
             }
           }}
         />
-        <div id="password" className="text-danger ml-5"></div>
+        <div id="password" className="text-danger ml-5 test"></div>
       </div>
 
       <div className="col-lg-12 mt-5 input-wrapper">
