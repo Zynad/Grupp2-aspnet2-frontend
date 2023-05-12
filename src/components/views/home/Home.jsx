@@ -17,8 +17,8 @@ const Home = () => {
 
    const setHomeProducts = async () => {
         let data = await getAllProductsAsync();
-        let bestSeller = data.filter(item => item.name == "shorts");
-        let featured = data.filter(item => item.salesCategory == "new");
+        // let bestSeller = data.filter(item => item.name == "shorts");
+        // let featured = data.filter(item => item.salesCategory == "new");
         setBestSellerList(data)  
         setFeaturedList(data)
         setLoadState(true);
