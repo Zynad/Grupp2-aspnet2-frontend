@@ -55,8 +55,6 @@ const Login = () => {
           <button className="dark-btn-standard" type="submit">SIGN IN</button>
           </div>
 
-          <NavLink to="/recoverpassword">RECOVER</NavLink>
-
           </div>
         </form>  
     
