@@ -4,7 +4,6 @@ import Cookies from 'js-cookie'
 export const ApiContext = createContext();
 
 const ApiProvider = (props) => {
-   const [user, setUser] = useState({});
     
 // GET ALL PRODUCTS
 const getAllProductsAsync = async () => {
@@ -76,8 +75,7 @@ const loginAsync = async (url = '', data = {}, handleLogin) => {
          .then ((response => {
             if (!response.ok){
                 handleLogin("false")
-                throw new Error(response.status);
-                return false;   
+                throw new Error(response.status);   
             }
             else {
                 const res = response.text()
@@ -85,13 +83,11 @@ const loginAsync = async (url = '', data = {}, handleLogin) => {
                     const token = data;                  
                     Cookies.set('token', token)
                     handleLogin("true");
-                    return true;
                     // const decode = jwt(token);
                     // const getToken = Cookies.get('token');                                        
                  })}}))
           .catch(() => {
                  handleLogin("false")
-                 return false;
             })     
         };
 
