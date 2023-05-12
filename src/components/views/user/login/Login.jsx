@@ -2,6 +2,7 @@ import "./login.css"
 import { useContext, useState } from "react";
 import { NavLink, Navigate } from "react-router-dom";
 import { LoginContext } from "../../../../contexts/LoginProvider"
+import RecoverPassword from "../recoverpassword/RecoverPassword"
 
 const Login = () => {
 
@@ -53,6 +54,8 @@ const Login = () => {
           <div className="col-lg-12 mt-5">
           <button className="dark-btn-standard" type="submit">SIGN IN</button>
           </div>
+
+          <NavLink to="/recoverpassword">RECOVER</NavLink>
 
           </div>
         </form>  
