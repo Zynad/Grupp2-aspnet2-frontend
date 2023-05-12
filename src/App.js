@@ -18,7 +18,7 @@ import Address from "./components/views/user/profile/Address";
 import RecoverPassword from "./components/views/user/recoverpassword/RecoverPassword";
 import AddNewAdress from "./components/views/user/profile/AddNewAddress";
 import EditProfile from "./components/views/user/profile/EditProfile";
-import Test from "./components/views/user/Test";
+
 
 function App() {
   return (
@@ -26,7 +26,6 @@ function App() {
     <ApiProvider>
     <LoginProvider>
       <Routes>
-      <Route path="test" element = { <Test/> }/>
       <Route path="/editprofile" element = {<EditProfile/>}/>
       <Route path="/recoverpassword" element = { <RecoverPassword/> }/>
         <Route path="/" element={<Home />} />
