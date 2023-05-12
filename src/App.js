@@ -16,6 +16,7 @@ import Profile from "./components/views/user/profile/Profile"
 import SignOut from "./components/views/user/profile/SignOut";
 import Address from "./components/views/user/profile/Address";
 import AddNewAdress from "./components/views/user/profile/AddNewAddress";
+import EditProfile from "./components/views/user/profile/EditProfile";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
     <ApiProvider>
     <LoginProvider>
       <Routes>
+      <Route path="/editprofile" element = {<EditProfile/>}/>
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<Search />} />
         <Route path="/cart" element={<Cart />} />
