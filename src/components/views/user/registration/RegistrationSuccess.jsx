@@ -1,5 +1,5 @@
 import "./registration.css"
-import img from "../../../assets/images/RegisterSucceed.png"
+import img from "../../../../assets/images/RegisterSucceed.png"
 import { NavLink } from "react-router-dom"
 
 const RegistrationSuccess = () => {

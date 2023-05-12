@@ -1,7 +1,7 @@
-import "../login/login.css"
+import "./login.css"
 import { useContext, useState } from "react";
 import { NavLink, Navigate } from "react-router-dom";
-import { LoginContext } from "../../../contexts/LoginProvider"
+import { LoginContext } from "../../../../contexts/LoginProvider"
 
 const Login = () => {
 
@@ -11,7 +11,7 @@ const Login = () => {
     const [rememberMe, setRememberMe] = useState(false);
 
     if(loginResult == "true"){
-        return <Navigate to="/"/>;
+        return <Navigate to="/profile"/>;
       }
       
     return (
@@ -28,8 +28,7 @@ const Login = () => {
          <h1 className="heading-standard mt-3">Welcome Back</h1>
          <p>Sign in to continue</p>
          </div>
-        
-        
+              
         <form onSubmit={handleSubmit}>
           <div className="row">
 
@@ -58,10 +57,9 @@ const Login = () => {
           </div>
         </form>  
     
-
-           <div class="row">
-          <div class="mt-3 box-registration col-lg-12">Don't have an account? <NavLink className="nav-standard" to="/registration">Sign Up.</NavLink></div>
-          <div class="mt-5 box-registration col-lg-12">
+           <div className="row">
+          <div className="mt-3 box-registration col-lg-12">Don't have an account? <NavLink className="nav-standard" to="/registration">Sign Up.</NavLink></div>
+          <div className="mt-5 box-registration col-lg-12">
 
           <i className="fa-brands fa-facebook icon-standard" style={{color: '#00235B'}}></i>
           <i className="fa-brands fa-google-plus-g icon-standard" style={{color: '#FF6969'}}></i>
