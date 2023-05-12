@@ -1,7 +1,7 @@
 import "./registration.css"
 import { NavLink, Navigate } from 'react-router-dom'
 import { useContext, useState } from "react";
-import { RegistrationContext } from "../../../contexts/RegistrationProvider";
+import { RegistrationContext } from "../../../../contexts/RegistrationProvider";
 
 const Registration = () => {
   const {handleSubmit, registrationResult} = useContext(RegistrationContext);
@@ -38,13 +38,13 @@ const Registration = () => {
       <input name="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} type="text" onKeyUp={(event) => {
       if (event.target.value.length <= 1) {document.querySelector("#firstName").innerHTML = "Not a valid firstname"} else {document.querySelector("#firstName").innerHTML = ""};
       }}></input>
-      <span id="firstName"></span>
+      <span id="firstName" className="text-danger"></span>
       </div>
 
       <div className="col-lg-6 mt-3 input-wrapper">
       <label htmlFor="lastName">Lastname</label>
       <input name="lastName" value={lastName} onChange={(e) => setLastname(e.target.value)} onKeyUp={(event) => {if (event.target.value.length <= 1) {document.querySelector("#lastName").innerHTML = "Not a valid lastname"}else{document.querySelector("#lastName").innerHTML = ""}}} type="text"></input>
-      <span id="lastName"></span>
+      <span id="lastName" className="text-danger"></span>
       </div>
       
       <div className="col-lg-6 mt-3 input-wrapper">
@@ -55,13 +55,13 @@ const Registration = () => {
           document.querySelector("#email").innerHTML = "Not a valid email";
         } else {document.querySelector("#email").innerHTML = "";}
       }}></input>
-      <span id="email"></span>
+      <span id="email" className="text-danger"></span>
       </div>
 
       <div className="col-lg-6 mt-3 input-wrapper">
       <label htmlFor="phone">Phone</label>
       <input name="phone" value={phone} onChange={(e) => setPhone(e.target.value)} onKeyUp={(event) => {if(event.target.value.length < 10){document.querySelector("#phone").innerHTML = "Not a valid phone number"}else{document.querySelector("#phone").innerHTML = ""}}} type="text"></input>
-      <span id="phone"></span>
+      <span id="phone" className="text-danger"></span>
       </div>
       
       <div className="col-lg-6 mt-3 input-wrapper">
@@ -72,7 +72,7 @@ const Registration = () => {
           document.querySelector("#password").innerHTML = "Not a valid password";
         } else {document.querySelector("#password").innerHTML = "";}
       }}></input>
-      <span id="password"></span>
+      <span id="password" className="text-danger"></span>
       </div>
       
       <div className="col-lg-6 mt-3 input-wrapper">
@@ -86,7 +86,7 @@ const Registration = () => {
           document.querySelector("#confirmPassword").innerHTML = ""
         }
       }}></input>
-      <span id="confirmPassword"></span>
+      <span id="confirmPassword" className="text-danger"></span>
       </div>
 
       <div className="mt-3" style={{textAlign : 'center'}}>{registrationResult != "false"? "" : "Registration Faild!"}</div>
