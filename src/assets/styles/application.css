@@ -81,7 +81,6 @@ label {
   opacity: 1;
 }
 
-
 /* Items */
 .item-wrapper {
   width: 300px;
@@ -106,10 +105,12 @@ label {
   overflow-x: auto;
 }
 
+.item-carousel::-webkit-scrollbar {
+  display: none;
+}
 
 /* Text */
-.standard-text{
+.standard-text {
   color: grey;
   text-align: center;
 }
-
