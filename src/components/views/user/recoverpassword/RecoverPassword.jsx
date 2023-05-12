@@ -18,7 +18,7 @@ const ResetPassword = () => {
     }
      setValidation("");
      const password = {newPassword : newPassword, confirmPassword : confirmPassword}
-     const response = await recoverPassword(password)
+     await recoverPassword(password)
   };
 
   
@@ -72,13 +72,10 @@ const ResetPassword = () => {
       </div>
 
       <button className="dark-btn-standard my-5" type="submit">CHANGE PASSWORD</button>
-     
     </form>
 </div>
 </div>
-    
-  );
-}
+  );}
 
 export default ResetPassword;
 
