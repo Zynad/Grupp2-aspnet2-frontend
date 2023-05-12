@@ -21,6 +21,7 @@ const ResetPassword = () => {
      const response = await recoverPassword(password)
   };
 
+  
   return (
     <div className="container mt-5">
      <div className="row">
