@@ -13,17 +13,12 @@ const ResetPassword = () => {
     event.preventDefault();
 
     if (!regEx.test(newPassword) || newPassword != confirmPassword){
-      setValidation("Faild to reset password")
+      setValidation("Faild to rest password")
       return;
     }
      setValidation("");
-
      const password = {newPassword : newPassword, confirmPassword : confirmPassword}
-
-     await recoverPassword(password)
-
-     // Skicka till API
-    
+     const response = await recoverPassword(password)
   };
 
   return (
@@ -86,21 +81,3 @@ const ResetPassword = () => {
 
 export default ResetPassword;
 
-
-
-
-//  // Skicka en POST-förfrågan till API:et för att återställa lösenordet
-//  fetch("/api/resetpassword", {
-//   method: "POST",
-//   headers: { "Content-Type": "application/json" },
-//   body: JSON.stringify({ email: userEmail, token: userToken, newPassword }),
-// })
-//   .then((response) => {
-//     if (response.ok) {
-//       // Om lösenordet har återställts, skicka användaren till inloggningsidan
-//       history.push("/login");
-//     } else {
-//       throw new Error("Failed to reset password");
-//     }
-//   })
-//   .catch((error) => console.log(error));
