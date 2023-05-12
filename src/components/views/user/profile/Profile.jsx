@@ -3,6 +3,7 @@ import Navigation from "../../../partials/navigation/Navigation";
 import { useContext, useState, useEffect } from "react";
 import { NavLink, Navigate } from "react-router-dom";
 import { ApiContext } from "../../../../contexts/ApiProvider";
+import ProfilePicture from "./ProfilePicture";
 
 
 const Profile = () => {
@@ -31,6 +32,7 @@ const Profile = () => {
         <div className="container profile-section">
         <div className="mt-5 upper-profile-content">
          <span className="line-login"></span>
+         <ProfilePicture/>
          <h2 className="heading-standard mt-3">{user.firstName + " " + user.lastName}</h2>
          <div className="standard-text">{user.email}</div>
          </div>

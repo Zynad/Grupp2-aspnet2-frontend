@@ -3,16 +3,23 @@ import { NavLink } from "react-router-dom"
 const AddNewAdress = () => {
 
   const [title, setTitle] = useState("");
-  const [adress, setAdress] = useState("");
+  const [streetName, setStreetName] = useState("");
+  const [city, setCity] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [country, setCountry] = useState("");
+  const [validation, setValidation] = useState ("");
 
   const handleSumit = async (event) => {
 
     event.preventDefault();
     
-    if(title.length == 0 | adress.length == 0){
-       // Skicka uppgifterna till API
+    if(title.length < 2 || streetName.length < 2 || city.length < 2 || postalCode < 2 || country < 2){
+       setValidation("The adress faild to save. Try Again!")
+       return;
     }
-
+    setValidation("")
+    const adress = {title : title, streetName : streetName, city : city, postalCode : postalCode, country : country }
+    // Skicka objektet till API
  };
 
 return (
@@ -41,18 +48,67 @@ return (
     </div>
 
     <div className="col-lg-12 mt-3 input-wrapper">
-    <label htmlFor="adress">Adress</label>
-    <input name="adress" value={adress} onChange={(event) => setAdress(event.target.value)} type="text" onKeyUp={(event) => {
+    <label htmlFor="streetAdress">Street name</label>
+    <input name="streetAdress" value={streetName} onChange={(event) => setStreetName(event.target.value)} type="text" onKeyUp={(event) => {
       if (event.target.value.length <= 1) 
        {
-         document.querySelector("#adress").innerHTML = "Not a valid adress"
+         document.querySelector("#streetName").innerHTML = "Not a valid street name"
        } 
       else 
        {
-         document.querySelector("#adress").innerHTML = ""
+         document.querySelector("#streetName").innerHTML = ""
        }}}>
     </input>
-    <div id="adress" className="text-danger ml-5"></div>
+    <div id="streetName" className="text-danger ml-5"></div>
+    </div>
+
+    <div className="col-lg-12 mt-3 input-wrapper">
+    <label htmlFor="city">City</label>
+    <input name="city" value={city} onChange={(event) => setCity(event.target.value)} type="text" onKeyUp={(event) => {
+      if (event.target.value.length <= 1) 
+       {
+         document.querySelector("#city").innerHTML = "Not a valid city"
+       } 
+      else 
+       {
+         document.querySelector("#city").innerHTML = ""
+       }}}>
+    </input>
+    <div id="city" className="text-danger ml-5"></div>
+    </div>
+
+    <div className="col-lg-12 mt-3 input-wrapper">
+    <label htmlFor="postalCode">Postal Code</label>
+    <input name="postalCode" value={postalCode} onChange={(event) => setPostalCode(event.target.value)} type="text" onKeyUp={(event) => {
+      if (event.target.value.length <= 1) 
+       {
+         document.querySelector("#postalCode").innerHTML = "Not a valid postal code"
+       } 
+      else 
+       {
+         document.querySelector("#postalCode").innerHTML = ""
+       }}}>
+    </input>
+    <div id="postalCode" className="text-danger ml-5"></div>
+    </div>
+
+    <div className="col-lg-12 mt-3 input-wrapper">
+    <label htmlFor="country">Country</label>
+    <input name="country" value={country} onChange={(event) => setCountry(event.target.value)} type="text" onKeyUp={(event) => {
+      if (event.target.value.length <= 1) 
+       {
+         document.querySelector("#country").innerHTML = "Not a valid country"
+       } 
+      else 
+       {
+         document.querySelector("#country").innerHTML = ""
+       }}}>
+    </input>
+    <div id="country" className="text-danger ml-5"></div>
+    </div>
+
+    <div className="validation text-danger mt-3">
+    {validation}
     </div>
 
     <button className="dark-btn-standard my-5" type="submit">Save Adress</button>
