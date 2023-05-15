@@ -1,14 +1,16 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import "./collectionItem.css"
-import StarRating from '../starRating/StarRating.'
+import StarRating from '../starRating/StarRating'
+import { ApiContext } from '../../../../contexts/ApiProvider'
+import { useContext } from 'react'
 
-const CollectionItem = (item) => {
+const CollectionItem = ({item}) => {
     return (
             <div className='container'>
                 <div className="item-wrapper">
                     <div className="image-section">
-                        <img src="https://assets.vogue.com/photos/61df2f6d60d4727d5bae2c81/master/w_1920%2Cc_limit/slide_10.jpg" alt=''/>
+                    <img src={item.imageUrl} alt=''/>
                     <div className="image-menu">
                         <div className='icons'>
                             <button className="image-link"><i className="fa-regular fa-heart"></i></button>
@@ -17,9 +19,9 @@ const CollectionItem = (item) => {
                     </div>
                     </div>
                     <div className="body-section">
-                        <div className="name">Black Coat</div>
-                        <StarRating rating="3" />
-                        <div className="price">$3500</div>
+                        <div className="name">{item.name}</div>
+                        <StarRating rating={item.rating}/>
+                        <div className="price">{item.price}</div>
                     </div>
                 </div>
             </div>

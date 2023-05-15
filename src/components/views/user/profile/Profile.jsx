@@ -1,82 +1,92 @@
 import "./profile.css"
 import Navigation from "../../../partials/navigation/Navigation";
-import { useContext, useState } from "react";
-import { Navigate } from "react-router-dom";
-import { LoginContext } from "../../../../contexts/LoginProvider";
+import { useContext, useState, useEffect } from "react";
+import { NavLink, Navigate } from "react-router-dom";
+import { ApiContext } from "../../../../contexts/ApiProvider";
+import ProfilePicture from "./ProfilePicture";
 
 
 const Profile = () => {
     const [signout, setSignOut] = useState("");
-    const {email} = useContext(LoginContext);
+    const {getProfile} = useContext(ApiContext);
+    const [user, setUser] = useState({});
+
+
+    useEffect (() => { getUser() }, []);
+
+    const getUser = async () => {
+      const response = await getProfile();
+      await handleUser(response)
+    }
+
+    const handleUser = async (response) => { await setUser(response) }
 
     const handleSignOut = (response) => {
       setSignOut(response)
     }
 
-    if (signout == "false"){
-        return <Navigate to="/signout"/>
-    }
+    if (signout == "false"){ return <Navigate to="/signout"/> }
 
     return (
         <>
         <div className="container profile-section">
-
         <div className="mt-5 upper-profile-content">
          <span className="line-login"></span>
-         <h2 className="heading-standard mt-3">namn</h2>
-         <div className="standard-text">{email}</div>
+         <ProfilePicture/>
+         <h2 className="heading-standard mt-3">{user.firstName + " " + user.lastName}</h2>
+         <div className="standard-text">{user.email}</div>
          </div>
 
          <div className="row profile-content">
          <hr className="mt-5"/>       
             <div className="col">
-            <i class="fa-sharp fa-regular fa-bag-shopping profile-icon"></i>
+            <i className="fa-sharp fa-regular fa-bag-shopping profile-icon"></i>
             <span className="profile-text">Order history</span>
             </div>
             <div className="col profile-arrow">
-            <i class="fa-light fa-chevron-right"></i>
+            <i className="fa-light fa-chevron-right"></i>
             </div>
         <hr className="mb-4 mt-4"/>
          </div>
 
          <div className="row profile-content">          
          <div className="col">
-            <i class="fa-light fa-credit-card-blank profile-icon"></i>
+            <i className="fa-light fa-credit-card-blank profile-icon"></i>
             <span className="profile-text">Payment method</span>
             </div>
             <div className="col profile-arrow">
-            <i class="fa-light fa-chevron-right"></i>
+            <i className="fa-light fa-chevron-right"></i>
             </div>
          <hr className="mb-4 mt-4"/>
          </div>
 
          <div className="row profile-content">                   
          <div className="col">
-         <i class="fa-regular fa-location-dot profile-icon"></i>
-            <span className="profile-text">My adress</span>
+         <i className="fa-regular fa-location-dot profile-icon"></i>
+            <NavLink className="nav-standard" to="/address"> <span className="profile-text">My adress</span></NavLink>
             </div>
             <div className="col profile-arrow">
-            <i class="fa-light fa-chevron-right"></i>
+            <NavLink className="nav-standard" to="/address"><i className="fa-light fa-chevron-right"></i></NavLink>
             </div>
          <hr className="mb-4 mt-4"/>
          </div>
 
          <div className="row profile-content">         
          <div className="col">
-            <i class="fa-light fa-gift profile-icon"></i>
+            <i className="fa-light fa-gift profile-icon"></i>
             <span className="profile-text">My promocodes</span>
             </div>
             <div className="col profile-arrow">
-            <i class="fa-light fa-chevron-right"></i>
+            <i className="fa-light fa-chevron-right"></i>
             </div> 
          <hr className="mb-4 mt-4"/>
          </div>
 
-         <div className="row profile-content" onClick={(event) => {handleSignOut("false")}}>                      
+         <div className="row profile-content">                      
          <div className="col log-out">
-         <i class="fa-regular fa-right-from-bracket profile-icon"></i>
-            <span className="profile-text">Sign out</span>
-            </div>       
+            <i onClick={(event) => {handleSignOut("false")}} className="fa-regular fa-right-from-bracket profile-icon"></i>
+            <span onClick={(event) => {handleSignOut("false")}} className="profile-text">Sign out</span>
+         </div>       
          <hr className="mt-4 mb-4"/>
          </div>
         </div> 
