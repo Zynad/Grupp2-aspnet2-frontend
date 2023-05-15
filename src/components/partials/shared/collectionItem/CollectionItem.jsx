@@ -5,12 +5,12 @@ import StarRating from '../starRating/StarRating'
 import { ApiContext } from '../../../../contexts/ApiProvider'
 import { useContext } from 'react'
 
-const CollectionItem = ({item}) => {
+const CollectionItem = ({item, showDetailedItem }) => {
     return (
             <div className='container'>
                 <div className="item-wrapper">
                     <div className="image-section">
-                    <img src={item.imageUrl} alt=''/>
+                    <img src={item.imageUrl} alt={item.name} onClick={showDetailedItem}/>
                     <div className="image-menu">
                         <div className='icons'>
                             <button className="image-link"><i className="fa-regular fa-heart"></i></button>
