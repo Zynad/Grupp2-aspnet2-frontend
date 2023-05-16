@@ -20,6 +20,8 @@ const ResetPassword = () => {
 
      const password = {newPassword : newPassword, confirmPassword : confirmPassword}
 
+     console.log(password)
+
      await recoverPassword(password)
 
      // Skicka till API

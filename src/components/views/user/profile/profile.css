@@ -11,7 +11,7 @@
 }
 
 .profile-icon{
-    margin: 0 25px;
+    margin: 0 10px 0 2px;
 }
 
 .profile-arrow{
@@ -110,6 +110,16 @@
     margin-left: 65px;
     color: grey;
     font-size: 15px;
+}
+
+.address-icon{
+    margin: 0 25px;
+}
+
+#delete-icon{
+    margin-right: 20px;
+    color: #E06469;
+    font-size: px;
 }
 
 /* Profile Picture Section */
