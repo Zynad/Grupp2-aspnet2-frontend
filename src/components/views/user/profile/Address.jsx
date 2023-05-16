@@ -6,23 +6,27 @@ import { AddressContext } from "../../../../contexts/AddressProvider";
 import EditAddress from "./EditAddress";
 
 
-
-
 const Address = () => {
-    const { getAddress } = useContext(ApiContext);
-    const { handleEditAdress} = useContext(AddressContext);
+    const { getAddress, removeAddress } = useContext(ApiContext);
+    const { handleEditAdress } = useContext(AddressContext);
     const [address, setAddress] = useState([]);
-    const [editAdress, setEditAdress] = useState(false);
+    const [deleteResult, setDeleteResult] = useState(1);
    
-    useEffect (() => { handleGetAdress()}, []);
+    useEffect (() => { handleGetAdress()}, [deleteResult]);
 
     const handleGetAdress = async () => {     
         const response = await getAddress();
         setAddress(response.map((item) => ({...item.address, id: item.id, title: item.title})))
     }
 
-    const updatingAdress = async (address) => {
+    const updatingAddress = async (address) => {
      await handleEditAdress(address)
+    }
+
+    const deleteAddress = async (id) => {
+      if(await removeAddress (id)){
+        setDeleteResult(deleteResult + deleteResult + 1)
+      }
     }
 
  
@@ -44,13 +48,14 @@ const Address = () => {
           <>   
 
           <div className="col">
-          <i class="fa-sharp fa-solid fa-location-dot profile-icon"></i>
+          <i class="fa-sharp fa-solid fa-location-dot address-icon"></i>
           <span className="profile-text">{item.title}</span>
           <div className="profile-addresses-text">{item.streetName}, {item.postalCode}, {item.city}</div>
          </div>
 
           <div className="col profile-arrow">
-          <NavLink className="nav-standard" onClick={() => {updatingAdress(item)}} to='/editaddress' > <i class="fa-thin fa-pen"></i> </NavLink>
+          <i id="delete-icon" className="fa-sharp fa-regular fa-xmark" onClick={() => {deleteAddress(item.id)}}></i>
+          <NavLink className="nav-standard" onClick={() => {updatingAddress(item)}} to='/editaddress' > <i className="fa-thin fa-pen"></i> </NavLink>
           </div>
 
           <hr className="mb-4 mt-4"/>

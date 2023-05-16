@@ -139,7 +139,7 @@ const getAddress = async () => {
     return data;
 }
 
-// Register Adress
+// Register Address
 const registerAddress = async (adress = {}) => {
     const token = Cookies.get('token')
     const requestOptions = {
@@ -152,10 +152,38 @@ const registerAddress = async (adress = {}) => {
     return false;
 }
 
+// Delete Address
+const removeAddress = async (id) => {
+    const token = Cookies.get('token');
+    console.log(token)
+    const requestOptions = {
+        method: 'DELETE',
+        headers: { 'Content-Type' : 'application/json', 'Authorization' : `Bearer ${ token }` }
+    }
+    const response = await fetch(`https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Address/RemoveAddress/${id}?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c`, requestOptions)
+    if(response.ok){
+        return true;
+    }
+}
+
+// Update Address 
+const updateAddress = async (address) => {
+    const token = Cookies.get('token');
+    const requestOptions = {
+        method: 'PUT',
+        headers: { 'Content-Type' : 'application/json', 'Authorization' : `Bearer ${ token }` },
+        body: JSON.stringify(address)
+    }
+
+    const response = await fetch ('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Address/UpdateAddress?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    if(response.ok)
+        return true
+}
+
 
     return (
         <>
-            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress }}>
+            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress }}>
                 {props.children}
             </ApiContext.Provider>
         </>

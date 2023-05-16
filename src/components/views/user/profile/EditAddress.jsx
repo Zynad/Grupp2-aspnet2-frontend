@@ -1,11 +1,13 @@
 import { useContext, useState } from 'react';
 import { AddressContext } from "../../../../contexts/AddressProvider";
 import { NavLink } from 'react-router-dom';
+import { ApiContext } from '../../../../contexts/ApiProvider';
 
 
 const EditAddress = () => {
 
 const { editAdress } = useContext(AddressContext)
+const { updateAddress } = useContext(ApiContext);
 
   const [title, setTitle] = useState("");
   const [streetName, setStreetName] = useState("");
@@ -20,14 +22,19 @@ const { editAdress } = useContext(AddressContext)
     event.preventDefault();
 
     if(title.length < 2 || streetName.length < 2 || city.length < 2 || postalCode < 2 || country < 2){
-       setValidation("Update faild.")
+      setRegisterSuccess(""); 
+      setValidation("Update failure")
        return;
     }
     setValidation("")
-    const adress = {title : title, streetName : streetName, city : city, postalCode : postalCode, country : country }
+    const address = { Title : title, StreetName : streetName, PostalCode : postalCode, City : city, Country : country, AddressItemId : editAdress.id }
 
-    // Update API CALL HERE
-    
+    if(await updateAddress(address)){
+      setRegisterSuccess('Address updated successfully')
+      return;
+    } else {
+      setValidation("Update failure")
+    }
  };
 
 return (
