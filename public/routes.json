@@ -1,0 +1,80 @@
+{
+    "routes": [
+      {
+        "route": "/",
+        "serve": "/index.html",
+        "statusCode": 200
+      },
+      {
+        "route": "/search",
+        "serve": "/index.html",
+        "statusCode": 200
+      },
+      {
+        "route": "/cart",
+        "serve": "/index.html",
+        "statusCode": 200
+      },
+      {
+        "route": "/favorites",
+        "serve": "/index.html",
+        "statusCode": 200
+      },
+      {
+        "route": "/registrationsuccess",
+        "serve": "/index.html",
+        "statusCode": 200
+      },
+      {
+        "route": "/profile",
+        "serve": "/index.html",
+        "statusCode": 200
+      },
+      {
+        "route": "/signout",
+        "serve": "/index.html",
+        "statusCode": 200
+      },
+      {
+        "route": "/addadress",
+        "serve": "/index.html",
+        "statusCode": 200
+      },
+      {
+        "route": "/address",
+        "serve": "/index.html",
+        "statusCode": 200
+      },
+      {
+        "route": "/forgotpassword",
+        "serve": "/index.html",
+        "statusCode": 200
+      },
+      {
+        "route": "/registration",
+        "serve": "/index.html",
+        "statusCode": 200
+      },
+      {
+        "route": "/login",
+        "serve": "/index.html",
+        "statusCode": 200
+      },
+      {
+        "route": "/editprofile",
+        "serve": "/index.html",
+        "statusCode": 200
+      },
+      {
+        "route": "/recoverpassword",
+        "serve": "/index.html",
+        "statusCode": 200
+      },
+      {
+        "route": "/static/*",
+        "serve": "/static/:splat",
+        "statusCode": 200
+      }
+    ]
+  }
+  
