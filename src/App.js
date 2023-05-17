@@ -20,8 +20,9 @@ import AddNewAdress from "./components/views/user/profile/AddNewAddress";
 import EditProfile from "./components/views/user/profile/EditProfile";
 import EditAddress from "./components/views/user/profile/EditAddress";
 import AddressProvider from "./contexts/AddressProvider";
-import ProductProvider from "./contexts/ProductProvider";
+import WishlistProvider from "./contexts/WishlistProvider";
 import DetailedItem from "./components/partials/shared/detailedItem/DetailedItem";
+import ProductProvider from "./contexts/ProductProvider";
 
 function App() {
   return (
@@ -29,43 +30,48 @@ function App() {
       <ApiProvider>
         <LoginProvider>
           <AddressProvider>
-            <ProductProvider>
-              <Routes>
-                <Route path="/editprofile" element={<EditProfile />} />
-                <Route path="/recoverpassword" element={<RecoverPassword />} />
-                <Route path="/" element={<Home />} />
-                <Route path="/search" element={<Search />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/favorites" element={<Favorites />} />
-                <Route path="/products/test" element={<DetailedItem />} />
-                <Route
-                  path="/registrationsuccess"
-                  element={<RegistrationSuccess />}
-                />
-                <Route path="/profile" element={<Profile />} />
-                <Route path="/signout" element={<SignOut />} />
-                <Route path="/addadress" element={<AddNewAdress />} />
-                <Route path="/address" element={<Address />} />
-                <Route path="/editaddress" element={<EditAddress />} />
-                <Route
-                  path="/forgotpassword"
-                  element={
-                    <ForgotPasswordProvider>
-                      <ForgotPassword />
-                    </ForgotPasswordProvider>
-                  }
-                />
-                <Route
-                  path="/registration"
-                  element={
-                    <RegistrationProvider>
-                      <Registration />
-                    </RegistrationProvider>
-                  }
-                />
-                <Route path="/login" element={<Login />} />
-              </Routes>
-            </ProductProvider>
+            <WishlistProvider>
+              <ProductProvider>
+                <Routes>
+                  <Route path="/editprofile" element={<EditProfile />} />
+                  <Route
+                    path="/recoverpassword"
+                    element={<RecoverPassword />}
+                  />
+                  <Route path="/" element={<Home />} />
+                  <Route path="/products/test" element={<DetailedItem />} />
+                  <Route path="/search" element={<Search />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/favorites" element={<Favorites />} />
+                  <Route
+                    path="/registrationsuccess"
+                    element={<RegistrationSuccess />}
+                  />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/signout" element={<SignOut />} />
+                  <Route path="/addadress" element={<AddNewAdress />} />
+                  <Route path="/address" element={<Address />} />
+                  <Route path="/editaddress" element={<EditAddress />} />
+                  <Route
+                    path="/forgotpassword"
+                    element={
+                      <ForgotPasswordProvider>
+                        <ForgotPassword />
+                      </ForgotPasswordProvider>
+                    }
+                  />
+                  <Route
+                    path="/registration"
+                    element={
+                      <RegistrationProvider>
+                        <Registration />
+                      </RegistrationProvider>
+                    }
+                  />
+                  <Route path="/login" element={<Login />} />
+                </Routes>
+              </ProductProvider>
+            </WishlistProvider>
           </AddressProvider>
         </LoginProvider>
       </ApiProvider>

@@ -3,17 +3,20 @@ import { NavLink } from 'react-router-dom'
 import "./collectionItem.css"
 import StarRating from '../starRating/StarRating'
 import { ApiContext } from '../../../../contexts/ApiProvider'
+import { WishlistContext } from '../../../../contexts/WishlistProvider';
 import { useContext } from 'react'
 import { ProductContext } from '../../../../contexts/ProductProvider'
 
-const CollectionItem = ({ item }) => {
+const CollectionItem = ({item}) => {
     const { designateDetailedItem } = useContext(ProductContext)
+    const { handleWishlist } = useContext(WishlistContext);
 
-    const showDetailedItem = () => {
-        designateDetailedItem(item)
+    const showDetailedItem = async (item) => {
+        await designateDetailedItem(item)
     }
-    const handleClick = () => {
-        console.log(item.name)
+ 
+    const wishList = async (product) => {
+        await handleWishlist(product)
     }
 
     return (
@@ -25,8 +28,10 @@ const CollectionItem = ({ item }) => {
                     </NavLink>
                     <div className="image-menu">
                         <div className='icons'>
-                            <button className="image-link"><i className="fa-regular fa-heart"></i></button>
-                            <button className="image-link"><i className="fa-regular fa-bag-shopping"></i></button>
+                            <button onClick={() => { wishList(item) }} className="image-link"><i className="fa-regular fa-heart"></i></button>
+                             <NavLink to="/products/test">
+                            <button onClick={() => { showDetailedItem(item) }} className="image-link"><i className="fa-regular fa-bag-shopping"></i></button>
+                            </NavLink>
                         </div>
                     </div>
                     </div>

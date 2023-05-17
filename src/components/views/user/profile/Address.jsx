@@ -29,8 +29,6 @@ const Address = () => {
       }
     }
 
- 
-   
     return (
         <> 
         <div className="container my-5">
