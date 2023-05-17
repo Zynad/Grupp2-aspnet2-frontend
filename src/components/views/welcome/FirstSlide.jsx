@@ -1,9 +1,7 @@
 import './welcome.css'
-import {useNavigate} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 const FirstSlide = () => {
-
-    const navigate = useNavigate();
 
     return(<>
         <div className='Slide-container'>
@@ -12,12 +10,11 @@ const FirstSlide = () => {
 
                     <div className='Slide-header'>Welcome to Manero!</div>
                     <div className='Slide-info'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam optio consequuntur ducimus ea!</div>
-                    <button className='Slide-button' onClick={() => navigate("./home/Home")}>GET STARTED</button>
+                    <NavLink to="./home/Home" className='Slide-button'>GET STARTED</NavLink>
 
                 </div>
             </div>
         </div>
-    
     </>)
 }
 

@@ -1,9 +1,7 @@
 import './welcome.css'
-import {useNavigate} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 const ThirdSlide = () => {
-
-    const navigate = useNavigate();
 
     return(<>
     
@@ -13,7 +11,7 @@ const ThirdSlide = () => {
 
                     <div className='Slide-header'>Door to Door Delivery!</div>
                     <div className='Slide-info'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta quam cum sapiente adipisci.</div>
-                    <button className='Slide-button' onClick={() => navigate("./home/Home")}>GET STARTED</button>
+                    <NavLink to="./home/Home" className='Slide-button'>GET STARTED</NavLink>
 
                 </div>
             </div>

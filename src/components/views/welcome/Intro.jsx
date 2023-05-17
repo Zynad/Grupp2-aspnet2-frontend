@@ -1,19 +1,17 @@
 import "./welcome.css"
-import {useNavigate} from "react-router-dom"
+import {NavLink} from "react-router-dom"
 
 const Intro = () => {
 
-    const navigate = useNavigate();
-
     return(
     <>
-        <div className="container" onClick={() => navigate("/FirstSlide")}>
+        <NavLink to="/FirstSlide" className="container">
             <div className="outer">
                 <div className="inner">
                     <p className="manero">MANERO</p>
                 </div>
             </div>
-        </div>
+        </NavLink>
     </>
     )
 }
