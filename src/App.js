@@ -18,6 +18,7 @@ import Address from "./components/views/user/profile/Address";
 import RecoverPassword from "./components/views/user/recoverpassword/RecoverPassword";
 import AddNewAdress from "./components/views/user/profile/AddNewAddress";
 import EditProfile from "./components/views/user/profile/EditProfile";
+import Review from "./components/views/review/Review";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
     <LoginProvider>
       <Routes>
       <Route path="/editprofile" element = {<EditProfile/>}/>
+      <Route path="/review" element = { <Review/>}/>
       <Route path="/recoverpassword" element = { <RecoverPassword/> }/>
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<Search />} />

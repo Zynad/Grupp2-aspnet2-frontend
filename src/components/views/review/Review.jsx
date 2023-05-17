@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import StarRating from '../../partials/shared/starRating/StarRating';
-import '..//..//assets/styles/application'
-import reviewImage from '../../../assets/images/Review.Bild.png';
+import '../../../assets/styles/application.css'
+import reviewImage from '../../../assets/images/Review.Bild.png'
 
 function Review() {
   const [rating, setRating] = useState(0.0); // Uppdatera state-variabeln till en double
@@ -11,31 +11,59 @@ function Review() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:3000/reviews', {
-      rating: parseFloat(rating), // Uppdatera form-data med parseFloat för att lägga till decimaler
-      comment: comment
+    fetch('http://localhost:3000/reviews', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        rating: parseFloat(rating), // Uppdatera form-data med parseFloat för att lägga till decimaler
+        comment: comment
+      })
     })
-    .then((response) => {
-      console.log(response.data);
+    .then( response => response.json())
+    .then((data) => {
+      console.log(data);
     })
     .catch((error) => {
       console.error(error);
     });
+    
+    // axios.post('http://localhost:3000/reviews', {
+    //   rating: parseFloat(rating), // Uppdatera form-data med parseFloat för att lägga till decimaler
+    //   comment: comment
+    // })
+    // .then((response) => {
+    //   console.log(response.data);
+    // })
+    // .catch((error) => {
+    //   console.error(error);
+    // });
   }
 
   useEffect(() => {
-    axios.get('http://localhost:3000/reviews')
-    .then((response) => {
-      setReviews(response.data);
+    fetch('http://localhost:3000/reviews')
+    .then(response => response.json())
+    .then((data) => {
+      setReviews(data);
     })
     .catch((error) => {
       console.error(error);
     });
+
+
+    // axios.get('http://localhost:3000/reviews')
+    // .then((response) => {
+    //   setReviews(response.data);
+    // })
+    // .catch((error) => {
+    //   console.error(error);
+    // });
   }, []);
 
   return (
     <div className="review-container">
-       <img src={reviewImage} alt="Review" />
+       { <img src={reviewImage} alt="Review" /> }
       <h2>Please rate the quality of service for the order!</h2>
       <form onSubmit={handleSubmit}>
         <div className="rating-container">
@@ -55,8 +83,8 @@ function Review() {
         <h2>Reviews</h2>
         {reviews.map((review) => (
           <div key={review.id}>
-            <p>Betyg: {review.rating.toFixed(1)}</p> {/* Använd toFixed för att visa rating med en decimal */}
-            <p>Kommentar: {review.comment}</p>
+            <p>Rating: {review.rating.toFixed(1)}</p> {/* Använd toFixed för att visa rating med en decimal */}
+            <p>Comment: {review.comment}</p>
           </div>
         ))}
       </div>
