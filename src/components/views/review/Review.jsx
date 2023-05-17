@@ -63,6 +63,7 @@ function Review() {
 
   return (
     <div className="review-container">
+      <h2>Leave a review</h2>
        { <img src={reviewImage} alt="Review" /> }
       <h2>Please rate the quality of service for the order!</h2>
       <form onSubmit={handleSubmit}>
@@ -75,12 +76,12 @@ function Review() {
             <p>Your comments and suggestions help us improve the service quality better!</p>
         </div>
         <div className="comment-container">
-          <textarea id="comment" value={comment} onChange={(e) => setComment(e.target.value)} />
+          <textarea id="comment" value={comment} onChange={(e) => setComment(e.target.value)}placeholder='Enter your comment'/>
         </div>
+        
         <button type="submit">Send review</button>
       </form>
       <div className="reviews-container">
-        <h2>Reviews</h2>
         {reviews.map((review) => (
           <div key={review.id}>
             <p>Rating: {review.rating.toFixed(1)}</p> {/* Använd toFixed för att visa rating med en decimal */}
