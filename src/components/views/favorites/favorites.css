@@ -35,6 +35,20 @@ margin-left: 20px;
     opacity: 1;
 }
 
+.wishlist-empty-content{
+    text-align: center;
+}
+
+.wishlist-empty{
+    width: 300px;
+    height: 300px;
+    margin-top: 120px;
+}
+
+#button-wishlist-empty{
+    width: 440px;
+}
+
 
 
 
