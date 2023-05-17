@@ -4,21 +4,22 @@ body{
     padding: 0;
 }
 
-.container{
+.intro-container{
     background-color: lightblue;
     width: 100vw;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
 }
 
 .outer{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 150px;
-    height: 150px;
+    width: 400px;
+    height: 400px;
     border: solid;
     border-color: white;
     border-radius: 50%;
@@ -29,18 +30,17 @@ body{
     align-items: center;
     justify-content: center;
     background-color: white;
-    width: 115px;
-    height: 115px;
+    width: 350px;
+    height: 350px;
     border-radius: 50%;
     text-align: center;
 }
 
 .manero{
-    font-size: 60px;
+    font-size: 140px;
     font-family: monospace;
+    color: black;
 }
-
-
 
 
 
@@ -90,6 +90,9 @@ body{
 }
 
 .Slide-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: black;
     color: white;
     border-radius: 50px;
@@ -97,9 +100,69 @@ body{
     width: 350px;
     height: 60px;
     font-family: sans-serif;
+    text-decoration: none;
+}
+
+.to-first, .to-second, .to-third, .fill{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+}
+
+.right-arrow{
+    width: 50%;
+    height: 50%;
+    border-top: solid 2px black;
+    border-right: solid 2px black;
+    transform: rotate(45deg);
+}
+
+.left-arrow{
+    width: 50%;
+    height: 50%;
+    border-top: solid 2px black;
+    border-left: solid 2px black;
+    transform: rotate(-45deg);
+}
+
+.btn-circle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid grey;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    opacity: 0.8;
+}
+
+.btn-circle:hover{
+    opacity: 1;
+}
+
+.test-div{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 150px;
 }
 
 @media (max-width: 768px){
+
+    .outer{
+        width: 150px;
+        height: 150px;
+    }
+    .inner{
+        width: 115px;
+        height: 115px;
+    }
+    .manero{
+        font-size: 60px
+    }
     .firstSlide-outer{
         margin-top: 300px;
     }

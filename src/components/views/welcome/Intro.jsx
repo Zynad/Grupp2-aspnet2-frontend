@@ -5,7 +5,7 @@ const Intro = () => {
 
     return(
     <>
-        <NavLink to="/FirstSlide" className="container">
+        <NavLink to="/FirstSlide" className="intro-container">
             <div className="outer">
                 <div className="inner">
                     <p className="manero">MANERO</p>
@@ -16,4 +16,4 @@ const Intro = () => {
     )
 }
 
-export default Welcome
+export default Intro

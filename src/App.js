@@ -14,6 +14,10 @@ import ApiProvider from "./contexts/ApiProvider";
 import RegistrationSuccess from "./components/views/user/registration/RegistrationSuccess"
 import Profile from "./components/views/user/profile/Profile"
 import SignOut from "./components/views/user/signout/SignOut";
+import Intro from "./components/views/welcome/Intro";
+import FirstSlide from "./components/views/welcome/FirstSlide";
+import SecondSlide from "./components/views/welcome/SecondSlide";
+import ThirdSlide from "./components/views/welcome/ThirdSlide";
 
 function App() {
   return (
@@ -21,7 +25,13 @@ function App() {
     <ApiProvider>
     <LoginProvider>
       <Routes>
-        <Route path="/" element={<Home />} />
+
+        <Route path="/" element={<Intro/>} />
+        <Route path="/FirstSlide" element={<FirstSlide />}/>
+        <Route path="/SecondSlide" element={<SecondSlide />}/>
+        <Route path="/ThirdSlide" element={<ThirdSlide />}/>
+
+        <Route path="/home" element={<Home />} />
         <Route path="/search" element={<Search />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/favorites" element={<Favorites />} />
@@ -39,7 +49,7 @@ function App() {
             <RegistrationProvider>
               <Registration />
             </RegistrationProvider>
-          }
+          } 
         />
         <Route
           path="/login"
