@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Navigation from '../../navigation/Navigation'
 import StarRating from '../starRating/StarRating'
 import "./detailedItem.css"
 import { useState } from 'react';
 import ColorSelector from '../colorSelector/ColorSelector';
 import SizeSelector from '../sizeSelector/SizeSelector';
+import { ProductContext } from '../../../../contexts/ProductProvider';
 
 
 
-const DetailedItem = ({ item }) => {
+
+const DetailedItem = () => {
   const [count, setCount] = useState(1);
+  const {item} = useContext(ProductContext)
   
   const incrementCount = () => {
     setCount(count + 1);

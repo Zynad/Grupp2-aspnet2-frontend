@@ -1,5 +1,6 @@
 import React from 'react'
 import CollectionItem from '../collectionItem/CollectionItem'
+import { NavLink } from 'react-router-dom'
 
 const Collection = ({ title, itemList }) => {
   
