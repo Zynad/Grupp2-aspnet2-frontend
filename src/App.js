@@ -20,6 +20,7 @@ import AddNewAdress from "./components/views/user/profile/AddNewAddress";
 import EditProfile from "./components/views/user/profile/EditProfile";
 import EditAddress from "./components/views/user/profile/EditAddress";
 import AddressProvider from "./contexts/AddressProvider";
+import WishlistProvider from "./contexts/WishlistProvider";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
     <ApiProvider>
     <LoginProvider>
     <AddressProvider>
+    <WishlistProvider>
       <Routes>
       <Route path="/editprofile" element = {<EditProfile/>}/>
       <Route path="/recoverpassword" element = { <RecoverPassword/> }/>
@@ -61,6 +63,7 @@ function App() {
         />
 
       </Routes>
+      </WishlistProvider>
       </AddressProvider>
       </LoginProvider>
       </ApiProvider>
