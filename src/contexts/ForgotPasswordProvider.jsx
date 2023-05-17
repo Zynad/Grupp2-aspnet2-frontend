@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import { ApiContext } from "../contexts/ApiProvider"
+import { ApiContext } from "./ApiProvider"
 export const ForgotPasswordContext = createContext();
 
 const ForgotPasswordProvider = (props) => {

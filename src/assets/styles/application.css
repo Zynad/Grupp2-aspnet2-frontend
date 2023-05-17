@@ -3,6 +3,7 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 18px;
   background-color: #f7f7f7;
+  margin-bottom: 100px;
 }
 
 /* Buttons */
@@ -81,23 +82,25 @@ label {
   opacity: 1;
 }
 
-
 /* Items */
 .item-wrapper {
   width: 300px;
 }
+
 .image-section {
   width: auto;
 }
 
 .star-rating {
   color: orange;
+  margin-bottom: 10px;
 }
 
-.banner {
-  font-size: 50px;
-  width: auto;
-  background-color: lightblue;
+.name {
+  margin-bottom: 10px;
+}
+.price {
+  margin-bottom: 10px;
 }
 
 .item-carousel {
@@ -106,10 +109,20 @@ label {
   overflow-x: auto;
 }
 
+.item-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* Banners */
+
+.banner {
+  font-size: 50px;
+  width: auto;
+  background-color: lightblue;
+}
 
 /* Text */
-.standard-text{
+.standard-text {
   color: grey;
   text-align: center;
 }
-

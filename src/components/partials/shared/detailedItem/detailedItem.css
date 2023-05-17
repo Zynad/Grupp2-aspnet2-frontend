@@ -1,0 +1,26 @@
+.image-section-detailed img {
+  width: 100%;
+  height: auto;
+}
+
+.container-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px; /* Adjust the gap as needed */
+}
+
+.amount-counter {
+  display: flex;
+  justify-content: center;
+  padding-right: 5px;
+}
+
+.amount-counter button {
+  border: none;
+  margin: auto;
+}

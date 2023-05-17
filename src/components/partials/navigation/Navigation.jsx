@@ -4,8 +4,7 @@ import "./navigation.css";
 
 const Navigation = () => {
   return (
-      <div className="container">
-      <div className='footer-nav container'>
+      <div className='footer-nav'>
       <nav>
             <NavLink className="link" to="/home"><i className="fa-2xs fa-light fa-house"></i></NavLink>
             <NavLink className="link" to="/search"><i className="fa-2xs fa-light fa-search"></i></NavLink>
@@ -13,7 +12,6 @@ const Navigation = () => {
             <NavLink className="link" to="/favorites"><i className="fa-2xs fa-light fa-heart"></i></NavLink>
             <NavLink className="link" to="/login"><i className="fa-2xs fa-light fa-circle-user"></i></NavLink>              
         </nav>
-      </div>
       </div>
   )
 }
