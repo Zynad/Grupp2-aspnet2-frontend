@@ -1,0 +1,17 @@
+.size-selector {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+.circle-size {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-left: 10px;
+  border: 2px solid blue;
+  border-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
