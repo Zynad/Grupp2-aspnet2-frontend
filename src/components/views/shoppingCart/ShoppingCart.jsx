@@ -1,11 +1,11 @@
 import React from 'react'
 import Navigation from '../../partials/navigation/Navigation'
 
-const Cart = () => {
+
+const ShoppingCart = () => {
   return (
-    <>      <Navigation />
-    </>
+    <div>ShoppingCart</div>
   )
 }
 
-export default Cart
+export default ShoppingCart

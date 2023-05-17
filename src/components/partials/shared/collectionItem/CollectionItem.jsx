@@ -29,7 +29,7 @@ const CollectionItem = ({item}) => {
                     <div className="image-menu">
                         <div className='icons'>
                             <button onClick={() => { wishList(item) }} className="image-link"><i className="fa-regular fa-heart"></i></button>
-                             <NavLink to="/products/test">
+                            <NavLink to="/products/test">
                             <button onClick={() => { showDetailedItem(item) }} className="image-link"><i className="fa-regular fa-bag-shopping"></i></button>
                             </NavLink>
                         </div>

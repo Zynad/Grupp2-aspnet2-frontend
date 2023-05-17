@@ -5,7 +5,7 @@ import LoginProvider from "./contexts/LoginProvider";
 import Login from "./components/views/user/login/Login";
 import Home from "./components/views/home/Home";
 import Search from "./components/views/search/Search";
-import Cart from "./components/views/cart/Cart";
+import ShoppingCart from "./components/views/shoppingCart/ShoppingCart";
 import Favorites from "./components/views/favorites/Favorites";
 import { Routes, Route } from "react-router-dom";
 import ForgotPassword from "./components/views/user/forgotpassword/ForgotPassword";
@@ -41,7 +41,7 @@ function App() {
                   <Route path="/" element={<Home />} />
                   <Route path="/products/test" element={<DetailedItem />} />
                   <Route path="/search" element={<Search />} />
-                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/shoppingcart" element={<ShoppingCart />} />
                   <Route path="/favorites" element={<Favorites />} />
                   <Route
                     path="/registrationsuccess"
