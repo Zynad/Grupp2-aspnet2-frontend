@@ -2,18 +2,24 @@ import "./login.css"
 import { useContext, useState } from "react";
 import { NavLink, Navigate } from "react-router-dom";
 import { LoginContext } from "../../../../contexts/LoginProvider"
+import { ApiContext } from "../../../../contexts/ApiProvider"
 
 const Login = () => {
 
-    const { handleSubmit, loginResult } = useContext(LoginContext)
+    const { handleSubmit, loginResult, validation } = useContext(LoginContext)
+    const { loginFacebook } = useContext(ApiContext)
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
     const [rememberMe, setRememberMe] = useState(false);
-
+    
     if(loginResult == "true"){
-        return <Navigate to="/profile"/>;
-      }
-      
+      return <Navigate to="/profile"/>;
+    }
+    
+    const handleFacebook = async () => {
+      await loginFacebook()
+    }
+
     return (
         <div className="container mt-5">
 
@@ -48,9 +54,10 @@ const Login = () => {
            </div>
            <div style={{textAlign : 'right'}} className="col mt-5">
             <NavLink className="nav-standard" to="/forgotpassword">Forgot Password?</NavLink>
-           </div>  
-        
+           </div> 
+
           <div className="col-lg-12 mt-5">
+          <div className="text-danger mb-3 validation">{validation}</div> 
           <button className="dark-btn-standard" type="submit">SIGN IN</button>
           </div>
 
@@ -61,7 +68,7 @@ const Login = () => {
           <div className="mt-3 box-registration col-lg-12">Don't have an account? <NavLink className="nav-standard" to="/registration">Sign Up.</NavLink></div>
           <div className="mt-5 box-registration col-lg-12">
 
-          <i className="fa-brands fa-facebook icon-standard" style={{color: '#00235B'}}></i>
+          <i onClick={() => {handleFacebook()}} className="fa-brands fa-facebook icon-standard" style={{color: '#00235B'}}></i>
           <i className="fa-brands fa-google-plus-g icon-standard" style={{color: '#FF6969'}}></i>
           <i className="fa-brands fa-twitter icon-standard" style={{color: '#6DA9E4'}}></i>
           </div>
