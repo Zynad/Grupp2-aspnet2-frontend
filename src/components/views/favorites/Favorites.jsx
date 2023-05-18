@@ -39,6 +39,8 @@ const Favorites = () => {
           </div>
   
           <hr className='mt-4 mb-4'></hr>
+
+          
           </div> 
         ))}
         </>
