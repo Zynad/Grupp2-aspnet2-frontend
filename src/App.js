@@ -21,8 +21,9 @@ import EditProfile from "./components/views/user/profile/EditProfile";
 import EditAddress from "./components/views/user/profile/EditAddress";
 import AddressProvider from "./contexts/AddressProvider";
 import WishlistProvider from "./contexts/WishlistProvider";
-import DetailedItem from "./components/partials/shared/detailedItem/DetailedItem";
 import ProductProvider from "./contexts/ProductProvider";
+import Product from "./components/views/product/Product";
+import ReviewSection from "./components/partials/shared/reviews/ReviewSection";
 
 function App() {
   return (
@@ -39,7 +40,8 @@ function App() {
                     element={<RecoverPassword />}
                   />
                   <Route path="/" element={<Home />} />
-                  <Route path="/products/test" element={<DetailedItem />} />
+                  <Route path="/products/test" element={<Product />} />
+                  <Route path="/products/reviews" element={<ReviewSection />} />
                   <Route path="/search" element={<Search />} />
                   <Route path="/cart" element={<Cart />} />
                   <Route path="/favorites" element={<Favorites />} />
