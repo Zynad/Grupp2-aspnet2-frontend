@@ -24,6 +24,10 @@ import WishlistProvider from "./contexts/WishlistProvider";
 import ProductProvider from "./contexts/ProductProvider";
 import Product from "./components/views/product/Product";
 import ReviewSection from "./components/partials/shared/reviews/ReviewSection";
+import Intro from "./components/views/welcome/Intro";
+import FirstSlide from "./components/views/welcome/FirstSlide";
+import SecondSlide from "./components/views/welcome/SecondSlide";
+import ThirdSlide from "./components/views/welcome/ThirdSlide";
 
 function App() {
   return (
@@ -39,7 +43,11 @@ function App() {
                     path="/recoverpassword"
                     element={<RecoverPassword />}
                   />
-                  <Route path="/" element={<Home />} />
+                  <Route path="/" element={<Intro />} />
+                  <Route path="/FirstSlide" element={<FirstSlide />} />
+                  <Route path="/SecondSlide" element={<SecondSlide />} />
+                  <Route path="/ThirdSlide" element={<ThirdSlide />} />
+                  <Route path="/home" element={<Home />} />
                   <Route path="/products/test" element={<Product />} />
                   <Route path="/products/reviews" element={<ReviewSection />} />
                   <Route path="/search" element={<Search />} />
