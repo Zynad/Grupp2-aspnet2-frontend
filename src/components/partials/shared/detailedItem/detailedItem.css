@@ -11,7 +11,7 @@
 .container-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px; /* Adjust the gap as needed */
+  gap: 10px;
 }
 
 .amount-counter {
