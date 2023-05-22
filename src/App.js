@@ -29,6 +29,8 @@ import Filter from "./components/views/filter/FilterAndSort";
 import FirstSlide from "./components/views/welcome/FirstSlide";
 import SecondSlide from "./components/views/welcome/SecondSlide";
 import ThirdSlide from "./components/views/welcome/ThirdSlide";
+import PaymentMethod from "./components/views/user/profile/PaymentMethod";
+import AddCreditCard from "./components/views/user/profile/AddCreditCard";
 
 
 
@@ -66,6 +68,8 @@ function App() {
                   <Route path="/addadress" element={<AddNewAdress />} />
                   <Route path="/address" element={<Address />} />
                   <Route path="/editaddress" element={<EditAddress />} />
+                  <Route path="/paymentmethod" element={ <PaymentMethod /> }/>
+                  <Route path="/addcreditcard" element={ <AddCreditCard /> }/>
                   <Route
                     path="/forgotpassword"
                     element={
