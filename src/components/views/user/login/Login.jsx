@@ -24,7 +24,7 @@ const Login = () => {
         <div className="container mt-5">
 
           <div className="row">
-          <div className="col-4"><NavLink className="nav-standard" to="/"><i className="fa-solid fa-angle-left"></i></NavLink></div>
+          <div className="col-4"><NavLink className="nav-standard" to="/home"><i className="fa-solid fa-angle-left"></i></NavLink></div>
           <div style={{textAlign : 'center'}} className="col-4">Sign In</div>
           <div className="col-4"></div>
           </div>

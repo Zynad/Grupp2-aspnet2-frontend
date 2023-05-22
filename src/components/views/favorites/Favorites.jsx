@@ -50,7 +50,7 @@ const Favorites = () => {
       <>
       <div className='wishlist-empty-content'>
       <img className='wishlist-empty' src={wishImg}></img>
-      <NavLink to="/"><div className='mt-5'><button className="button-wishlist-empty col-12 col-lg-6">SHOP NOW</button></div></NavLink>
+      <NavLink to="/home"><div className='mt-5'><button className="button-wishlist-empty col-12 col-lg-6">SHOP NOW</button></div></NavLink>
       </div>
       </>
       )
