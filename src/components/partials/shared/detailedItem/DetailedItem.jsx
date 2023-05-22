@@ -28,7 +28,6 @@ const DetailedItem = () => {
 
   return (
       <>
-            Detailed product
             <div className='container'>
                 <div className="item-wrapper-detailed">
                     <div className="image-section-detailed">
@@ -50,8 +49,8 @@ const DetailedItem = () => {
             </div>
           </div>                       
         </div>
-            <SizeSelector />
-        <ColorSelector />
+          <SizeSelector />
+          <ColorSelector />
         <p>Description</p>
         <div>{item.description}</div>
           <button className="dark-btn-standard" type="submit">+ ADD TO CART</button>      

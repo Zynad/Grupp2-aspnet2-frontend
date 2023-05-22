@@ -4,6 +4,7 @@
 
 .img-content{
     width: 120px;
+    margin-left: 5px;
 }
 
 .img-wishlist{
@@ -28,6 +29,7 @@ margin-left: 20px;
 .icon-heart{
     color: #E06469;
     opacity: 0.9;
+    margin-right: 5px;
 }
 
 .icon-heart:hover{
@@ -37,16 +39,26 @@ margin-left: 20px;
 
 .wishlist-empty-content{
     text-align: center;
+    margin-top: 100px;
 }
 
 .wishlist-empty{
     width: 300px;
     height: 300px;
-    margin-top: 120px;
 }
 
-#button-wishlist-empty{
-    width: 440px;
+.button-wishlist-empty{
+  height: 60px;
+  border-radius: 25px;
+  border: black;
+  color: white;
+  background-color: black;
+  opacity: 0.9;
+}
+
+.button-wishlist-empty:hover{
+    cursor: pointer;
+    opacity: 1;
 }
 
 

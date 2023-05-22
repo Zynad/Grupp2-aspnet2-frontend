@@ -35,10 +35,12 @@ const Favorites = () => {
           </div>
         
           <div className="col icon-content">
-          <i class="fa-solid fa-heart icon-heart" onClick={() => {deleteProduct(item.id)}}></i>
+          <i class="fa-solid fa-heart icon-heart fa-lg" onClick={() => {deleteProduct(item.id)}}></i>
           </div>
   
           <hr className='mt-4 mb-4'></hr>
+
+          
           </div> 
         ))}
         </>
@@ -48,7 +50,7 @@ const Favorites = () => {
       <>
       <div className='wishlist-empty-content'>
       <img className='wishlist-empty' src={wishImg}></img>
-      <NavLink to="/"><div className='mt-5'><button id="button-wishlist-empty" className='dark-btn-standard'>SHOP NOW</button></div></NavLink>
+      <NavLink to="/home"><div className='mt-5'><button className="button-wishlist-empty col-12 col-lg-6">SHOP NOW</button></div></NavLink>
       </div>
       </>
       )

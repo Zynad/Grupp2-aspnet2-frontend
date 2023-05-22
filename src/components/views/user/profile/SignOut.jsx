@@ -11,7 +11,7 @@ const SignOut = () => {
     const { logoutAsync } = useContext (ApiContext);
     const [cancel, setCancel] = useState("");
 
-    if(loginResult == "false"){ return <Navigate to="/"/> }
+    if(loginResult == "false"){ return <Navigate to="/home"/> }
     if (cancel == "false"){ return <Navigate to="/profile"/> }
 
     return (

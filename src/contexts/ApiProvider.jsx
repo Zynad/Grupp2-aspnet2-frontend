@@ -65,7 +65,7 @@ const registrationAsync = async (url = '', data = {}, handleRegistration) => {
 
 
 // LOGIN
-const loginAsync = async (url = '', data = {}, handleLogin) => { 
+const loginAsync = async (url = '', data = {}, handleLogin, validation) => { 
     const requestOptions = {
          method: 'POST',
          headers: { 'Content-Type' : 'application/json'},
@@ -74,19 +74,21 @@ const loginAsync = async (url = '', data = {}, handleLogin) => {
          await fetch(url, requestOptions)
          .then ((response => {
             if (!response.ok){
-                handleLogin("false")
-                throw new Error(response.status);   
+                validation("The username or password is incorrect")
+                handleLogin("false") 
             }
             else {
                 const res = response.text()
                 .then (data => {   
+                    validation("");
+                    handleLogin("true");
                     const token = data;                  
                     Cookies.set('token', token)
-                    handleLogin("true");
                     // const decode = jwt(token);
                     // const getToken = Cookies.get('token');                                        
                  })}}))
           .catch(() => {
+                 validation("The username or password is incorrect")
                  handleLogin("false")
             })     
         };
@@ -102,6 +104,19 @@ const loginAsync = async (url = '', data = {}, handleLogin) => {
             const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Account/Logout?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
             if(response.statusText == "OK") { return true } else { return false }
     };
+
+
+    // Login Facebook
+    const loginFacebook = async () => {
+        const token = Cookies.get('token');
+        const requestOptions = {
+            method: 'GET',
+            headers:  { 'Authorization' : `Bearer ${ token }` }
+        }
+        const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Account/ExternalFacebook?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+        console.log(response)
+    }
+
 
     // GET PROFILE
   const getProfile = async () => {
@@ -180,10 +195,49 @@ const updateAddress = async (address) => {
         return true
 }
 
+// ADD CREDIT CARD
+
+const registerCreditCard = async (creditCard = {})=>{
+    const token = Cookies.get('token')
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type' : 'application/json', 'Authorization' : `Bearer ${ token }` },
+        body: JSON.stringify(creditCard)
+    }
+    const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Payment/RegisterCreditCard?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    if (response.ok){ return true }
+    return false;
+}
+
+// GET ALL CREDIT CARDS
+const getUserCreditCards = async ()=>{
+    const token = Cookies.get('token')
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Authorization' : `Bearer ${ token }` }
+    }
+    const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Payment/GetUserCreditCards?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions);
+    const data = await response.json();
+    return data;
+}
+
+//REMOVE CREDIT CARD
+const removeCreditCard = async (id)=>{
+    const token = Cookies.get('token')
+    const requestOptions = {
+        method: 'DELETE',
+        headers: { 'Content-Type' : 'application/json', 'Authorization' : `Bearer ${ token }` }
+    }
+    const response = await fetch(`https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Payment/RemoveCreditCard/${id}?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c`, requestOptions);
+    if(response.ok){
+        return true;
+    }
+}
+
 
     return (
         <>
-            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress }}>
+            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress, loginFacebook, registerCreditCard, getUserCreditCards, removeCreditCard }}>
                 {props.children}
             </ApiContext.Provider>
         </>

@@ -21,8 +21,18 @@ import EditProfile from "./components/views/user/profile/EditProfile";
 import EditAddress from "./components/views/user/profile/EditAddress";
 import AddressProvider from "./contexts/AddressProvider";
 import WishlistProvider from "./contexts/WishlistProvider";
-import DetailedItem from "./components/partials/shared/detailedItem/DetailedItem";
 import ProductProvider from "./contexts/ProductProvider";
+import Product from "./components/views/product/Product";
+import ReviewSection from "./components/partials/shared/reviews/ReviewSection";
+import Intro from "./components/views/welcome/Intro";
+import Filter from "./components/views/filter/FilterAndSort";
+import FirstSlide from "./components/views/welcome/FirstSlide";
+import SecondSlide from "./components/views/welcome/SecondSlide";
+import ThirdSlide from "./components/views/welcome/ThirdSlide";
+import PaymentMethod from "./components/views/user/profile/PaymentMethod";
+import AddCreditCard from "./components/views/user/profile/AddCreditCard";
+
+
 
 function App() {
   return (
@@ -38,8 +48,14 @@ function App() {
                     path="/recoverpassword"
                     element={<RecoverPassword />}
                   />
-                  <Route path="/" element={<Home />} />
-                  <Route path="/products/test" element={<DetailedItem />} />
+                  <Route path="/filter" element={ <Filter/> }/>
+                  <Route path="/" element={<Intro />} />
+                  <Route path="/FirstSlide" element={<FirstSlide />} />
+                  <Route path="/SecondSlide" element={<SecondSlide />} />
+                  <Route path="/ThirdSlide" element={<ThirdSlide />} />
+                  <Route path="/home" element={<Home />} />
+                  <Route path="/products/test" element={<Product />} />
+                  <Route path="/products/reviews" element={<ReviewSection />} />
                   <Route path="/search" element={<Search />} />
                   <Route path="/shoppingcart" element={<ShoppingCart />} />
                   <Route path="/favorites" element={<Favorites />} />
@@ -52,6 +68,8 @@ function App() {
                   <Route path="/addadress" element={<AddNewAdress />} />
                   <Route path="/address" element={<Address />} />
                   <Route path="/editaddress" element={<EditAddress />} />
+                  <Route path="/paymentmethod" element={ <PaymentMethod /> }/>
+                  <Route path="/addcreditcard" element={ <AddCreditCard /> }/>
                   <Route
                     path="/forgotpassword"
                     element={
@@ -80,3 +98,4 @@ function App() {
 }
 
 export default App;
+
