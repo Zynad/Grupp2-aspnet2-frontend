@@ -2,7 +2,6 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import "./collectionItem.css"
 import StarRating from '../starRating/StarRating'
-import { ApiContext } from '../../../../contexts/ApiProvider'
 import { WishlistContext } from '../../../../contexts/WishlistProvider';
 import { useContext } from 'react'
 import { ProductContext } from '../../../../contexts/ProductProvider'

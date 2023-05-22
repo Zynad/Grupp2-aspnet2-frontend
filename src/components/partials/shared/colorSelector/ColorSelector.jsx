@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 const Circle = ({ color, selectable, onSelect }) => {
   const [isSelected, setSelected] = useState(false);
+  const [chosenColor, setChosenColor] = useState("null");
 
   const handleClick = () => {
     if (selectable) {
@@ -33,9 +34,9 @@ const ColorSelector = () => {
     <div className="color-selector">
       <p>Color</p>
       <Circle color="red" selectable  onSelect={handleCircleSelect} />
-      <Circle color="lightblue" selectable onSelect={handleCircleSelect} />
+      <Circle color="blue" selectable onSelect={handleCircleSelect} />
       <Circle color="yellow" selectable onSelect={handleCircleSelect} />
-      <Circle color="darkblue" selectable onSelect={handleCircleSelect} />
+      <Circle color="green" selectable onSelect={handleCircleSelect} />
       <Circle color="black" selectable onSelect={handleCircleSelect} />
     </div>
   );
