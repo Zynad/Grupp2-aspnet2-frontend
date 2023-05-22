@@ -25,10 +25,11 @@ import ProductProvider from "./contexts/ProductProvider";
 import Product from "./components/views/product/Product";
 import ReviewSection from "./components/partials/shared/reviews/ReviewSection";
 import Intro from "./components/views/welcome/Intro";
-import Filter from "./components/views/filter/FilterAndSort";
+import FilterAndSort from "./components/views/filters/FilterAndSort";
 import FirstSlide from "./components/views/welcome/FirstSlide";
 import SecondSlide from "./components/views/welcome/SecondSlide";
 import ThirdSlide from "./components/views/welcome/ThirdSlide";
+import FilterProvider from "./contexts/FilterProvider";
 
 
 
@@ -36,6 +37,7 @@ function App() {
   return (
     <>
       <ApiProvider>
+      <FilterProvider>
         <LoginProvider>
           <AddressProvider>
             <WishlistProvider>
@@ -46,7 +48,7 @@ function App() {
                     path="/recoverpassword"
                     element={<RecoverPassword />}
                   />
-                  <Route path="/filter" element={ <Filter/> }/>
+                  <Route path="/filter" element={ <FilterAndSort/> }/>
                   <Route path="/" element={<Intro />} />
                   <Route path="/FirstSlide" element={<FirstSlide />} />
                   <Route path="/SecondSlide" element={<SecondSlide />} />
@@ -88,6 +90,7 @@ function App() {
             </WishlistProvider>
           </AddressProvider>
         </LoginProvider>
+        </FilterProvider>
       </ApiProvider>
     </>
   );

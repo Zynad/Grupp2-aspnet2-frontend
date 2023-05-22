@@ -1,0 +1,37 @@
+.sorting{
+    text-align: right;
+}
+
+.filter-content{
+    color: grey;
+}
+
+.card-content{
+    color: grey;
+}
+
+.img-part{
+    position: relative;
+}
+
+.img-menu{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.icon-card-heart{
+  position: absolute;
+  right: 10px;
+  top: 20px;
+  cursor: pointer;
+}
+
+.icon-card-bag{
+  position: absolute;
+  right: 10px;
+  top: 50px;
+  cursor: pointer;
+}
