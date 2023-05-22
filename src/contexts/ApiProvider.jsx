@@ -208,10 +208,49 @@ const updateAddress = async (address) => {
         return true
 }
 
+// ADD CREDIT CARD
+
+const registerCreditCard = async (creditCard = {})=>{
+    const token = Cookies.get('token')
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type' : 'application/json', 'Authorization' : `Bearer ${ token }` },
+        body: JSON.stringify(creditCard)
+    }
+    const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Payment/RegisterCreditCard?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    if (response.ok){ return true }
+    return false;
+}
+
+// GET ALL CREDIT CARDS
+const getUserCreditCards = async ()=>{
+    const token = Cookies.get('token')
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Authorization' : `Bearer ${ token }` }
+    }
+    const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Payment/GetUserCreditCards?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions);
+    const data = await response.json();
+    return data;
+}
+
+//REMOVE CREDIT CARD
+const removeCreditCard = async (id)=>{
+    const token = Cookies.get('token')
+    const requestOptions = {
+        method: 'DELETE',
+        headers: { 'Content-Type' : 'application/json', 'Authorization' : `Bearer ${ token }` }
+    }
+    const response = await fetch(`https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Payment/RemoveCreditCard/${id}?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c`, requestOptions);
+    if(response.ok){
+        return true;
+    }
+}
+
 
     return (
         <>
-            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress, loginFacebook, getProductsByCategory }}>
+            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress, loginFacebook, registerCreditCard, getUserCreditCards, removeCreditCard, getProductsByCategory }}>
                 {props.children}
             </ApiContext.Provider>
         </>
