@@ -6,6 +6,51 @@
       "statusCode": 200
     },
     {
+      "route": "/editprofile",
+      "serve": "/index.html",
+      "statusCode": 200
+    },
+    {
+      "route": "/recoverpassword",
+      "serve": "/index.html",
+      "statusCode": 200
+    },
+    {
+      "route": "/filter",
+      "serve": "/index.html",
+      "statusCode": 200
+    },
+    {
+      "route": "/FirstSlide",
+      "serve": "/index.html",
+      "statusCode": 200
+    },
+    {
+      "route": "/SecondSlide",
+      "serve": "/index.html",
+      "statusCode": 200
+    },
+    {
+      "route": "/ThirdSlide",
+      "serve": "/index.html",
+      "statusCode": 200
+    },
+    {
+      "route": "/home",
+      "serve": "/index.html",
+      "statusCode": 200
+    },
+    {
+      "route": "/products/test",
+      "serve": "/index.html",
+      "statusCode": 200
+    },
+    {
+      "route": "/products/reviews",
+      "serve": "/index.html",
+      "statusCode": 200
+    },
+    {
       "route": "/search",
       "serve": "/index.html",
       "statusCode": 200
@@ -46,12 +91,22 @@
       "statusCode": 200
     },
     {
-      "route": "/forgotpassword",
+      "route": "/editaddress",
       "serve": "/index.html",
       "statusCode": 200
     },
     {
-      "route": "/home",
+      "route": "/paymentmethod",
+      "serve": "/index.html",
+      "statusCode": 200
+    },
+    {
+      "route": "/addcreditcard",
+      "serve": "/index.html",
+      "statusCode": 200
+    },
+    {
+      "route": "/forgotpassword",
       "serve": "/index.html",
       "statusCode": 200
     },
@@ -62,16 +117,6 @@
     },
     {
       "route": "/login",
-      "serve": "/index.html",
-      "statusCode": 200
-    },
-    {
-      "route": "/editprofile",
-      "serve": "/index.html",
-      "statusCode": 200
-    },
-    {
-      "route": "/recoverpassword",
       "serve": "/index.html",
       "statusCode": 200
     },
