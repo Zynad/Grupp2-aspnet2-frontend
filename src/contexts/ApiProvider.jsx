@@ -7,7 +7,7 @@ const ApiProvider = (props) => {
     
 // GET ALL PRODUCTS
 const getAllProductsAsync = async () => {
-    const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Products/All?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c');
+    const response = await fetch('https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Products/All?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c');
     const data = await response.json();
     return data;
 }
@@ -15,6 +15,19 @@ const getAllProductsAsync = async () => {
 // GET PRODUCT BY ID
 const getProductByIdAsync = async (id = "") => {
     const response = await fetch(`https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Products/Get?${id}?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c`);
+    const data = await response.json();
+    return data;
+}
+
+// Get Products by category 
+const getProductsByCategory = async (category) => {
+
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type' : 'application/json' }
+        };
+
+    const response = await fetch (`https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Products/SalesCategory?salescategory=${category}&key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c`, requestOptions)
     const data = await response.json();
     return data;
 }
@@ -237,7 +250,7 @@ const removeCreditCard = async (id)=>{
 
     return (
         <>
-            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress, loginFacebook, registerCreditCard, getUserCreditCards, removeCreditCard }}>
+            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress, loginFacebook, registerCreditCard, getUserCreditCards, removeCreditCard, getProductsByCategory }}>
                 {props.children}
             </ApiContext.Provider>
         </>
