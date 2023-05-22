@@ -6,13 +6,13 @@ import { useState } from 'react';
 import ColorSelector from '../colorSelector/ColorSelector';
 import SizeSelector from '../sizeSelector/SizeSelector';
 import { ProductContext } from '../../../../contexts/ProductProvider';
+import { useParams } from 'react-router-dom';
 
 
 
 
-const DetailedItem = () => {
+const DetailedItem = ( {item} ) => {
   const [count, setCount] = useState(1);
-  const {item} = useContext(ProductContext)
   
   const incrementCount = () => {
     setCount(count + 1);
@@ -28,14 +28,14 @@ const DetailedItem = () => {
 
   return (
       <>
-            <div className='container'>
-                <div className="item-wrapper-detailed">
-                    <div className="image-section-detailed">
-                    <img src={item.imageUrl} alt={item.name}/>
-                    </div>
+        <div className='container'>
+            <div className="item-wrapper-detailed">
+                <div className="image-section-detailed">
+                <img src={item.imageUrl} alt={item.name}/>
+                </div>
           <div className="body-section">
             <div className='container-flex'>
-               <div className="name">{item.name}</div>
+                <div className="name">{item.name}</div>
                         <i className="fa-regular fa-heart"></i>
                         </div>
             </div>                 
