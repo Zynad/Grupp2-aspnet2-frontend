@@ -62,10 +62,10 @@ const Profile = () => {
          <div className="row profile-content">          
          <div className="col">
             <i className="fa-light fa-credit-card-blank profile-icon"></i>
-            <span className="profile-text">Payment method</span>
+            <NavLink className="nav-standard" to="/paymentMethod"><span className="profile-text">Payment method</span></NavLink>
             </div>
             <div className="col profile-arrow">
-            <i className="fa-light fa-chevron-right"></i>
+            <NavLink className="nav-standard" to="/paymentmethod"><i className="fa-light fa-chevron-right"></i></NavLink>
             </div>
          <hr className="mb-4 mt-4"/>
          </div>
