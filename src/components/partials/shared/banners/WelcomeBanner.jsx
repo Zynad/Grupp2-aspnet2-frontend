@@ -1,5 +1,5 @@
-import React from 'react'
-
+import React from 'react';
+import "./banner.css";
 const WelcomeBanner = () => {
   return (
       <div className="">
@@ -10,5 +10,6 @@ const WelcomeBanner = () => {
         </div>
   )
 }
+
 
 export default WelcomeBanner

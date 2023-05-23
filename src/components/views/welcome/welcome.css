@@ -1,9 +1,4 @@
 /*Första slide*/
-body{
-    margin: 0;
-    padding: 0;
-}
-
 .intro-container{
     background-color: lightblue;
     width: 100vw;
@@ -13,6 +8,7 @@ body{
     justify-content: center;
     text-decoration: none;
 }
+
 
 .outer{
     display: flex;
@@ -25,6 +21,7 @@ body{
     border-radius: 50%;
 }
 
+
 .inner{
     display: flex;
     align-items: center;
@@ -36,11 +33,15 @@ body{
     text-align: center;
 }
 
+
 .manero{
     font-size: 140px;
     font-family: monospace;
     color: black;
 }
+
+
+
 
 
 
@@ -56,6 +57,7 @@ body{
     justify-content: center;
 }
 
+
 .Slide-outer{
     position: absolute;
     border: solid white;
@@ -66,6 +68,7 @@ body{
     align-items: center;
     justify-content: center;
 }
+
 
 .Slide-inner{
     background-color: white;
@@ -78,16 +81,19 @@ body{
     flex-direction: column;
 }
 
+
 .Slide-header{
     font-size: 40px;
     width: 200px;
     text-align: center;
 }
 
+
 .Slide-info{
     padding: 40px;
     text-align: center;
 }
+
 
 .Slide-button{
     display: flex;
@@ -103,6 +109,7 @@ body{
     text-decoration: none;
 }
 
+
 .to-first, .to-second, .to-third, .fill{
     display: flex;
     align-items: center;
@@ -110,6 +117,7 @@ body{
     width: 30px;
     height: 30px;
 }
+
 
 .right-arrow{
     width: 50%;
@@ -119,6 +127,7 @@ body{
     transform: rotate(45deg);
 }
 
+
 .left-arrow{
     width: 50%;
     height: 50%;
@@ -126,6 +135,7 @@ body{
     border-left: solid 2px black;
     transform: rotate(-45deg);
 }
+
 
 .btn-circle{
     display: flex;
@@ -139,9 +149,11 @@ body{
     opacity: 0.8;
 }
 
+
 .btn-circle:hover{
     opacity: 1;
 }
+
 
 .test-div{
     width: 80%;
@@ -150,7 +162,9 @@ body{
     margin-bottom: 150px;
 }
 
+
 @media (max-width: 768px){
+
 
     .outer{
         width: 150px;
