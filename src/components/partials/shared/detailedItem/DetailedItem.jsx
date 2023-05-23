@@ -6,13 +6,20 @@ import { useState } from 'react';
 import ColorSelector from '../colorSelector/ColorSelector';
 import SizeSelector from '../sizeSelector/SizeSelector';
 import { ProductContext } from '../../../../contexts/ProductProvider';
+import { ShoppingCartContext } from '../../../../contexts/ShoppingCartProvider';
 
 
 
 
 const DetailedItem = () => {
   const [count, setCount] = useState(1);
-  const {item} = useContext(ProductContext)
+  const { item } = useContext(ProductContext)
+  const { addProductToCart } = useContext(ShoppingCartContext);
+  
+
+  const addToShoppingCart = async (product) => {
+        await addProductToCart (product, product.price)
+    }
   
   const incrementCount = () => {
     setCount(count + 1);
@@ -43,7 +50,7 @@ const DetailedItem = () => {
           <div className='container-grid'>
             <div className="price">{item.price}</div> 
             <div className='amount-counter'>
-            <button className='right' onClick={decrementCount}>-</button>
+            <button onClick={decrementCount}>-</button>
             <p>{count}</p>
             <button onClick={incrementCount}>+</button>
             </div>
@@ -53,7 +60,7 @@ const DetailedItem = () => {
           <ColorSelector />
         <p>Description</p>
         <div>{item.description}</div>
-          <button className="dark-btn-standard" type="submit">+ ADD TO CART</button>      
+          <button className="dark-btn-standard" onClick={() => { addToShoppingCart(item) }}>+ ADD TO CART</button>      
         </div> 
       </>
   )

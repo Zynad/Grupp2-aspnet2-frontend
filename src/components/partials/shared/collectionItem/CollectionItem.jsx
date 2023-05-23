@@ -2,7 +2,6 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import "./collectionItem.css"
 import StarRating from '../starRating/StarRating'
-import { ApiContext } from '../../../../contexts/ApiProvider'
 import { WishlistContext } from '../../../../contexts/WishlistProvider';
 import { useContext } from 'react'
 import { ProductContext } from '../../../../contexts/ProductProvider'
@@ -32,7 +31,7 @@ const CollectionItem = ({item}) => {
                     <div className="image-menu">
                         <div className='icons'>
                             <button onClick={() => { wishList(item) }} className="image-link"><i className="fa-regular fa-heart"></i></button>
-                             <NavLink to="/products/test">
+                            <NavLink to="/products/test">
                             <button onClick={() => { showDetailedItem(item) }} className="image-link"><i className="fa-regular fa-bag-shopping"></i></button>
                             </NavLink>
                         </div>

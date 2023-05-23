@@ -85,9 +85,15 @@
 .Slide-header{
     font-size: 40px;
     width: 200px;
-    text-align: center;
+    height: 45px;
+  }
+  .Slide-info {
+    padding: 20px;
+  }
+  .Slide-header {
+    font-size: 25px;
+  }
 }
-
 
 .Slide-info{
     padding: 40px;
@@ -200,3 +206,4 @@
         font-size: 25px;
     }
 }
+

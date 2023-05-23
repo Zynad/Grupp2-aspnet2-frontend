@@ -5,7 +5,7 @@ import LoginProvider from "./contexts/LoginProvider";
 import Login from "./components/views/user/login/Login";
 import Home from "./components/views/home/Home";
 import Search from "./components/views/search/Search";
-import Cart from "./components/views/cart/Cart";
+import ShoppingCart from "./components/views/shoppingCart/ShoppingCart";
 import Favorites from "./components/views/favorites/Favorites";
 import { Routes, Route } from "react-router-dom";
 import ForgotPassword from "./components/views/user/forgotpassword/ForgotPassword";
@@ -32,8 +32,8 @@ import ThirdSlide from "./components/views/welcome/ThirdSlide";
 import FilterProvider from "./contexts/FilterProvider";
 import PaymentMethod from "./components/views/user/profile/PaymentMethod";
 import AddCreditCard from "./components/views/user/profile/AddCreditCard";
-
-
+import ShoppingCartProvider from "./contexts/ShoppingCartProvider";
+import Checkout from "./components/views/shoppingCart/Checkout";
 
 
 function App() {
@@ -45,52 +45,58 @@ function App() {
           <AddressProvider>
             <WishlistProvider>
               <ProductProvider>
-                <Routes>
-                  <Route path="/editprofile" element={<EditProfile />} />
-                  <Route
-                    path="/recoverpassword"
-                    element={<RecoverPassword />}
-                  />
-                  <Route path="/filter" element={ <FilterAndSort/> }/>
-                  <Route path="/" element={<Intro />} />
-                  <Route path="/FirstSlide" element={<FirstSlide />} />
-                  <Route path="/SecondSlide" element={<SecondSlide />} />
-                  <Route path="/ThirdSlide" element={<ThirdSlide />} />
-                  <Route path="/home" element={<Home />} />
-                  <Route path="/products/test" element={<Product />} />
-                  <Route path="/products/reviews" element={<ReviewSection />} />
-                  <Route path="/search" element={<Search />} />
-                  <Route path="/cart" element={<Cart />} />
-                  <Route path="/favorites" element={<Favorites />} />
-                  <Route
-                    path="/registrationsuccess"
-                    element={<RegistrationSuccess />}
-                  />
-                  <Route path="/profile" element={<Profile />} />
-                  <Route path="/signout" element={<SignOut />} />
-                  <Route path="/addadress" element={<AddNewAdress />} />
-                  <Route path="/address" element={<Address />} />
-                  <Route path="/editaddress" element={<EditAddress />} />
-                  <Route path="/paymentmethod" element={ <PaymentMethod /> }/>
-                  <Route path="/addcreditcard" element={ <AddCreditCard /> }/>
-                  <Route
-                    path="/forgotpassword"
-                    element={
-                      <ForgotPasswordProvider>
-                        <ForgotPassword />
-                      </ForgotPasswordProvider>
-                    }
-                  />
-                  <Route
-                    path="/registration"
-                    element={
-                      <RegistrationProvider>
-                        <Registration />
-                      </RegistrationProvider>
-                    }
-                  />
-                  <Route path="/login" element={<Login />} />
-                </Routes>
+                <ShoppingCartProvider>
+                  <Routes>
+                    <Route path="/editprofile" element={<EditProfile />} />
+                    <Route
+                      path="/recoverpassword"
+                      element={<RecoverPassword />}
+                    />
+                    <Route path="/filter" element={<Filter />} />
+                    <Route path="/" element={<Intro />} />
+                    <Route path="/FirstSlide" element={<FirstSlide />} />
+                    <Route path="/SecondSlide" element={<SecondSlide />} />
+                    <Route path="/ThirdSlide" element={<ThirdSlide />} />
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/products/test" element={<Product />} />
+                    <Route
+                      path="/products/reviews"
+                      element={<ReviewSection />}
+                    />
+                    <Route path="/search" element={<Search />} />
+                    <Route path="/shoppingcart" element={<ShoppingCart />} />
+                    <Route path="/checkout" element={<Checkout />} />
+                    <Route path="/favorites" element={<Favorites />} />
+                    <Route
+                      path="/registrationsuccess"
+                      element={<RegistrationSuccess />}
+                    />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/signout" element={<SignOut />} />
+                    <Route path="/addadress" element={<AddNewAdress />} />
+                    <Route path="/address" element={<Address />} />
+                    <Route path="/editaddress" element={<EditAddress />} />
+                    <Route path="/paymentmethod" element={<PaymentMethod />} />
+                    <Route path="/addcreditcard" element={<AddCreditCard />} />
+                    <Route
+                      path="/forgotpassword"
+                      element={
+                        <ForgotPasswordProvider>
+                          <ForgotPassword />
+                        </ForgotPasswordProvider>
+                      }
+                    />
+                    <Route
+                      path="/registration"
+                      element={
+                        <RegistrationProvider>
+                          <Registration />
+                        </RegistrationProvider>
+                      }
+                    />
+                    <Route path="/login" element={<Login />} />
+                  </Routes>
+                </ShoppingCartProvider>            
               </ProductProvider>
             </WishlistProvider>
           </AddressProvider>
@@ -102,4 +108,3 @@ function App() {
 }
 
 export default App;
-
