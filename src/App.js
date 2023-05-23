@@ -52,7 +52,7 @@ function App() {
                       path="/recoverpassword"
                       element={<RecoverPassword />}
                     />
-                    <Route path="/filter" element={<Filter />} />
+                    <Route path="/filter" element={<FilterAndSort />} />
                     <Route path="/" element={<Intro />} />
                     <Route path="/FirstSlide" element={<FirstSlide />} />
                     <Route path="/SecondSlide" element={<SecondSlide />} />
