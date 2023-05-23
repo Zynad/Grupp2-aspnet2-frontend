@@ -3,9 +3,10 @@ import "./favorites.css"
 import Navigation from '../../partials/navigation/Navigation'
 import {useContext} from 'react'
 import { WishlistContext } from '../../../contexts/WishlistProvider'
-import StarRating from './StarRating'
+import StarRating from "../../partials/shared/starRating/StarRating"
 import wishImg from "../../../assets/images/wishlist.png"
 import { NavLink } from 'react-router-dom'
+import Header from "../../partials/header/Header"
 
 
 const Favorites = () => {
@@ -22,7 +23,7 @@ const Favorites = () => {
       return (    
         <>    
         {wishlist.map((item, index) => (
-          <div className="row wishlist-content">
+          <div className="row wishlist-content mt-5">
 
           <div className="img-content">
           <img className="img-wishlist" src={item.imageUrl}></img>
@@ -55,16 +56,13 @@ const Favorites = () => {
       </>
       )
     }
-
-
-
-    
   }
 
   
   return (
      <>
      <div className='container mt-5'>
+     <Header title="Wishlist" route="/home"/>
      {renderWishlist()}
      </div>
      <Navigation />

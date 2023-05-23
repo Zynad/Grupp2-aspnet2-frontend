@@ -1,0 +1,48 @@
+import StarRating from "../../../components/partials/shared/starRating/StarRating"
+import {useContext} from "react";
+import {WishlistContext} from "../../../contexts/WishlistProvider"
+
+const ProductCard = ({products, filters}) => {
+
+    const {handleWishlist} = useContext(WishlistContext);
+
+    const renderProducts = () => {
+        if(products.length != 0){
+          return (    
+            <>    
+            {products.map((item, index) => (
+                <div className="col-6 col-lg-3 card-content">
+
+                <div className="img-part">
+
+                <img src={item.imageUrl}></img>
+                <div className="img-menu">
+                <i className="fa-regular fa-bag-shopping fa-sm icon-card-bag"></i>
+                <i onClick={() => {handleWishlist(item)}} className="fa-solid fa-heart fa-sm icon-card-heart"></i>
+                </div>
+
+                </div>
+                
+                <div className="body-part mt-2 mb-5">
+                <StarRating/>
+                <p>{item.name}</p>
+                <p>${item.price}</p>
+                </div>
+                </div>
+            ))}
+            </>
+        )}}
+
+
+
+      return (
+        <>
+            <div className="row">
+              {renderProducts()}
+            </div>
+        </>
+      )
+
+}
+
+export default ProductCard;

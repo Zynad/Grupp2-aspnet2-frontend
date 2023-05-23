@@ -25,19 +25,22 @@ import ProductProvider from "./contexts/ProductProvider";
 import Product from "./components/views/product/Product";
 import ReviewSection from "./components/partials/shared/reviews/ReviewSection";
 import Intro from "./components/views/welcome/Intro";
-import Filter from "./components/views/filter/FilterAndSort";
+import FilterAndSort from "./components/views/filters/FilterAndSort";
 import FirstSlide from "./components/views/welcome/FirstSlide";
 import SecondSlide from "./components/views/welcome/SecondSlide";
 import ThirdSlide from "./components/views/welcome/ThirdSlide";
+import FilterProvider from "./contexts/FilterProvider";
 import PaymentMethod from "./components/views/user/profile/PaymentMethod";
 import AddCreditCard from "./components/views/user/profile/AddCreditCard";
 import ShoppingCartProvider from "./contexts/ShoppingCartProvider";
 import Checkout from "./components/views/shoppingCart/Checkout";
 
+
 function App() {
   return (
     <>
       <ApiProvider>
+      <FilterProvider>
         <LoginProvider>
           <AddressProvider>
             <WishlistProvider>
@@ -93,11 +96,12 @@ function App() {
                     />
                     <Route path="/login" element={<Login />} />
                   </Routes>
-                </ShoppingCartProvider>
+                </ShoppingCartProvider>            
               </ProductProvider>
             </WishlistProvider>
           </AddressProvider>
         </LoginProvider>
+        </FilterProvider>
       </ApiProvider>
     </>
   );

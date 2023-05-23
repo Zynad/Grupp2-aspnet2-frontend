@@ -6,9 +6,11 @@ import { WishlistContext } from '../../../../contexts/WishlistProvider';
 import { useContext } from 'react'
 import { ProductContext } from '../../../../contexts/ProductProvider'
 
+
 const CollectionItem = ({item}) => {
     const { designateDetailedItem } = useContext(ProductContext)
     const { handleWishlist } = useContext(WishlistContext);
+
 
     const showDetailedItem = async (item) => {
         await designateDetailedItem(item)
@@ -17,6 +19,7 @@ const CollectionItem = ({item}) => {
     const wishList = async (product) => {
         await handleWishlist(product)
     }
+
 
     return (
             <div className='container'>
@@ -43,5 +46,6 @@ const CollectionItem = ({item}) => {
             </div>
   )
 }
+
 
 export default CollectionItem
