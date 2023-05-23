@@ -41,7 +41,7 @@ const DetailedItem = ({ item }) => {
           <div className='container-grid'>
             <div className="price">{item.price}</div> 
             <div className='amount-counter'>
-            <button className='right' onClick={decrementCount}>-</button>
+            <button className='' onClick={decrementCount}>-</button>
             <p>{count}</p>
             <button onClick={incrementCount}>+</button>
             </div>
