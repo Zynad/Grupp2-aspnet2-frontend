@@ -1,6 +1,11 @@
 .image-section-detailed img {
-  width: 100%;
+  width: 50%;
   height: auto;
+}
+
+.image-section-detailed {
+  display: flex;
+  justify-content: center;
 }
 
 .container-flex {
@@ -11,7 +16,7 @@
 .container-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px; /* Adjust the gap as needed */
+  gap: 10px;
 }
 
 .amount-counter {
@@ -23,4 +28,6 @@
 .amount-counter button {
   border: none;
   margin: auto;
+  align-items: center;
+  background-color: #f7f7f7;
 }

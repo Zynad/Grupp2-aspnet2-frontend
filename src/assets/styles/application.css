@@ -32,6 +32,11 @@ body {
   opacity: 0.9;
 }
 
+.camo-btn {
+  border: none;
+  background-color: #f7f7f7;
+}
+
 /* Input */
 .input-wrapper {
   position: relative;
@@ -85,8 +90,6 @@ label {
 /* Items */
 .item-wrapper {
   width: 300px;
-  border: black;
-  border: 5px;
 }
 
 .image-section {

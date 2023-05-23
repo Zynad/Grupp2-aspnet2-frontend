@@ -28,7 +28,6 @@ const Home = () => {
     setHomeProducts()
   }, []);
 
-  console.log(featuredList[0])
 
 
   
@@ -40,7 +39,6 @@ const Home = () => {
         <Collection title="Best sellers" itemList={bestSellerList} />
         <SaleBanner /> 
         <Collection title="Featured Products" itemList={featuredList} />
-        <DetailedItem item={featuredList[0]} />
         <Navigation />
     </>
   )
