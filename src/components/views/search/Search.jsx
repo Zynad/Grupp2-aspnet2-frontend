@@ -3,6 +3,12 @@ import './Search.css';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Contact from '../contact/Contact';
+import {NavLink} from 'react-router-dom';
+import dressesImage from '../../../assets/images/dresses.jpg';
+import pantsImage from '../../../assets/images/pants.jpg';
+import accImage from '../../../assets/images/accesories.jpg';
+import shoeImage from '../../../assets/images/shoes.jpg';
+import tshirtImage from '../../../assets/images/tshirts.jpg';
 
 
 const Search = () => {
@@ -60,27 +66,33 @@ const Search = () => {
 
 {/*replace the href attribute with the actual URL of the page you want to navigate to. */}
 <div className='category-block-1'>
-  <a href="/dresses" className ="category-block-link">
-    <div className='category-block-text'>DRESSES</div>
-  </a>
+  <NavLink to="/dresses" className ="category-block-link">
+    <img src={dressesImage} alt="Dresses"/>
+    <div className='category-block-text'>Dresses</div>
+  </NavLink>
 </div>
+
 <div className='category-block-1'>
-  <a href="/dresses" className ="category-block-link">
+  <NavLink to="/pants" className ="category-block-link">
+    <img src={pantsImage} alt="Pants"/>
     <div className='category-block-text'>PANTS</div>
-  </a>
+  </NavLink>
 </div>
 <div className='category-block-2'>
-  <a href="/dresses" className ="category-block-link">
+  <NavLink to="/accesories" className ="category-block-link">
+  <img src={accImage} alt="Acc"/>
     <div className='category-block-text'>ACCESORIES</div>
-  </a>
+  </NavLink>
 </div>
 <div className='category-block-1'>
-  <a href="/dresses" className ="category-block-link">
+  <NavLink to="/shoes" className ="category-block-link">
+  <img src={shoeImage} alt="Shoes"/>
     <div className='category-block-text'>SHOES</div>
-  </a>
+  </NavLink>
 </div>
 <div className='category-block-1'>
-  <a href="/dresses" className ="category-block-link">
+  <a href="/tshirts" className ="category-block-link">
+  <img src={tshirtImage} alt="Tshirt"/>
     <div className='category-block-text'>T-SHIRTS</div>
   </a>
 </div>
