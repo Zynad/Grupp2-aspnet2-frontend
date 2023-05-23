@@ -12,11 +12,9 @@
     box-shadow: 0.2px 0.2px 0.2px;
   }
   .top-navbar-menu-block{
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    font-size: 1.3em;
-    color: #000;
+    grid-column: 1;
+    align-self: center;
+    justify-self: center;
   }
   .top-navbar-search{
     grid-column: 2/4;
@@ -33,8 +31,8 @@
   }
   .top-navbar-cart{
     display: grid;
-    justify-items: center;
-    align-items: center;
+    justify-self: center;
+    align-self: center;
     font-size: 1.3em;
     color: #000;
   }

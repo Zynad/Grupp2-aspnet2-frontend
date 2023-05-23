@@ -24,13 +24,12 @@ const Search = () => {
     };
 
   return (
-     <>
-     <Contact/>      
+     <>     
     <Navigation className={showCategories ? 'navigation open' : 'navigation'} />
      <div className='category-search-page'>
         <div className='top-navbar-grid'>
             <div className='top-navbar-menu-block' onClick ={handleMenuToggle}>
-                <i className="fa-classic fa-bars-staggered"></i>
+              <Contact/> 
             </div>
             <div className='top-navbar-search'>
                 <input placeholder= "&#x1F50E;&#xFE0E; Search..."/>
