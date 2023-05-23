@@ -29,25 +29,12 @@ const Search = () => {
             <div className='top-navbar-search'>
                 <input placeholder= "&#x1F50E;&#xFE0E; Search..."/>
             </div>
-           
                 </div>
-            <div className='top-navbar-cart'>
+
+            <div className='top-navbar-cart' style={{ justifySelf: 'end' }}>
                 <i class="fa-light fa-bag-shopping"></i>
             </div> 
-            <div className="contact-search-page">
-            <div className='top-navbar-email'onClick={handleDropdownToggle}>
-                <a href="mailto:example@example.com">
-                    <i className="fa-solid fa-envelope"></i>
-                    </a>
-                    {showDropdown && (
-                        <div className="dropdown-content">
-                            <p>Location: Stockholm, Solna</p>
-                            <p>141 22 Stockholm, Sweden</p>
-                            <p>Phone Number: 123-456-789</p>
-                            <p>Email: example@example.com</p>
-                            </div>
-                    )}
-        </div>
+         
         {showCategories ? (
         <div className={`category-grid-links ${showCategories ? 'open' : ''}`}>
             <div className='category-links'><a href='/men'>Men</a></div>
@@ -98,7 +85,6 @@ const Search = () => {
   </a>
 </div>
         </div>
-    </div>
     </div>
     </>
   );
