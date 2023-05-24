@@ -15,17 +15,14 @@ const FilterAndSort = () => {
 
     useEffect(() => {
         getProducts()
-    }, [title])
+    }, [])
 
     const getProducts = async () => {
-
         const splitTitle = title.split(' ');
-
         if(splitTitle[0] == 'Best'){ 
             setProducts(await getProductsByCategory('Top'))
             return;
         }
-
         setProducts(await getProductsByCategory(splitTitle[0]))
     }
 
@@ -35,12 +32,12 @@ const FilterAndSort = () => {
         <Header route="/home" title={title}/>
 
         <div className="row filter-content mt-5">
-        <div className="col"><NavLink to="filterproducts" className="nav-standard"><i class="fa-light fa-arrow-up-arrow-down"></i></NavLink> Filters </div>
+        <div className="col"><NavLink to="/filterproducts" className="nav-standard"><i class="fa-light fa-arrow-up-arrow-down"></i></NavLink> Filters </div>
         <div className="col sorting">Sorting by  <i class="fa-solid fa-sort-down"></i></div>
         </div>
 
         <div className="container mt-5">
-        <ProductCard products={products} filters={""}/>
+        <ProductCard products={products}/>
         </div>
 
         <Navigation/>
