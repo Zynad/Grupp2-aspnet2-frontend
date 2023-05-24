@@ -18,7 +18,6 @@ const Circle = ({ text, selectable, selectedCircle, onSelect }) => {
   };
 
   const textStyle = {
-    color: isSelected ? 'blue' : 'black',
     fontWeight: isSelected ? 'bold' : 'normal',
   };
 
