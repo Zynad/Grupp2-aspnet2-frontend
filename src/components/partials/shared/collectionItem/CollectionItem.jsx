@@ -2,14 +2,15 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import "./collectionItem.css"
 import StarRating from '../starRating/StarRating'
-import { ApiContext } from '../../../../contexts/ApiProvider'
 import { WishlistContext } from '../../../../contexts/WishlistProvider';
 import { useContext } from 'react'
 import { ProductContext } from '../../../../contexts/ProductProvider'
 
+
 const CollectionItem = ({item}) => {
     const { designateDetailedItem } = useContext(ProductContext)
     const { handleWishlist } = useContext(WishlistContext);
+
 
     const showDetailedItem = async (item) => {
         await designateDetailedItem(item)
@@ -18,6 +19,7 @@ const CollectionItem = ({item}) => {
     const wishList = async (product) => {
         await handleWishlist(product)
     }
+
 
     return (
             <div className='container'>
@@ -36,11 +38,12 @@ const CollectionItem = ({item}) => {
                     <div className="body-section">
                         <div className="name">{item.name}</div>
                         <StarRating rating={item.rating}/>
-                        <div className="price">{item.price}</div>
+                        <div className="price">${item.price}</div>
                     </div>
                 </div>
             </div>
   )
 }
+
 
 export default CollectionItem

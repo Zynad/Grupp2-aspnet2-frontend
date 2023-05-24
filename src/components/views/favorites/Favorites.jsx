@@ -3,9 +3,10 @@ import "./favorites.css"
 import Navigation from '../../partials/navigation/Navigation'
 import {useContext} from 'react'
 import { WishlistContext } from '../../../contexts/WishlistProvider'
-import StarRating from './StarRating'
+import StarRating from "../../partials/shared/starRating/StarRating"
 import wishImg from "../../../assets/images/wishlist.png"
 import { NavLink } from 'react-router-dom'
+import Header from "../../partials/header/Header"
 
 
 const Favorites = () => {
@@ -22,7 +23,7 @@ const Favorites = () => {
       return (    
         <>    
         {wishlist.map((item, index) => (
-          <div className="row wishlist-content">
+          <div className="row wishlist-content mt-5">
 
           <div className="img-content">
           <img className="img-wishlist" src={item.imageUrl}></img>
@@ -35,10 +36,12 @@ const Favorites = () => {
           </div>
         
           <div className="col icon-content">
-          <i class="fa-solid fa-heart icon-heart" onClick={() => {deleteProduct(item.id)}}></i>
+          <i class="fa-solid fa-heart icon-heart fa-lg" onClick={() => {deleteProduct(item.id)}}></i>
           </div>
   
           <hr className='mt-4 mb-4'></hr>
+
+          
           </div> 
         ))}
         </>
@@ -48,21 +51,18 @@ const Favorites = () => {
       <>
       <div className='wishlist-empty-content'>
       <img className='wishlist-empty' src={wishImg}></img>
-      <NavLink to="/"><div className='mt-5'><button id="button-wishlist-empty" className='dark-btn-standard'>SHOP NOW</button></div></NavLink>
+      <NavLink to="/home"><div className='mt-5'><button className="button-wishlist-empty col-12 col-lg-6">SHOP NOW</button></div></NavLink>
       </div>
       </>
       )
     }
-
-
-
-    
   }
 
   
   return (
      <>
      <div className='container mt-5'>
+     <Header title="Wishlist" route="/home"/>
      {renderWishlist()}
      </div>
      <Navigation />

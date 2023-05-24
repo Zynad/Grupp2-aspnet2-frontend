@@ -3,8 +3,9 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 18px;
   background-color: #f7f7f7;
-  margin-bottom: 100px;
+  padding-bottom: 100px;
 }
+
 
 /* Buttons */
 .dark-btn-standard {
@@ -17,9 +18,11 @@ body {
   opacity: 0.9;
 }
 
+
 .dark-btn-standard:hover {
   opacity: 1;
 }
+
 
 .light-btn-standard {
   width: 50%;
@@ -32,15 +35,18 @@ body {
   opacity: 0.9;
 }
 
+
 .camo-btn {
   border: none;
   background-color: #f7f7f7;
 }
 
+
 /* Input */
 .input-wrapper {
   position: relative;
 }
+
 
 input {
   border: 1px solid lightgray;
@@ -53,6 +59,7 @@ input {
   padding-left: 30px;
 }
 
+
 label {
   position: absolute;
   top: 0.1ex;
@@ -63,10 +70,12 @@ label {
   color: gray;
 }
 
+
 /* Headings */
 .heading-standard {
   text-align: center;
 }
+
 
 /* Icons */
 .icon-standard {
@@ -74,7 +83,15 @@ label {
   border-radius: 50%;
   padding: 20px;
   border: 1px solid lightgray;
+  opacity: 0.8;
 }
+
+
+.icon-standard:hover {
+ cursor: pointer;
+ opacity: 1;
+}
+
 
 /* NavLink */
 .nav-standard {
@@ -83,23 +100,28 @@ label {
   opacity: 0.9;
 }
 
+
 .nav-standard:hover {
   opacity: 1;
 }
+
 
 /* Items */
 .item-wrapper {
   width: 300px;
 }
 
+
 .image-section {
   width: auto;
 }
+
 
 .star-rating {
   color: orange;
   margin-bottom: 10px;
 }
+
 
 .name {
   margin-bottom: 10px;
@@ -108,23 +130,31 @@ label {
   margin-bottom: 10px;
 }
 
+
 .item-carousel {
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
   gap: 20px;
   overflow-x: auto;
 }
 
-.item-carousel::-webkit-scrollbar {
-  display: none;
+
+@media (max-width: 768px){
+  .item-carousel::-webkit-scrollbar {
+    display: none;
+  }
 }
+
 
 /* Banners */
 
+
 .banner {
-  font-size: 50px;
+  font-size: 30px;
   width: auto;
   background-color: lightblue;
 }
+
 
 /* Text */
 .standard-text {
