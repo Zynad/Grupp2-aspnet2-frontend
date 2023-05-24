@@ -23,7 +23,7 @@ const Favorites = () => {
       return (    
         <>    
         {wishlist.map((item, index) => (
-          <div className="row wishlist-content mt-5">
+          <div className="row wishlist-content mt-5 mb-5">
 
           <div className="img-content">
           <img className="img-wishlist" src={item.imageUrl}></img>
@@ -32,7 +32,7 @@ const Favorites = () => {
           <div className='col text-content'>
           <div className='text'> {item.description}</div>
           <div className='text'> ${item.price}</div>
-          <div className='text'><StarRating rating={item.rating}/></div> 
+          <div className='text'><StarRating rating={item.rating} numberOfReviews={item.reviewCount}/></div> 
           </div>
         
           <div className="col icon-content">

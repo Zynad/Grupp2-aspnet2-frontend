@@ -34,6 +34,7 @@ import PaymentMethod from "./components/views/user/profile/PaymentMethod";
 import AddCreditCard from "./components/views/user/profile/AddCreditCard";
 import ShoppingCartProvider from "./contexts/ShoppingCartProvider";
 import Checkout from "./components/views/shoppingCart/Checkout";
+import FilterProducts from "./components/views/filters/FilterProducts";
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
                       path="/recoverpassword"
                       element={<RecoverPassword />}
                     />
+                    <Route path="/filterproducts" element={ <FilterProducts/> } />
                     <Route path="/filter" element={<FilterAndSort />} />
                     <Route path="/" element={<Intro />} />
                     <Route path="/FirstSlide" element={<FirstSlide />} />
