@@ -4,8 +4,8 @@ body {
   font-size: 18px;
   background-color: #f7f7f7;
   padding-bottom: 100px;
+  padding-top: 100px;
 }
-
 
 /* Buttons */
 .dark-btn-standard {
@@ -138,13 +138,9 @@ label {
   overflow-x: auto;
 }
 
-
-@media (max-width: 768px){
-  .item-carousel::-webkit-scrollbar {
-    display: none;
-  }
+.item-carousel::-webkit-scrollbar {
+  display: none;
 }
-
 
 /* Banners */
 
@@ -160,4 +156,10 @@ label {
 .standard-text {
   color: grey;
   text-align: center;
+}
+
+@media (max-width: 768px){
+  body{
+    padding-top: 55px;
+  }
 }
