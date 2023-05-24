@@ -25,13 +25,11 @@ const CollectionItem = ({item}) => {
             <div className='container'>
             <div className="item-wrapper">
                 <div className="image-section">
-                    <NavLink to="/search">
                         <img src={item.imageUrl} alt={item.name}/>
-                    </NavLink>
                     <div className="image-menu">
                         <div className='icons'>
                             <button onClick={() => { wishList(item) }} className="image-link"><i className="fa-regular fa-heart"></i></button>
-                            <NavLink to="/products/test">
+                            <NavLink to={"/products/" + item.id}>
                             <button onClick={() => { showDetailedItem(item) }} className="image-link"><i className="fa-regular fa-bag-shopping"></i></button>
                             </NavLink>
                         </div>
@@ -39,7 +37,7 @@ const CollectionItem = ({item}) => {
                     </div>
                     <div className="body-section">
                         <div className="name">{item.name}</div>
-                        <StarRating rating={item.rating}/>
+                        <StarRating rating={item.rating} numberOfReviews={item.reviewCount}/>
                         <div className="price">${item.price}</div>
                     </div>
                 </div>

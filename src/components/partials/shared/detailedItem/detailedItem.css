@@ -28,4 +28,6 @@
 .amount-counter button {
   border: none;
   margin: auto;
+  align-items: center;
+  background-color: #f7f7f7;
 }

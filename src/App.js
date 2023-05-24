@@ -35,72 +35,77 @@ import AddCreditCard from "./components/views/user/profile/AddCreditCard";
 import ShoppingCartProvider from "./contexts/ShoppingCartProvider";
 import Checkout from "./components/views/shoppingCart/Checkout";
 
-
 function App() {
   return (
     <>
       <ApiProvider>
-      <FilterProvider>
-        <LoginProvider>
-          <AddressProvider>
-            <WishlistProvider>
-              <ProductProvider>
-                <ShoppingCartProvider>
-                  <Routes>
-                    <Route path="/editprofile" element={<EditProfile />} />
-                    <Route
-                      path="/recoverpassword"
-                      element={<RecoverPassword />}
-                    />
-                    <Route path="/filter" element={<FilterAndSort />} />
-                    <Route path="/" element={<Intro />} />
-                    <Route path="/FirstSlide" element={<FirstSlide />} />
-                    <Route path="/SecondSlide" element={<SecondSlide />} />
-                    <Route path="/ThirdSlide" element={<ThirdSlide />} />
-                    <Route path="/home" element={<Home />} />
-                    <Route path="/products/test" element={<Product />} />
-                    <Route
-                      path="/products/reviews"
-                      element={<ReviewSection />}
-                    />
-                    <Route path="/search" element={<Search />} />
-                    <Route path="/shoppingcart" element={<ShoppingCart />} />
-                    <Route path="/checkout" element={<Checkout />} />
-                    <Route path="/favorites" element={<Favorites />} />
-                    <Route
-                      path="/registrationsuccess"
-                      element={<RegistrationSuccess />}
-                    />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/signout" element={<SignOut />} />
-                    <Route path="/addadress" element={<AddNewAdress />} />
-                    <Route path="/address" element={<Address />} />
-                    <Route path="/editaddress" element={<EditAddress />} />
-                    <Route path="/paymentmethod" element={<PaymentMethod />} />
-                    <Route path="/addcreditcard" element={<AddCreditCard />} />
-                    <Route
-                      path="/forgotpassword"
-                      element={
-                        <ForgotPasswordProvider>
-                          <ForgotPassword />
-                        </ForgotPasswordProvider>
-                      }
-                    />
-                    <Route
-                      path="/registration"
-                      element={
-                        <RegistrationProvider>
-                          <Registration />
-                        </RegistrationProvider>
-                      }
-                    />
-                    <Route path="/login" element={<Login />} />
-                  </Routes>
-                </ShoppingCartProvider>            
-              </ProductProvider>
-            </WishlistProvider>
-          </AddressProvider>
-        </LoginProvider>
+        <FilterProvider>
+          <LoginProvider>
+            <AddressProvider>
+              <WishlistProvider>
+                <ProductProvider>
+                  <ShoppingCartProvider>
+                    <Routes>
+                      <Route path="/products/:id" element={<Product />} />
+                      <Route
+                        path="/products/reviews"
+                        element={<ReviewSection />}
+                      />
+                      <Route path="/editprofile" element={<EditProfile />} />
+                      <Route
+                        path="/recoverpassword"
+                        element={<RecoverPassword />}
+                      />
+                      <Route path="/filter" element={<FilterAndSort />} />
+                      <Route path="/" element={<Intro />} />
+                      <Route path="/FirstSlide" element={<FirstSlide />} />
+                      <Route path="/SecondSlide" element={<SecondSlide />} />
+                      <Route path="/ThirdSlide" element={<ThirdSlide />} />
+                      <Route path="/home" element={<Home />} />
+                      <Route path="/search" element={<Search />} />
+                      <Route path="/shoppingcart" element={<ShoppingCart />} />
+                      <Route path="/checkout" element={<Checkout />} />
+                      <Route path="/favorites" element={<Favorites />} />
+                      <Route
+                        path="/registrationsuccess"
+                        element={<RegistrationSuccess />}
+                      />
+                      <Route path="/profile" element={<Profile />} />
+                      <Route path="/signout" element={<SignOut />} />
+                      <Route path="/addadress" element={<AddNewAdress />} />
+                      <Route path="/address" element={<Address />} />
+                      <Route path="/editaddress" element={<EditAddress />} />
+                      <Route
+                        path="/paymentmethod"
+                        element={<PaymentMethod />}
+                      />
+                      <Route
+                        path="/addcreditcard"
+                        element={<AddCreditCard />}
+                      />
+                      <Route
+                        path="/forgotpassword"
+                        element={
+                          <ForgotPasswordProvider>
+                            <ForgotPassword />
+                          </ForgotPasswordProvider>
+                        }
+                      />
+                      <Route
+                        path="/registration"
+                        element={
+                          <RegistrationProvider>
+                            <Registration />
+                          </RegistrationProvider>
+                        }
+                      />
+                      <Route path="/login" element={<Login />} />
+                    </Routes>
+                  </ShoppingCartProvider>
+                </ProductProvider>
+              </WishlistProvider>
+            </AddressProvider>
+          </LoginProvider>
         </FilterProvider>
       </ApiProvider>
     </>

@@ -2,7 +2,7 @@ import React from 'react'
 import './colorSelector.css'
 import { useState } from 'react';
 
-const Circle = ({ color, selectable, onSelect }) => {
+const Circle = ({ color, selectable, selectedCircle, onSelect }) => {
   const [isSelected, setSelected] = useState(false);
   const [chosenColor, setChosenColor] = useState("null");
 
@@ -21,12 +21,12 @@ const Circle = ({ color, selectable, onSelect }) => {
 
   return <div className="circle-color" style={circleStyle} onClick={handleClick}></div>;
 };
-
 const ColorSelector = () => {
   const [selectedCircle, setSelectedCircle] = useState(null);
 
   const handleCircleSelect = (color) => {
     setSelectedCircle(color)
+    console.log(color)
     // Perform additional actions based on the selected color
   };
 
