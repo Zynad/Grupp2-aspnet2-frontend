@@ -15,7 +15,7 @@ const Collection = ({ title, itemList }) => {
           <h3>{title}</h3>
           <div>
            View all
-          <NavLink to="/filter" className="nav-standard nav-collection"><i onClick={() => {setTitle(title)}} class="fa-solid fa-angle-right"></i></NavLink>
+          <NavLink to="/filter" className="nav-standard nav-collection"><i onClick={() => {setTitle(title)}} className="fa-solid fa-angle-right"></i></NavLink>
           </div>     
         </div>
       <div className="item-carousel">

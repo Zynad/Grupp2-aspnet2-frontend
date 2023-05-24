@@ -35,18 +35,18 @@ const DetailedItem = () => {
 
   return (
       <>
-            <div className='container'>
-                <div className="item-wrapper-detailed">
-                    <div className="image-section-detailed">
-                    <img src={item.imageUrl} alt={item.name}/>
-                    </div>
+        <div className='container'>
+            <div className="item-wrapper-detailed">
+                <div className="image-section-detailed">
+                <img src={item.imageUrl} alt={item.name}/>
+                </div>
           <div className="body-section">
             <div className='container-flex'>
-               <div className="name">{item.name}</div>
+                <div className="name">{item.name}</div>
                         <i className="fa-regular fa-heart"></i>
                         </div>
             </div>                 
-          <StarRating rating={item.rating} />
+          <StarRating rating={item.rating} numberOfReviews={item.reviewCount} />
           <div className='container-grid'>
             <div className="price">{item.price}</div> 
             <div className='amount-counter'>

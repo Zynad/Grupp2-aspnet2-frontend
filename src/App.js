@@ -36,7 +36,6 @@ import ShoppingCartProvider from "./contexts/ShoppingCartProvider";
 import Checkout from "./components/views/shoppingCart/Checkout";
 import FilterProducts from "./components/views/filters/FilterProducts";
 
-
 function App() {
   return (
     <>
