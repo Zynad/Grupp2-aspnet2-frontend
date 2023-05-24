@@ -45,12 +45,12 @@ function App() {
               <WishlistProvider>
                 <ProductProvider>
                   <ShoppingCartProvider>
-                    <Route path="/products/:id" element={<Product />} />
-                    <Route
-                      path="/products/reviews"
-                      element={<ReviewSection />}
-                    />
                     <Routes>
+                      <Route path="/products/:id" element={<Product />} />
+                      <Route
+                        path="/products/reviews"
+                        element={<ReviewSection />}
+                      />
                       <Route path="/editprofile" element={<EditProfile />} />
                       <Route
                         path="/recoverpassword"

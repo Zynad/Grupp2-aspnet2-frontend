@@ -37,7 +37,7 @@ const CollectionItem = ({item}) => {
                     </div>
                     <div className="body-section">
                         <div className="name">{item.name}</div>
-                        <StarRating rating={item.rating}/>
+                        <StarRating rating={item.rating} numberOfReviews={item.reviewCount}/>
                         <div className="price">${item.price}</div>
                     </div>
                 </div>

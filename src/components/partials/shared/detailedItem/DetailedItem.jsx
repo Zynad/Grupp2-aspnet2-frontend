@@ -11,7 +11,7 @@ import { ShoppingCartContext } from '../../../../contexts/ShoppingCartProvider';
 
 
 
-const DetailedItem = ( {item} ) => {
+const DetailedItem = () => {
   const [count, setCount] = useState(1);
   const { item } = useContext(ProductContext)
   const { addProductToCart } = useContext(ShoppingCartContext);
