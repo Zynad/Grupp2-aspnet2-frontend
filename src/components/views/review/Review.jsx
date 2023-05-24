@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
-// import axios from 'axios';
 import StarRating from '../../partials/shared/starRating/StarRating';
-import '../../../assets/styles/application.css'
 import reviewImage from '../../../assets/images/Review.Bild.png'
+
 
 function Review() {
   const [rating, setRating] = useState(0.0); // Uppdatera state-variabeln till en double
@@ -28,19 +27,8 @@ function Review() {
     .catch((error) => {
       console.error(error);
     });
-    
-    // axios.post('http://localhost:3000/reviews', {
-    //   rating: parseFloat(rating), // Uppdatera form-data med parseFloat för att lägga till decimaler
-    //   comment: comment
-    // })
-    // .then((response) => {
-    //   console.log(response.data);
-    // })
-    // .catch((error) => {
-    //   console.error(error);
-    // });
   }
-
+  
   useEffect(() => {
     fetch('http://localhost:3000/reviews')
     .then(response => response.json())
@@ -50,15 +38,6 @@ function Review() {
     .catch((error) => {
       console.error(error);
     });
-
-
-    // axios.get('http://localhost:3000/reviews')
-    // .then((response) => {
-    //   setReviews(response.data);
-    // })
-    // .catch((error) => {
-    //   console.error(error);
-    // });
   }, []);
 
   return (
@@ -78,7 +57,6 @@ function Review() {
         <div className="comment-container">
           <textarea id="comment" value={comment} onChange={(e) => setComment(e.target.value)}placeholder='Enter your comment'/>
         </div>
-        
         <button type="submit">Send review</button>
       </form>
       <div className="reviews-container">
