@@ -15,10 +15,12 @@ const DetailedItem = () => {
   const [count, setCount] = useState(1);
   const { item } = useContext(ProductContext)
   const { addProductToCart } = useContext(ShoppingCartContext);
+  const [size, setSize] = useState('');
+  const [color, setColor] = useState('');
   
 
   const addToShoppingCart = async (product) => {
-        await addProductToCart (product, product.price)
+        await addProductToCart (product, product.price, size, color, count)
     }
   
   const incrementCount = () => {
@@ -56,8 +58,8 @@ const DetailedItem = () => {
             </div>
           </div>                       
         </div>
-          <SizeSelector />
-          <ColorSelector />
+          <SizeSelector size={size} setSize={setSize} />
+          <ColorSelector color={color} setColor={setColor} />
         <p>Description</p>
         <div>{item.description}</div>
           <button className="dark-btn-standard" onClick={() => { addToShoppingCart(item) }}>+ ADD TO CART</button>      

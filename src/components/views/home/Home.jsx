@@ -21,7 +21,6 @@ const Home = () => {
         setBestSellerList(bestSeller)  
         setFeaturedList(featured)
         setLoadState(true);
-        // console.log(data);
     }
 
   useEffect(() => {

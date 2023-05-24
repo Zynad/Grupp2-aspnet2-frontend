@@ -9,17 +9,20 @@ import { useState } from 'react'
 
 const ShoppingCart = () => {
   const { shoppingCart, totalPrice, removeProductFromCart } = useContext(ShoppingCartContext);
-  console.log(totalPrice)
   const [count, setCount] = useState(1);
+  const [item, setItem] = useState({});
  
   
-  const incrementCount = () => {
-    setCount(count + 1);
+  const incrementCount = (item) => {
+    setItem(item);
+    const newItem = { ...item, quantity: item.quantity +1};
+    setItem(newItem);
   };
 
-  const decrementCount = () => {
+  const decrementCount = (item) => {
     if (count != 1) {
-      setCount(count - 1);
+      item.quantity = 3;
+
     }
    
   };
@@ -47,9 +50,9 @@ const ShoppingCart = () => {
           </div>
             
           <div className='right'>
-            <button className='camo-btn' onClick={decrementCount}>-</button>
-            <p>{count}</p>
-            <button className='camo-btn' onClick={incrementCount}>+</button>
+            <button className='camo-btn' onClick={() => { decrementCount(item) }}>-</button>
+            <p>{item.quantity}</p>
+            <button className='camo-btn' onClick={() => { incrementCount(item) }}>+</button>  
           </div>
 
           </div> 

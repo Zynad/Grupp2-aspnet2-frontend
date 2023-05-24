@@ -2,11 +2,26 @@ import React, { useContext, useState } from 'react'
 import "./shoppingCart.css"
 import { ShoppingCartContext } from '../../../contexts/ShoppingCartProvider'
 import { NavLink } from 'react-router-dom'
+import { ApiContext } from '../../../contexts/ApiProvider'
+import Address from '../user/profile/Address'
+import PaymentMethod from '../user/profile/PaymentMethod'
+
 
 const Checkout = () => {
     const { totalPrice, shoppingCart } = useContext(ShoppingCartContext);
-    const [address, setAddress] = useState([]);
-    
+    const { getAdress, getUserCreditCards } = useContext(ApiContext);
+    const [address, setAddress] = useState({});
+    const [paymentMethod, setPaymentMethod] = useState({});
+    const [showAdress, setShowAdress] = useState(false);
+    const [showPaymentMethod, setShowPaymentMethod] = useState(false);
+
+    const showAdresses = () => {
+      setShowAdress(true);
+    };
+  
+    const showPaymentMethods = () => {
+      setShowPaymentMethod(true);
+    };
 
   return (
       <>
@@ -26,8 +41,8 @@ const Checkout = () => {
 
           
           <div className='col text-space'>
-            <div className='text'> {item.name}, storlek, färg,</div>
-            <div className='text'> antal X ${item.price} </div>
+            <div className='text'> {item.name}, {item.size}, {item.color}</div>
+            <div className='text'> {item.quantity} X ${item.price} </div>
           </div>
           </div> 
           ))}   
@@ -45,18 +60,19 @@ const Checkout = () => {
           
           <hr className='mt-4 mb-4'></hr>
 
-          <NavLink to="/adress">
           <div>
-           Shipping Details
+            <button onClick={showAdresses}>Adress</button>
+            {showAdress && <Address/>}
           </div>
-          </NavLink>
           
             <hr className='mt-4 mb-4'></hr>
 
+      
           <div>
-           Payment Method
+            <button onClick={showPaymentMethods}>Payment Methods</button>
+            {showPaymentMethod && <PaymentMethod />}
           </div>
-
+         
 
           <div>
             <button className="dark-btn-standard">CONFIRM ORDER</button>   

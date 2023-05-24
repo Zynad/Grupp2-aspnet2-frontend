@@ -6,12 +6,18 @@ const ShoppingCartProvider = (props) => {
   const [shipping, setShipping] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
 
-//   const ordersCollectionRef = collection(db, "orders");
 
-  const addProductToCart = (product, price) => {
-    setShoppingCart([...shoppingCart, product]);
-      setTotalPrice(totalPrice + price);
-      console.log(totalPrice)
+    const addProductToCart = (product, price, size, color, quantity) => {
+    const newProduct = { ...product,  size: size,  color: color, quantity: quantity};
+      setShoppingCart([...shoppingCart, newProduct]);
+      let i = 0
+      while (i < quantity) {
+      setTotalPrice(prevTotalPrice => prevTotalPrice + price);
+      i++;
+      }
+      
+    console.log(totalPrice)
+      
   };
 
   const removeProductFromCart = (product, price) => {
@@ -25,28 +31,7 @@ const ShoppingCartProvider = (props) => {
     setTotalPrice(totalPrice - price);
   };
 
-//   const handlePostCart = async (
-//     cart,
-//     firstName,
-//     lastName,
-//     email,
-//     personalNumber
-//   ) => {
-//     setShipping(
-//       "Your order was successfully placed! The ordernumber will be sent to: " +
-//         email
-//     );
 
-//     const products = cart.map((product) => {
-//       return product.title + ", " + product.brand;
-//     });
-
-//     const productsId = cart.map((product) => {
-//       return product.id;
-//     });
-
-   
-//   };
 
   return (
     <>
