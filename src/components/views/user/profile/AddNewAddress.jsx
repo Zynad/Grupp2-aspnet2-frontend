@@ -1,13 +1,17 @@
-import { useState } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { NavLink } from "react-router-dom"
-const AddNewAdress = () => {
+import { ApiContext } from '../../../../contexts/ApiProvider'
 
+
+const AddNewAdress = () => {
+  const { registerAddress } = useContext(ApiContext);
   const [title, setTitle] = useState("");
   const [streetName, setStreetName] = useState("");
   const [city, setCity] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [country, setCountry] = useState("");
   const [validation, setValidation] = useState ("");
+  const [registerSuccess, setRegisterSuccess] = useState("");
 
   const handleSumit = async (event) => {
 
@@ -19,7 +23,8 @@ const AddNewAdress = () => {
     }
     setValidation("")
     const adress = {title : title, streetName : streetName, city : city, postalCode : postalCode, country : country }
-    // Skicka objektet till API
+    const response = await registerAddress(adress);
+    if(response){setRegisterSuccess("Address saved successfully")} else {setRegisterSuccess("The adress faild to save. Try Again!")}
  };
 
 return (
@@ -107,9 +112,8 @@ return (
     <div id="country" className="text-danger ml-5"></div>
     </div>
 
-    <div className="validation text-danger mt-3">
-    {validation}
-    </div>
+    <div className="validation text-danger mt-3">{validation}</div>
+    <div className="validation text-success mt-3">{registerSuccess}</div>
 
     <button className="dark-btn-standard my-5" type="submit">Save Adress</button>
 

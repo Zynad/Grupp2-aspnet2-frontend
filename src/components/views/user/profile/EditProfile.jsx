@@ -10,17 +10,13 @@ const EditProfile = () => {
     const [phone, setPhone] = useState("");
     const [validation, setValidation] = useState("");
 
-
     const handleSubmit = (event) => {
-
       event.preventDefault();
-
       if (firstName.length < 2 || lastName.length < 2 || email.length < 2 || phone.length < 2)
       {
         setValidation("Saving profile faild. Try again!") 
         return;
       }
-
       setValidation("");
       const profile = {firstName : firstName, lastName : lastName, email : email, phone : phone}
     }

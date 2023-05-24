@@ -10,16 +10,25 @@ const Profile = () => {
     const [signout, setSignOut] = useState("");
     const {getProfile} = useContext(ApiContext);
     const [user, setUser] = useState({});
+    const [userHasValue, setUserHasValue] = useState(false)
 
 
     useEffect (() => { getUser() }, []);
-
-    const getUser = async () => {
+    
+      const getUser = async () => {
       const response = await getProfile();
       await handleUser(response)
     }
 
-    const handleUser = async (response) => { await setUser(response) }
+    const handleUser = async (response) => { 
+      if(response != null){ 
+         await setUser(response)
+         setUserHasValue(true); 
+      }
+      else {
+         setUserHasValue(false);
+      }
+   }
 
     const handleSignOut = (response) => {
       setSignOut(response)
@@ -33,7 +42,8 @@ const Profile = () => {
         <div className="mt-5 upper-profile-content">
          <span className="line-login"></span>
          <ProfilePicture/>
-         <h2 className="heading-standard mt-3">{user.firstName + " " + user.lastName}</h2>
+         <h2 className="heading-standard mt-3"> {userHasValue? user.firstName + " " + user.lastName : "" }
+         </h2>
          <div className="standard-text">{user.email}</div>
          </div>
 
@@ -52,10 +62,10 @@ const Profile = () => {
          <div className="row profile-content">          
          <div className="col">
             <i className="fa-light fa-credit-card-blank profile-icon"></i>
-            <span className="profile-text">Payment method</span>
+            <NavLink className="nav-standard" to="/paymentMethod"><span className="profile-text">Payment method</span></NavLink>
             </div>
             <div className="col profile-arrow">
-            <i className="fa-light fa-chevron-right"></i>
+            <NavLink className="nav-standard" to="/paymentmethod"><i className="fa-light fa-chevron-right"></i></NavLink>
             </div>
          <hr className="mb-4 mt-4"/>
          </div>

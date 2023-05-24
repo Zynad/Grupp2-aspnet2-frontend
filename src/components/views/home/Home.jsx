@@ -5,6 +5,8 @@ import WelcomeBanner from '../../partials/shared/banners/WelcomeBanner'
 import SaleBanner from '../../partials/shared/banners/SaleBanner'
 import { ApiContext } from '../../../contexts/ApiProvider'
 import { useState, useEffect } from 'react'
+import DetailedItem from '../../partials/shared/detailedItem/DetailedItem'
+import ColorSelector from '../../partials/shared/colorSelector/ColorSelector'
 
 const Home = () => {
   const { getAllProductsAsync } = useContext(ApiContext);
@@ -12,25 +14,20 @@ const Home = () => {
   const [featuredList, setFeaturedList] = useState([]);
   const [loadState, setLoadState] = useState(false);
 
-
-  
-
    const setHomeProducts = async () => {
         let data = await getAllProductsAsync();
-        // let bestSeller = data.filter(item => item.name == "shorts");
-        // let featured = data.filter(item => item.salesCategory == "new");
-        setBestSellerList(data)  
-        setFeaturedList(data)
+        let bestSeller = data.filter(item => item.salesCategory === "Top");
+        let featured = data.filter(item => item.salesCategory === "Featured");
+        setBestSellerList(bestSeller)  
+        setFeaturedList(featured)
         setLoadState(true);
-        console.log(data);
-        // console.log(bestSellerList[0]);
-        // console.log(bestSeller[0]);
-     
+        // console.log(data);
     }
 
   useEffect(() => {
     setHomeProducts()
   }, []);
+
 
 
   
