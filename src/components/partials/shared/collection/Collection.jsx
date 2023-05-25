@@ -8,13 +8,13 @@ import { FilterContext } from "../../../../contexts/FilterProvider"
 const Collection = ({ title, itemList }) => {
 
   const containerRef = useRef(null);
-  const scrollStep = 500;
+  const scrollDistance = 500;
 
   const scrollLeft = () => {
     if (containerRef.current) {
       const currentScrollLeft = containerRef.current.scrollLeft;
       containerRef.current.scrollTo({
-        left: currentScrollLeft - scrollStep,
+        left: currentScrollLeft - scrollDistance,
         behavior: "smooth",
       });
     }
@@ -24,7 +24,7 @@ const Collection = ({ title, itemList }) => {
     if (containerRef.current) {
       const currentScrollLeft = containerRef.current.scrollLeft;
       containerRef.current.scrollTo({
-        left: currentScrollLeft + scrollStep,
+        left: currentScrollLeft + scrollDistance,
         behavior: "smooth",
       });
     }

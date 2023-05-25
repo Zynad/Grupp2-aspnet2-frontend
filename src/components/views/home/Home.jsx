@@ -35,14 +35,14 @@ const Home = () => {
 
   if (loadState) {
   return (
-    <>
+    <div className='home-container'>
         <TopHeader />
         <WelcomeBanner />
         <Collection title="Best sellers" itemList={bestSellerList} />
         <SaleBanner /> 
         <Collection title="Featured Products" itemList={featuredList} />
         <Navigation />
-    </>
+    </div>
   )
 }
   
