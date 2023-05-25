@@ -17,11 +17,24 @@ const Login = () => {
     }
     
     const handleFacebook = async () => {
-        window.FB.login(function (response) {
+        window.FB.login(async function (response) {
             console.log("Facebook login response: ");
             console.log(response);
             console.log("____");
-            // await loginFacebook(response) Commented because await keyword breaks it
+            //await loginFacebook(response);
+
+            if (response.status == "connected") {
+                window.FB.api(
+                    `/${response.authResponse.userID}`,
+                    'GET',
+                    { "fields": "first_name,last_name,email" },
+                    function (apiResponse) {
+                        console.log("Facebook API response: ")
+                        console.log(apiResponse)
+                        console.log("____")
+                    }
+                );
+            }
         });
     }
 
