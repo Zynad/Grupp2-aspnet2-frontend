@@ -18,7 +18,9 @@ const Login = () => {
     
     const handleFacebook = async () => {
         window.FB.login(function (response) {
-            console.log("Facebook login response: " + response);
+            console.log("Facebook login response: ");
+            console.log(response);
+            console.log("____");
             // await loginFacebook(response) Commented because await keyword breaks it
         });
     }
