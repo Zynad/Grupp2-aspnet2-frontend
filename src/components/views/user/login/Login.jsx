@@ -17,7 +17,25 @@ const Login = () => {
     }
     
     const handleFacebook = async () => {
-      await loginFacebook()
+        window.FB.login(async function (response) {
+            console.log("Facebook login response: ");
+            console.log(response);
+            console.log("____");
+            //await loginFacebook(response);
+
+            if (response.status == "connected") {
+                window.FB.api(
+                    `/${response.authResponse.userID}`,
+                    'GET',
+                    { "fields": "first_name,last_name,email" },
+                    function (apiResponse) {
+                        console.log("Facebook API response: ")
+                        console.log(apiResponse)
+                        console.log("____")
+                    }
+                );
+            }
+        });
     }
 
     return (
@@ -39,12 +57,12 @@ const Login = () => {
           <div className="row">
 
           <div className="col-lg-6 mt-3 input-wrapper">
-          <label for="email">Email</label>
+          <label htmlFor="email">Email</label>
           <input name="email" value={email} onChange={(e) => {setEmail(e.target.value)}} type="text"></input>
           </div>
           
           <div className="col-lg-6 mt-3 input-wrapper">
-          <label for="password">Password</label>
+          <label htmlFor="password">Password</label>
           <input name="password" value={password} onChange={(e) => setPassword(e.target.value)} type="password"></input>
           </div>
       

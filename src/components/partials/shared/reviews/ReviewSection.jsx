@@ -4,7 +4,7 @@ import StarRating from '../starRating/StarRating'
 import { NavLink } from 'react-router-dom'
 import { ProductContext } from '../../../../contexts/ProductProvider'
 
-const ReviewSection = () => {
+const ReviewSection = ( {item} ) => {
   return (
       <>
           <div className='container mt-5'>

@@ -120,13 +120,14 @@ const loginAsync = async (url = '', data = {}, handleLogin, validation) => {
 
 
     // Login Facebook
-    const loginFacebook = async () => {
+    const loginFacebook = async (facebookToken) => {
         const token = Cookies.get('token');
         const requestOptions = {
-            method: 'GET',
-            headers:  { 'Authorization' : `Bearer ${ token }` }
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${token}` },
+            body: facebookToken
         }
-        const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Account/ExternalFacebook?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+        const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Account/New-Facebook?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
         console.log(response)
     }
 
