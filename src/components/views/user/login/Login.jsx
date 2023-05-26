@@ -21,7 +21,6 @@ const Login = () => {
             console.log("Facebook login response: ");
             console.log(response);
             console.log("____");
-            //await loginFacebook(response);
 
             if (response.status == "connected") {
                 window.FB.api(
@@ -32,6 +31,17 @@ const Login = () => {
                         console.log("Facebook API response: ")
                         console.log(apiResponse)
                         console.log("____")
+
+                        const data =
+                        {
+                            Email: apiResponse.email,
+                            FirstName: apiResponse.first_name,
+                            LastName: apiResponse.last_name,
+                            ProviderKey: apiResponse.id,
+                            LoginProvider: response.graphDomain
+                        }
+
+                        loginFacebook(data);
                     }
                 );
             }
