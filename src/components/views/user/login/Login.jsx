@@ -2,12 +2,10 @@ import "./login.css"
 import { useContext, useState } from "react";
 import { NavLink, Navigate } from "react-router-dom";
 import { LoginContext } from "../../../../contexts/LoginProvider"
-import { ApiContext } from "../../../../contexts/ApiProvider"
 
 const Login = () => {
 
-    const { handleSubmit, loginResult, validation } = useContext(LoginContext)
-    const { loginFacebook } = useContext(ApiContext)
+    const { handleSubmit, loginResult, validation, handleExternalSubmit } = useContext(LoginContext)
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
     const [rememberMe, setRememberMe] = useState(false);
@@ -17,9 +15,34 @@ const Login = () => {
     }
     
     const handleFacebook = async () => {
-      // await loginFacebook()
-        window.FB.login(function (response) {
-            // handle the response 
+        window.FB.login(async function (response) {
+            console.log("Facebook login response: ");
+            console.log(response);
+            console.log("____");
+
+            if (response.status == "connected") {
+                window.FB.api(
+                    `/${response.authResponse.userID}`,
+                    'GET',
+                    { "fields": "first_name,last_name,email" },
+                    function (apiResponse) {
+                        console.log("Facebook API response: ")
+                        console.log(apiResponse)
+                        console.log("____")
+
+                        const data =
+                        {
+                            Email: apiResponse.email,
+                            FirstName: apiResponse.first_name,
+                            LastName: apiResponse.last_name,
+                            ProviderKey: apiResponse.id,
+                            LoginProvider: response.authResponse.graphDomain
+                        }
+                        console.log(data);
+                        handleExternalSubmit(data);
+                    }
+                );
+            }
         });
     }
 
