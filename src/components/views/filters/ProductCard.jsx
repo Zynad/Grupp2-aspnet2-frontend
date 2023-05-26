@@ -23,8 +23,8 @@ const ProductCard = ({products}) => {
                 
                 <div className="body-part mt-2 mb-5">
                 <StarRating rating={item.rating} numberOfReviews={item.reviewCount}/>
-                <p>{item.name}</p>
                 <p>${item.price}</p>
+                <p>{item.name}</p>
                 </div>
                 
                 </div>
