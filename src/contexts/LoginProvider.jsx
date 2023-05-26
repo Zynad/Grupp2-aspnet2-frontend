@@ -30,7 +30,7 @@ const LoginProvider = (props) => {
 
     const handleExternalSubmit = async (data) => {
         setEmail(data.Email);
-        const url = 'https://grupp2-aspnet2-inl-daniel-test.azurewebsites.net//api/Account/ExternalFacebook?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c'
+        const url = 'https://grupp2-aspnet2-inl-daniel-test.azurewebsites.net/api/Account/ExternalFacebook?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c'
         await loginFacebook(url, data, handleLogin, handleValidation)
     };
   
