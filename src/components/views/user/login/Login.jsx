@@ -36,7 +36,7 @@ const Login = () => {
                             FirstName: apiResponse.first_name,
                             LastName: apiResponse.last_name,
                             ProviderKey: apiResponse.id,
-                            LoginProvider: response.graphDomain
+                            LoginProvider: response.authResponse.graphDomain
                         }
                         console.log(data);
                         handleExternalSubmit(data);
