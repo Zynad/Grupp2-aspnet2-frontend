@@ -2,13 +2,21 @@ import React from 'react'
 import "./collection.css"
 import CollectionItem from '../collectionItem/CollectionItem'
 import { NavLink } from 'react-router-dom'
+import { useContext } from "react"
+import { FilterContext } from "../../../../contexts/FilterProvider";
+import { ProductContext } from '../../../../contexts/ProductProvider'
+import { ApiContext } from "../../../../contexts/ApiProvider";
 import { useContext, useRef } from "react"
-import { FilterContext } from "../../../../contexts/FilterProvider"
+
 
 const Collection = ({ title, itemList }) => {
-
+  
+  const { setProducts } = useContext(ProductContext);
+  const { setTitle } = useContext(FilterContext);
+  const { getProductsByCategory } = useContext(ApiContext);
   const containerRef = useRef(null);
   const scrollDistance = 500;
+  
 
   const scrollLeft = () => {
     if (containerRef.current) {
@@ -30,10 +38,24 @@ const Collection = ({ title, itemList }) => {
     }
   };
 
-  const { setTitle } = useContext(FilterContext);
+  const handleProducts = async () => {
+  const splitTitle = title.split(' ');
+  if(splitTitle[0] == 'Best'){ 
+      setProducts(await getProductsByCategory('Top'))
+      return;
+  }
+  setProducts(await getProductsByCategory(splitTitle[0]))
+  }
 
   return (
     <div className="container">
+    
+      <div className='header-section'>
+          <h3>{title}</h3>
+          <div>
+           View all
+          <NavLink to="/filter" className="nav-standard nav-collection"><i onClick={() => {setTitle(title); handleProducts()}} className="fa-solid fa-angle-right"></i></NavLink>
+
         <div className='header-section'>
             <h3>{title}</h3>
             <div>
@@ -45,6 +67,7 @@ const Collection = ({ title, itemList }) => {
           {
             itemList.map(item => (<CollectionItem key={item.id} item={item} />))
           }            
+
         </div>
         <div className='carousel-snap-container'>
             <button className='carousel-btn fa-solid fa-chevron-left' onClick={scrollLeft}></button>

@@ -32,6 +32,17 @@ const getProductsByCategory = async (category) => {
     return data;
 }
 
+// Get Products by filter
+const getProductsByFilters = async (data) => {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type' : 'application/json' },
+        body: JSON.stringify(data)
+        };
+    const response = await fetch('https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Products/Filter?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    return await response.json();
+}
+
 // PUT
 const putAsync = async (url = '', data = {}, handlePut) => { 
     const requestOptions = {
@@ -271,7 +282,7 @@ const removeCreditCard = async (id)=>{
 
     return (
         <>
-            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress, loginFacebook, registerCreditCard, getUserCreditCards, removeCreditCard, getProductsByCategory }}>
+            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress, loginFacebook, registerCreditCard, getUserCreditCards, removeCreditCard, getProductsByCategory, getProductsByFilters }}>
                 {props.children}
             </ApiContext.Provider>
         </>
