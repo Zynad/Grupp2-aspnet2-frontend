@@ -6,7 +6,7 @@ import { useContext } from "react"
 import { FilterContext } from "../../../../contexts/FilterProvider";
 import { ProductContext } from '../../../../contexts/ProductProvider'
 import { ApiContext } from "../../../../contexts/ApiProvider";
-import { useContext, useRef } from "react"
+import { useRef } from "react"
 
 
 const Collection = ({ title, itemList }) => {
@@ -47,34 +47,36 @@ const Collection = ({ title, itemList }) => {
   setProducts(await getProductsByCategory(splitTitle[0]))
   }
 
+
   return (
-    <div className="container">
-    
-      <div className='header-section'>
+    <>
+    <div className='container'>
+    <div className='header-section'>
           <h3>{title}</h3>
-          <div>
+      <div>
            View all
           <NavLink to="/filter" className="nav-standard nav-collection"><i onClick={() => {setTitle(title); handleProducts()}} className="fa-solid fa-angle-right"></i></NavLink>
+      </div>
+    </div>
 
-        <div className='header-section'>
-            <h3>{title}</h3>
-            <div>
-            View all
-            <NavLink to="/filter" className="nav-standard nav-collection"><i onClick={() => {setTitle(title)}} className="fa-solid fa-angle-right"></i></NavLink>
-            </div>     
-          </div>
-        <div className="item-carousel" ref={containerRef}>
+    <div className="item-carousel" ref={containerRef}>
           {
             itemList.map(item => (<CollectionItem key={item.id} item={item} />))
           }            
+     </div>
 
-        </div>
-        <div className='carousel-snap-container'>
+     <div className='carousel-snap-container'>
             <button className='carousel-btn fa-solid fa-chevron-left' onClick={scrollLeft}></button>
             <button className='carousel-btn fa-solid fa-chevron-right' onClick={scrollRight}></button>
-          </div>
+      </div>
+
     </div>
+    </>
   )
+
+
+   
+  
 }
 
-export default Collection
+export default Collection;
