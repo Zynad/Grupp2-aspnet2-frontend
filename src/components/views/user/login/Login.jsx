@@ -2,12 +2,10 @@ import "./login.css"
 import { useContext, useState } from "react";
 import { NavLink, Navigate } from "react-router-dom";
 import { LoginContext } from "../../../../contexts/LoginProvider"
-import { ApiContext } from "../../../../contexts/ApiProvider"
 
 const Login = () => {
 
-    const { handleSubmit, loginResult, validation } = useContext(LoginContext)
-    const { loginFacebook } = useContext(ApiContext)
+    const { handleSubmit, loginResult, validation, handleExternalSubmit } = useContext(LoginContext)
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
     const [rememberMe, setRememberMe] = useState(false);
@@ -40,8 +38,8 @@ const Login = () => {
                             ProviderKey: apiResponse.id,
                             LoginProvider: response.graphDomain
                         }
-
-                        loginFacebook(data);
+                        console.log(data);
+                        handleExternalSubmit(data);
                     }
                 );
             }
