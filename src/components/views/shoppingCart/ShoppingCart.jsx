@@ -4,29 +4,20 @@ import { ShoppingCartContext } from '../../../contexts/ShoppingCartProvider'
 import { NavLink } from 'react-router-dom'
 import "./shoppingCart.css"
 import { useState } from 'react'
+import Header from '../../partials/header/Header'
 
 
 
 const ShoppingCart = () => {
-  const { shoppingCart, totalPrice, removeProductFromCart } = useContext(ShoppingCartContext);
+  const { shoppingCart, totalPrice, removeProductFromCart, updateCart, updatePrice } = useContext(ShoppingCartContext);
   const [count, setCount] = useState(1);
   const [item, setItem] = useState({});
  
-  
-  const incrementCount = (item) => {
-    setItem(item);
-    const newItem = { ...item, quantity: item.quantity +1};
-    setItem(newItem);
-  };
 
-  const decrementCount = (item) => {
-    if (count != 1) {
-      item.quantity = 3;
-
-    }
-   
-  };
-
+  const updateQuantity = (item, change) => {
+    updateCart(item, item.price, change);
+    updatePrice();
+  }
   
   const renderShoppingCart = () => {
 
@@ -36,10 +27,10 @@ const ShoppingCart = () => {
           {shoppingCart.map((item) => (
           
           
-          <div className="row schoppingcart-content">
+          <div className="row schoppingcart-content border-top border-bottom">
 
           <div className="img-content">
-          <img className="img-wishlist" src={item.imageUrl}></img>
+          <img className="img-cart" src={item.imageUrl}></img>
           </div>
           
           <div className='col text-content'>
@@ -50,12 +41,11 @@ const ShoppingCart = () => {
           </div>
             
           <div className='right'>
-            <button className='camo-btn' onClick={() => { decrementCount(item) }}>-</button>
+            <button className='camo-btn' onClick={() => { updateQuantity(item, "+") }}>+</button>
             <p>{item.quantity}</p>
-            <button className='camo-btn' onClick={() => { incrementCount(item) }}>+</button>  
-          </div>
-
-          </div> 
+            <button className='camo-btn' onClick={() => { updateQuantity(item, "-") }}>-</button>  
+              </div>
+            </div>
           ))}
           
 
@@ -109,7 +99,8 @@ const ShoppingCart = () => {
 
   
   return (
-     <>
+    <>
+     <Header route={"/home"} title={"Order"}/>
      <div className='container mt-5'>
      {renderShoppingCart()}
      </div>

@@ -1,14 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react';
 
-const StarRating = ({rating, numberOfReviews}) => {
-    const stars = Array.from({length: 5}, (_, index) => (
-        <i key={index} className={`fa-sharp fa-star ${index < rating ? "fa-solid" : "fa-regular"}`}></i>
-    ))
- 
-        
+const StarRating = ({ rating, numberOfReviews, onStarClick }) => {
+  const [selectedRating, setSelectedRating] = useState(rating);
+
+  const handleStarClick = (selectedRating) => {
+    setSelectedRating(selectedRating);
+    if (onStarClick) {
+      onStarClick(selectedRating);
+    }
+  };
+
+  const stars = Array.from({ length: 5 }, (_, index) => (
+    <i
+      key={index}
+      className={`fa-sharp fa-star ${
+        index < selectedRating ? "fa-solid" : "fa-regular"
+      }`}
+      onClick={() => handleStarClick(index + 1)}
+    ></i>
+  ));
+
+  if (numberOfReviews != null)
     return (
-        <div className="star-rating">{stars} ({numberOfReviews}) </div>
-  )
-}
+      <div className="star-rating">
+        {stars} ({numberOfReviews})
+      </div>
+    );
 
-export default StarRating
+  return <div className="star-rating">{stars}</div>;
+};
+
+export default StarRating;

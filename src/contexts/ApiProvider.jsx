@@ -14,7 +14,7 @@ const getAllProductsAsync = async () => {
 
 // GET PRODUCT BY ID
 const getProductByIdAsync = async (id = "") => {
-    const response = await fetch(`https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Products/Get?${id}?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c`);
+    const response = await fetch(`https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Products/Get?${id}&key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c`);
     const data = await response.json();
     return data;
 }
@@ -247,15 +247,49 @@ const removeCreditCard = async (id)=>{
     }
 }
 
+//CREATE A NEW ORDER
+const createOrderAsync = async (order= {}) => {
+    const token = Cookies.get('token')
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type' : 'application/json', 'Authorization' : `Bearer ${ token }` },
+        body: JSON.stringify(order)
+    }
+    const response = await fetch('https://grupp2-aspnet2-inl-tobbe-test.azurewebsites.net/api/Order/CreateOrder?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    if (response.ok){ return true }
+    return false;
+    console.log(response)
+    }
+    
+const getReviewsByIdAsync = async (id = "") => {
+    const response = await fetch(`https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Review/GetByProductId?productId=${id}&key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c`);
+    const data = await response.json();
+    return data;
+    console.log(data)
+    }
+    
+const addReviewAsync = async (review = {}) => {
+    const token = Cookies.get('token')
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type' : 'application/json', 'Authorization' : `Bearer ${ token }` },
+        body: JSON.stringify(review)
+    }
+    const response = await fetch('https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Review/AddReview?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    if (response.ok){ return true }
+    return false;
+    }
 
     return (
         <>
-            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress, loginFacebook, registerCreditCard, getUserCreditCards, removeCreditCard, getProductsByCategory }}>
+            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress, loginFacebook, registerCreditCard, getUserCreditCards, removeCreditCard, getProductsByCategory, createOrderAsync, getReviewsByIdAsync, addReviewAsync }}>
                 {props.children}
             </ApiContext.Provider>
         </>
     )
 }
+
+
 
 export default ApiProvider
 

@@ -34,6 +34,7 @@ import PaymentMethod from "./components/views/user/profile/PaymentMethod";
 import AddCreditCard from "./components/views/user/profile/AddCreditCard";
 import ShoppingCartProvider from "./contexts/ShoppingCartProvider";
 import Checkout from "./components/views/shoppingCart/Checkout";
+import AddReview from "./components/partials/shared/reviews/AddReview";
 
 function App() {
   return (
@@ -48,8 +49,12 @@ function App() {
                     <Routes>
                       <Route path="/products/:id" element={<Product />} />
                       <Route
-                        path="/products/reviews"
+                        path="/products/:id/reviews"
                         element={<ReviewSection />}
+                      />
+                      <Route
+                        path="/products/:id/reviews/add"
+                        element={<AddReview />}
                       />
                       <Route path="/editprofile" element={<EditProfile />} />
                       <Route

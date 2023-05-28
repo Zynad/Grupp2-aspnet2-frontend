@@ -17,10 +17,18 @@ const DetailedItem = () => {
   const { addProductToCart } = useContext(ShoppingCartContext);
   const [size, setSize] = useState('');
   const [color, setColor] = useState('');
+  const [addedToCart, setAddedToCart] = useState(true)
   
 
   const addToShoppingCart = async (product) => {
-        await addProductToCart (product, product.price, size, color, count)
+    if (color != "" && size != "") {
+        await addProductToCart(product, product.price, size, color, count)
+      setAddedToCart(true)
+      
+    }
+    else {
+      setAddedToCart(false)
+    }
     }
   
   const incrementCount = () => {
@@ -37,17 +45,16 @@ const DetailedItem = () => {
 
   return (
       <>
-        <div className='container'>
-            <div className="item-wrapper-detailed">
-                <div className="image-section-detailed">
+      <div className='container'>
+        <div className='item-wrapper-detailed'>
+                   <div className="image-section-detailed">
                 <img src={item.imageUrl} alt={item.name}/>
-                </div>
-          <div className="body-section">
-            <div className='container-flex'>
+        </div>
+        <div className='body-section-detailed'>
+           <div className='container-flex'>
                 <div className="name">{item.name}</div>
                         <i className="fa-regular fa-heart"></i>
-                        </div>
-            </div>                 
+              </div>                 
           <StarRating rating={item.rating} numberOfReviews={item.reviewCount} />
           <div className='container-grid'>
             <div className="price">{item.price}</div> 
@@ -56,12 +63,16 @@ const DetailedItem = () => {
             <p>{count}</p>
             <button onClick={incrementCount}>+</button>
             </div>
-          </div>                       
         </div>
           <SizeSelector size={size} setSize={setSize} />
           <ColorSelector color={color} setColor={setColor} />
-        <p>Description</p>
-        <div>{item.description}</div>
+        <p className='mt-3'>Description</p>
+        <div className='my-3'>{item.description}</div>
+        </div>
+        </div>
+       
+           
+            {!addedToCart && <p className='center'>You must choose a size and color</p>}
           <button className="dark-btn-standard" onClick={() => { addToShoppingCart(item) }}>+ ADD TO CART</button>      
         </div> 
       </>

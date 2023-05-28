@@ -5,11 +5,13 @@ import { NavLink } from 'react-router-dom'
 import { ApiContext } from '../../../contexts/ApiProvider'
 import Address from '../user/profile/Address'
 import PaymentMethod from '../user/profile/PaymentMethod'
+import { AddressContext } from '../../../contexts/AddressProvider'
 
 
 const Checkout = () => {
     const { totalPrice, shoppingCart } = useContext(ShoppingCartContext);
-    const { getAdress, getUserCreditCards } = useContext(ApiContext);
+    const { chosenAddress} = useContext(AddressContext);
+    const { createOrder } = useContext(ApiContext);
     const [address, setAddress] = useState({});
     const [paymentMethod, setPaymentMethod] = useState({});
     const [showAdress, setShowAdress] = useState(false);
@@ -22,6 +24,32 @@ const Checkout = () => {
     const showPaymentMethods = () => {
       setShowPaymentMethod(true);
     };
+  
+    const placeOrder = async () => {
+      var orderItems = shoppingCart.map((item) => {
+        let orderItem = {
+          "id": item.id,
+          "productId": item.id,
+          "productName": item.name,
+          "unitPrice": item.price,
+          "imageUrl": item.imageUrl,
+          "quantity": item.quantity,
+          "color": item.color,
+          "size": item.size
+        }
+        return orderItem;
+      })
+
+      let order = {
+        "addressId": chosenAddress.id,
+        "items": orderItems
+      }
+      console.log(chosenAddress)
+      console.log(order)
+      const response = await createOrder(order);
+      if(response){console.log(response)} else {}
+
+    }
 
   return (
       <>
@@ -75,7 +103,7 @@ const Checkout = () => {
          
 
           <div>
-            <button className="dark-btn-standard">CONFIRM ORDER</button>   
+            <button className="dark-btn-standard" onClick={placeOrder}>CONFIRM ORDER</button>   
           </div>
       </>
   )

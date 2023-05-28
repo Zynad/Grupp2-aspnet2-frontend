@@ -8,9 +8,8 @@ import EditAddress from "./EditAddress";
 
 const Address = () => {
     const { getAddress, removeAddress } = useContext(ApiContext);
-    const { handleEditAdress } = useContext(AddressContext);
+    const { handleEditAdress, handleChosenAddress } = useContext(AddressContext);
     const [address, setAddress] = useState([]);
-    const [chosenAddress, setChosenAddress] = useState({});
     const [deleteResult, setDeleteResult] = useState(1);
     const [navigationSource, setNavigationSource] = useState('');
     const location = useLocation();
@@ -31,8 +30,9 @@ const Address = () => {
     }
     
     const declareAddress = (id) => {
-      setChosenAddress(address.filter(address => address.id === id))
-      console.log(chosenAddress)
+        const filteredAddress = address.filter((address) => address.id === id);
+        const chosenAddress = filteredAddress.length > 0 ? filteredAddress[0] : null;
+        handleChosenAddress(chosenAddress);
     }
 
     const updatingAddress = async (address) => {
@@ -43,7 +43,9 @@ const Address = () => {
       if(await removeAddress (id)){
         setDeleteResult(deleteResult + deleteResult + 1)
       }
-  }
+    }
+
+  
   
     const renderContent = () => {
     switch (navigationSource) {
