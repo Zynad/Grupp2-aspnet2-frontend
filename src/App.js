@@ -34,7 +34,10 @@ import PaymentMethod from "./components/views/user/profile/PaymentMethod";
 import AddCreditCard from "./components/views/user/profile/AddCreditCard";
 import ShoppingCartProvider from "./contexts/ShoppingCartProvider";
 import Checkout from "./components/views/shoppingCart/Checkout";
+import VerifyPhoneNumber from "./components/views/user/verifyphonenumber/VerifyPhoneNumber";
+import ConfirmCode from "./components/views/user/verifyphonenumber/ConfirmCode";
 import FilterProducts from "./components/views/filters/FilterProducts";
+
 
 function App() {
   return (
@@ -105,6 +108,8 @@ function App() {
                         }
                       />
                       <Route path="/login" element={<Login />} />
+                      <Route path="/verifyphonenumber" element={< VerifyPhoneNumber />} />
+                      <Route path="/verifyphonenumber/confirmcode" element={< ConfirmCode />} />
                     </Routes>
                   </ShoppingCartProvider>
                 </ProductProvider>
