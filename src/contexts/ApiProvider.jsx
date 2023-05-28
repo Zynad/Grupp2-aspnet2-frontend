@@ -32,6 +32,17 @@ const getProductsByCategory = async (category) => {
     return data;
 }
 
+// Get Products by filter
+const getProductsByFilters = async (data) => {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type' : 'application/json' },
+        body: JSON.stringify(data)
+        };
+    const response = await fetch('https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Products/Filter?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    return await response.json();
+}
+
 // PUT
 const putAsync = async (url = '', data = {}, handlePut) => { 
     const requestOptions = {
@@ -120,14 +131,35 @@ const loginAsync = async (url = '', data = {}, handleLogin, validation) => {
 
 
     // Login Facebook
-    const loginFacebook = async () => {
-        const token = Cookies.get('token');
+    const loginFacebook = async (url = '', data = {}, handleLogin, validation) => {
+        //const token = Cookies.get('token');
         const requestOptions = {
-            method: 'GET',
-            headers:  { 'Authorization' : `Bearer ${ token }` }
+            method: 'POST',
+            headers: { /*'Authorization': `Bearer ${token}`, */'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
         }
-        const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Account/ExternalFacebook?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
-        console.log(response)
+        await fetch(url, requestOptions)
+            .then((response => {
+                if (!response.ok) {
+                    validation("The username or password is incorrect")
+                    handleLogin("false")
+                }
+                else {
+                    const res = response.text()
+                        .then(data => {
+                            validation("");
+                            handleLogin("true");
+                            const token = data;
+                            Cookies.set('token', token)
+                            // const decode = jwt(token);
+                            // const getToken = Cookies.get('token');                                        
+                        })
+                }
+            }))
+            .catch(() => {
+                validation("The username or password is incorrect")
+                handleLogin("false")
+            })   
     }
 
 
@@ -265,7 +297,7 @@ const verifyPhoneNumber = async (phone = {})=>{
 
     return (
         <>
-            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress, loginFacebook, registerCreditCard, getUserCreditCards, removeCreditCard, getProductsByCategory, verifyPhoneNumber }}>
+            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress, loginFacebook, registerCreditCard, getUserCreditCards, removeCreditCard, getProductsByCategory, getProductsByFilters, verifyPhoneNumber }}>
                 {props.children}
             </ApiContext.Provider>
         </>
