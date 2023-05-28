@@ -247,10 +247,25 @@ const removeCreditCard = async (id)=>{
     }
 }
 
+//VERIFY PHONE NUMBER
+const verifyPhoneNumber = async (phone = {})=>{
+    const token = Cookies.get('token')
+    const requestOptions = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${ token }`},
+        body: JSON.stringify(phone)
+    }
+
+    const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/account/ConfirmPhone?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    const data = await response.json();
+    return data;
+}
+
+
 
     return (
         <>
-            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress, loginFacebook, registerCreditCard, getUserCreditCards, removeCreditCard, getProductsByCategory }}>
+            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress, loginFacebook, registerCreditCard, getUserCreditCards, removeCreditCard, getProductsByCategory, verifyPhoneNumber }}>
                 {props.children}
             </ApiContext.Provider>
         </>
