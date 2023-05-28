@@ -19,6 +19,7 @@ import RecoverPassword from "./components/views/user/recoverpassword/RecoverPass
 import AddNewAdress from "./components/views/user/profile/AddNewAddress";
 import EditProfile from "./components/views/user/profile/EditProfile";
 import Review from "./components/views/review/Review";
+import DeliveryStatus from "./components/views/deliverystatus/DeliveryStatus"
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
     <ApiProvider>
     <LoginProvider>
       <Routes>
+      <Route path="/DeliveryStatus" element = {<DeliveryStatus/>}/>
       <Route path="/editprofile" element = {<EditProfile/>}/>
       <Route path="/review" element = { <Review/>}/>
       <Route path="/recoverpassword" element = { <RecoverPassword/> }/>
