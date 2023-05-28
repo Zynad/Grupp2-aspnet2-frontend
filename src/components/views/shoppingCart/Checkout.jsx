@@ -6,12 +6,13 @@ import { ApiContext } from '../../../contexts/ApiProvider'
 import Address from '../user/profile/Address'
 import PaymentMethod from '../user/profile/PaymentMethod'
 import { AddressContext } from '../../../contexts/AddressProvider'
+import Header from '../../partials/header/Header'
 
 
 const Checkout = () => {
     const { totalPrice, shoppingCart } = useContext(ShoppingCartContext);
     const { chosenAddress} = useContext(AddressContext);
-    const { createOrder } = useContext(ApiContext);
+    const { createOrderAsync } = useContext(ApiContext);
     const [address, setAddress] = useState({});
     const [paymentMethod, setPaymentMethod] = useState({});
     const [showAdress, setShowAdress] = useState(false);
@@ -40,19 +41,18 @@ const Checkout = () => {
         return orderItem;
       })
 
-      let order = {
+      const order = {
         "addressId": chosenAddress.id,
         "items": orderItems
       }
-      console.log(chosenAddress)
       console.log(order)
-      const response = await createOrder(order);
-      if(response){console.log(response)} else {}
+      const response = await createOrderAsync(order);
 
     }
 
   return (
-      <>
+    <>
+      <Header route={"/shoppingcart"} title={"Checkout"} shoppingBag={"hidden"} />
 
           <div>
             <div className='text-space mt-4'>

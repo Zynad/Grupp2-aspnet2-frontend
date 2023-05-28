@@ -9,6 +9,7 @@ const PaymentMethod = () =>{
     const [creditCards, setCreditCards] = useState([]);
     const [chosenCreditCard, setChosenCreditCard] = useState({});
     const [navigationSource, setNavigationSource] = useState('');
+    const [chosenDiv, setChosenDiv] = useState({});
     const location = useLocation();
   
     useEffect(() => {
@@ -41,6 +42,7 @@ const PaymentMethod = () =>{
     const declarePayment = (id) => {
       setChosenCreditCard(creditCards.filter(card => card.id === id))
         console.log(chosenCreditCard)
+        setChosenDiv(id)
     }
 
     const renderContent = () => {
@@ -125,14 +127,20 @@ const PaymentMethod = () =>{
                     <div className="card-container">
                         {creditCards.map((c) =>{
                             return (
-                            <div className="row profile-content">
+                            <div className="row profile-content" onClick={() => {declarePayment(c.id)}}>
                             <hr className="mt-3"/>       
                                 <div className="col">
                                 <span className="profile-text">{c.cardNo.substring(0, 4)}  {replaceNumbers(c.cardNo.substring(4, 12))} {c.cardNo.substring(12, 17)}</span>
                                 </div>
-                                <div className="col profile-arrow">
-                                <i className="fa-sharp fa-regular fa-circle" onClick={() => {declarePayment(c.id)}}></i>
+                                    <div className="text-end">
+                                            {chosenDiv == c.id ? (
+                                    <i className="fa-sharp fa-solid fa-circle"></i>
+                                    ) : (
+                                    <i className="fa-sharp fa-regular fa-circle"></i>
+                                    )}
                                 </div>
+                              
+                                
                             </div>  
                         )})} 
                     </div>                    

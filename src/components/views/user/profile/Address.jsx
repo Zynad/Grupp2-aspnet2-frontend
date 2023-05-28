@@ -12,6 +12,7 @@ const Address = () => {
     const [address, setAddress] = useState([]);
     const [deleteResult, setDeleteResult] = useState(1);
     const [navigationSource, setNavigationSource] = useState('');
+    const [chosenDiv, setChosenDiv] = useState({});
     const location = useLocation();
   
     useEffect(() => {
@@ -30,9 +31,11 @@ const Address = () => {
     }
     
     const declareAddress = (id) => {
-        const filteredAddress = address.filter((address) => address.id === id);
-        const chosenAddress = filteredAddress.length > 0 ? filteredAddress[0] : null;
-        handleChosenAddress(chosenAddress);
+      const filteredAddress = address.filter((address) => address.id === id);
+      const chosenAddress = filteredAddress.length > 0 ? filteredAddress[0] : null;
+      handleChosenAddress(chosenAddress);
+      console.log(chosenAddress)
+      setChosenDiv(id)
     }
 
     const updatingAddress = async (address) => {
@@ -106,19 +109,27 @@ const Address = () => {
           <hr className="mb-4 mt-4" />
           {address.map((item) => (
           <>   
-
+           
+          <div id="item.id" onClick={() => { declareAddress(item.id) }}>
           <div className="col">
           <i class="fa-sharp fa-solid fa-location-dot address-icon"></i>
           <span className="profile-text">{item.title}</span>
           <div className="profile-addresses-text">{item.streetName}, {item.postalCode}, {item.city}</div>
          </div>
 
-          <div className="col profile-arrow">
-          <i className="fa-sharp fa-regular fa-circle" onClick={() => {declareAddress(item.id)}}></i>
+    
+          <div className="text-end">
+                {chosenDiv == item.id ? (
+              <i className="fa-sharp fa-solid fa-circle"></i>
+            ) : (
+              <i className="fa-sharp fa-regular fa-circle"></i>
+            )}
           </div>
 
           <hr className="mb-4 mt-4"/>
-          </>    
+          </div>
+        
+          </>
          ))}  
         </div>
       

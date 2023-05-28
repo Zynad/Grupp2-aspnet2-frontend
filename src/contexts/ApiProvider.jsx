@@ -258,16 +258,18 @@ const createOrderAsync = async (order= {}) => {
     const response = await fetch('https://grupp2-aspnet2-inl-tobbe-test.azurewebsites.net/api/Order/CreateOrder?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
     if (response.ok){ return true }
     return false;
-    console.log(response)
     }
     
+
+//GET REVIEWS BY ID    
 const getReviewsByIdAsync = async (id = "") => {
     const response = await fetch(`https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Review/GetByProductId?productId=${id}&key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c`);
     const data = await response.json();
     return data;
     console.log(data)
     }
-    
+
+// ADD REVIEW    
 const addReviewAsync = async (review = {}) => {
     const token = Cookies.get('token')
     const requestOptions = {
