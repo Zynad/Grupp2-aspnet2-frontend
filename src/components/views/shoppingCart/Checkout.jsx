@@ -13,7 +13,8 @@ const Checkout = () => {
     const [address, setAddress] = useState({});
     const [paymentMethod, setPaymentMethod] = useState({});
     const [showAdress, setShowAdress] = useState(false);
-    const [showPaymentMethod, setShowPaymentMethod] = useState(false);
+  const [showPaymentMethod, setShowPaymentMethod] = useState(false);
+  console.log(shoppingCart)
 
     const showAdresses = () => {
       setShowAdress(true);
