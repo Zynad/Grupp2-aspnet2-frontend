@@ -5,6 +5,7 @@ const ShoppingCartProvider = (props) => {
   const [shoppingCart, setShoppingCart] = useState([]);
   const [shipping, setShipping] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
+  const [totalItems, setTotalItems] = useState(0);
 
 
     const addProductToCart = (product, price, size, color, quantity) => {
@@ -14,10 +15,9 @@ const ShoppingCartProvider = (props) => {
       while (i < quantity) {
       setTotalPrice(prevTotalPrice => prevTotalPrice + price);
       i++;
+      setTotalItems(prevTotalItems => prevTotalItems + 1);
       }
-      
-    console.log(totalPrice)
-      
+      console.log(totalItems)
   };
 
   const removeProductFromCart = (product, price) => {
@@ -31,6 +31,32 @@ const ShoppingCartProvider = (props) => {
     setTotalPrice(totalPrice - price);
   };
 
+  const updateCart = (product, price, change) => {
+     setShoppingCart(prevData => {
+      const updatedData = prevData.map(item => {
+        if (item.id === product.id) {
+          if (change === "-") {
+            return { ...item, quantity: item.quantity - 1 };
+          } else {
+            return { ...item, quantity: item.quantity + 1 };
+          }
+        }
+        return item;
+      });
+       return updatedData;
+     });
+
+   
+  };
+
+  const updatePrice = () => { 
+    setTotalPrice(shoppingCart.map(item => {
+      return item.price * item.quantity
+    }))
+  }
+  
+
+
 
 
   return (
@@ -41,6 +67,9 @@ const ShoppingCartProvider = (props) => {
           shoppingCart,
           totalPrice,
           removeProductFromCart,
+          totalItems,
+          updateCart,
+          updatePrice
         }}
       >
         {props.children}
