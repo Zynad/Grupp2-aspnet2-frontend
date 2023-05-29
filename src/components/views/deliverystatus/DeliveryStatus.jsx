@@ -21,43 +21,42 @@ const DeliveryStatus = () => {
             <div className="progress-steps">
               <div className={`step ${currentStep >= 1 ? 'completed' : ''}`}>
                 <div className="step-icon">
-                  <i className="pe-7s-cart"></i>
                 </div>
                 <div className="step-content">
                   <h4 className="step-title">Order created</h4>                 
-                  <p className="step-paragraph">We have received your order</p>
+                  <p className="step-paragraph" style={{ fontSize: '14px' }}>We have received your order</p>
                 </div>
               </div>
+              <div className='v-line'></div>
               <div className={`step ${currentStep >= 2 ? 'completed' : ''}`}>
                 <div className="step-icon">
-                  <i className="pe-7s-config"></i>
                 </div>
                 <div className="step-content">
                   <h4 className="step-title">Order confirmed</h4>
                   <p className="step-paragraph" style={{ fontSize: '14px' }}>Your order has been confirmed</p>
                 </div>
               </div>
+              <div className='v-line'></div>
               <div className={`step ${currentStep >= 3 ? 'completed' : ''}`}>
                 <div className="step-icon">
-                  <i className="pe-7s-medal"></i>
                 </div>
                 <div className="step-content">
                   <h4 className="step-title">Order shipping</h4>
                   <p className="step-paragraph" style={{ fontSize: '14px' }}>Estimated for July 20, 2023</p>
                 </div>
               </div>
+              <div className='v-line'></div>
               <div className={`step ${currentStep >= 4 ? 'completed' : ''}`}>
                 <div className="step-icon">
-                  <i className="pe-7s-car"></i>
                 </div>
                 <div className="step-content">
                   <h4 className="step-title">Courier delivering</h4>
                   <p className="step-paragraph" style={{ fontSize: '14px' }}>Estimated for July 20, 2023</p>
                 </div>
               </div>
+              <div className='v-line'></div>
               <div className={`step ${currentStep >= 5 ? 'completed' : ''}`}>
                 <div className="step-icon">
-                  <i className="pe-7s-home"></i>
                 </div>
                 <div className="step-content">
                   <h4 className="step-title">Receiving</h4>

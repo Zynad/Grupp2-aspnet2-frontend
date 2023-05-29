@@ -5,7 +5,6 @@
   text-align: center;
   background-color: white;
   padding: 30px;
-  margin-top: 20px;
 }
 
 h1 {
@@ -28,12 +27,6 @@ h1 {
   padding: 20px;
 }
 
-.step {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
 .step-icon {
   width: 40px;
   height: 40px;
@@ -45,15 +38,20 @@ h1 {
   margin-right: 10px;
   position: relative;
 }
-.step-icon::before {
+
+
+
+.step-icon::after {
   content: '';
-  width: 34px;
-  height: 34px;
+  background-color: black;
   border-radius: 50%;
-  background-color: white;
+  width: 25px;
+  height: 25px;
 }
+
 .step-title {
   margin-bottom: 5px;
+  text-align: left;
 }
 
 .step-paragraph {
@@ -71,8 +69,9 @@ h1 {
   z-index: 1;
 }
 
-.completed .step-marker {
-  background-color: black;
+.step {
+  display: flex;
+  align-items: center;
 }
 
 .card-header {
@@ -91,8 +90,21 @@ h1 {
   margin-bottom: 5px;
 }
 
+.v-line{
+  border-left: solid 2px;
+  height: 35px;
+  margin-left: 19px;
+  margin-top: 0;
+}
+
+.test-circle{
+  background-color: black;
+  width: 50%;
+  height: 50%;
+}
+
 /* Mobilanpassning */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
   .container {
     flex-direction: row;
     justify-content: center;
