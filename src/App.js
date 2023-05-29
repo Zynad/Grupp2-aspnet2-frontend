@@ -34,9 +34,11 @@ import PaymentMethod from "./components/views/user/profile/PaymentMethod";
 import AddCreditCard from "./components/views/user/profile/AddCreditCard";
 import ShoppingCartProvider from "./contexts/ShoppingCartProvider";
 import Checkout from "./components/views/shoppingCart/Checkout";
+import AddReview from "./components/partials/shared/reviews/AddReview";
 import VerifyPhoneNumber from "./components/views/user/verifyphonenumber/VerifyPhoneNumber";
 import ConfirmCode from "./components/views/user/verifyphonenumber/ConfirmCode";
 import FilterProducts from "./components/views/filters/FilterProducts";
+
 
 
 function App() {
@@ -50,6 +52,15 @@ function App() {
                 <ProductProvider>
                   <ShoppingCartProvider>
                     <Routes>
+                      <Route path="/products/:id" element={<Product />} />
+                      <Route
+                        path="/products/:id/reviews"
+                        element={<ReviewSection />}
+                      />
+                      <Route
+                        path="/products/:id/reviews/add"
+                        element={<AddReview />}
+                      />
                       <Route path="/editprofile" element={<EditProfile />} />
                       <Route
                         path="/recoverpassword"

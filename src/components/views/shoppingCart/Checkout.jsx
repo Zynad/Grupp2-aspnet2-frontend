@@ -2,14 +2,58 @@ import React, { useContext, useState } from 'react'
 import "./shoppingCart.css"
 import { ShoppingCartContext } from '../../../contexts/ShoppingCartProvider'
 import { NavLink } from 'react-router-dom'
+import { ApiContext } from '../../../contexts/ApiProvider'
+import Address from '../user/profile/Address'
+import PaymentMethod from '../user/profile/PaymentMethod'
+import { AddressContext } from '../../../contexts/AddressProvider'
+import Header from '../../partials/header/Header'
+
 
 const Checkout = () => {
     const { totalPrice, shoppingCart } = useContext(ShoppingCartContext);
-    const [address, setAddress] = useState([]);
-    
+    const { chosenAddress} = useContext(AddressContext);
+    const { createOrderAsync } = useContext(ApiContext);
+    const [address, setAddress] = useState({});
+    const [paymentMethod, setPaymentMethod] = useState({});
+    const [showAdress, setShowAdress] = useState(false);
+  const [showPaymentMethod, setShowPaymentMethod] = useState(false);
+  console.log(shoppingCart)
+
+    const showAdresses = () => {
+      setShowAdress(true);
+    };
+  
+    const showPaymentMethods = () => {
+      setShowPaymentMethod(true);
+    };
+  
+    const placeOrder = async () => {
+      var orderItems = shoppingCart.map((item) => {
+        let orderItem = {
+          "id": item.id,
+          "productId": item.id,
+          "productName": item.name,
+          "unitPrice": item.price,
+          "imageUrl": item.imageUrl,
+          "quantity": item.quantity,
+          "color": item.color,
+          "size": item.size
+        }
+        return orderItem;
+      })
+
+      const order = {
+        "addressId": chosenAddress.id,
+        "items": orderItems
+      }
+      console.log(order)
+      const response = await createOrderAsync(order);
+
+    }
 
   return (
-      <>
+    <>
+      <Header route={"/shoppingcart"} title={"Checkout"} shoppingBag={"hidden"} />
 
           <div>
             <div className='text-space mt-4'>
@@ -26,8 +70,8 @@ const Checkout = () => {
 
           
           <div className='col text-space'>
-            <div className='text'> {item.name}, storlek, färg,</div>
-            <div className='text'> antal X ${item.price} </div>
+            <div className='text'> {item.name}, {item.size}, {item.color}</div>
+            <div className='text'> {item.quantity} X ${item.price} </div>
           </div>
           </div> 
           ))}   
@@ -45,21 +89,22 @@ const Checkout = () => {
           
           <hr className='mt-4 mb-4'></hr>
 
-          <NavLink to="/adress">
           <div>
-           Shipping Details
+            <button onClick={showAdresses}>Adress</button>
+            {showAdress && <Address/>}
           </div>
-          </NavLink>
           
             <hr className='mt-4 mb-4'></hr>
 
+      
           <div>
-           Payment Method
+            <button onClick={showPaymentMethods}>Payment Methods</button>
+            {showPaymentMethod && <PaymentMethod />}
           </div>
-
+         
 
           <div>
-            <button className="dark-btn-standard">CONFIRM ORDER</button>   
+            <button className="dark-btn-standard" onClick={placeOrder}>CONFIRM ORDER</button>   
           </div>
       </>
   )
