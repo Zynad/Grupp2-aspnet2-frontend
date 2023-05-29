@@ -3,9 +3,13 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 18px;
   background-color: #f7f7f7;
-  padding-bottom: 100px;
 }
 
+/* Top Header*/
+.home-container{
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
 
 /* Buttons */
 .dark-btn-standard {
@@ -138,13 +142,9 @@ label {
   overflow-x: auto;
 }
 
-
-@media (max-width: 768px){
-  .item-carousel::-webkit-scrollbar {
-    display: none;
-  }
+.item-carousel::-webkit-scrollbar {
+  display: none;
 }
-
 
 /* Banners */
 
@@ -161,3 +161,10 @@ label {
   color: grey;
   text-align: center;
 }
+
+@media (max-width: 768px){
+  .home-container{
+    padding-top: 0px;
+  }
+}
+
