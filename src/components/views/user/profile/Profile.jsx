@@ -41,7 +41,7 @@ const Profile = () => {
         <div className="container profile-section">
         <div className="mt-5 upper-profile-content">
          <span className="line-login"></span>
-         <ProfilePicture/>
+         <NavLink to="/editprofile"><ProfilePicture></ProfilePicture></NavLink>
          <h2 className="heading-standard mt-3"> {userHasValue? user.firstName + " " + user.lastName : "" }
          </h2>
          <div className="standard-text">{user.email}</div>

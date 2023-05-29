@@ -40,11 +40,11 @@ const FilterAndSort = () => {
 
         <div className="row filter-content mt-5">
         <div className="col"><NavLink to="/filterproducts" className="nav-standard"><i class="fa-light fa-arrow-up-arrow-down"></i></NavLink> Filters </div>
-        <div className="col sorting">Sorting by<i onClick={() => {sorting? handleSorting(false) : handleSorting(true)}} class="fa-solid fa-sort-down sort-icon"></i></div>
+        <div className="col sorting">Sorting by     <i onClick={() => {sorting? handleSorting(false) : handleSorting(true)}} class="fa-solid fa-sort-down sort-icon"></i></div>
         </div>
 
         {sorting && 
-        <div className="row mt-3">
+        <div className="row mt-1">
         <div className="col sorting-content">
         <div className="sorting-text" onClick={() => {handlePriceClick("low")}}>Lowest Price</div>
         <div className="sorting-text" onClick={() => {handlePriceClick("high")}}>Highest Price</div>

@@ -44,24 +44,32 @@ const getProductsByFilters = async (data) => {
 }
 
 // PUT
-const putAsync = async (url = '', data = {}, handlePut) => { 
+const putAsync = async (url = '', data = {}) => { 
+
+    const token = Cookies.get('token');
+
+    console.log(url)
+    console.log(data)
+    console.log(token)
+
     const requestOptions = {
          method: 'PUT',
-         headers: { 'Content-Type' : 'application/json'},
+         headers: { 'Content-Type' : 'application/json', 'Authorization' : `Bearer ${ token }`},
          body: JSON.stringify(data)
          };
          await fetch(url, requestOptions)
          .then((response) => {
          if(!response.ok){
-              handlePut("false")
-              throw new Error(response.status);
+              
+              
            }
          else {
-             handlePut("true")
+            console.log(response)
+             
           }
           })
          .catch(() => {
-           handlePut("false")
+           
          });    
     };
 
@@ -334,7 +342,7 @@ const verifyPhoneNumber = async (phone = {})=>{
 
     return (
         <>
-            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress, loginFacebook, registerCreditCard, getUserCreditCards, removeCreditCard, getProductsByCategory, getProductsByFilters, verifyPhoneNumber, createOrderAsync, getReviewsByIdAsync, addReviewAsync }}>
+            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress, loginFacebook, registerCreditCard, getUserCreditCards, removeCreditCard, getProductsByCategory, getProductsByFilters, verifyPhoneNumber, createOrderAsync, getReviewsByIdAsync, addReviewAsync, putAsync }}>
                 {props.children}
             </ApiContext.Provider>
         </>
