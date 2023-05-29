@@ -125,6 +125,10 @@
 /* Profile Picture Section */
 
 .profile-picture-content{
+    text-align: center;
+}
+
+.profile-picture{
     height: 250px;
     width: 250px;
     border: 5px solid lightgrey;
@@ -140,14 +144,12 @@
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    margin: 170px;
     text-decoration: none;
-    opacity: 0.9;
+    cursor: pointer;
 }
 
 .profile-circle:hover{
-    cursor: pointer;
-    opacity: 1;
+    background: grey;
 }
 
 
