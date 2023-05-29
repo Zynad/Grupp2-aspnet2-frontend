@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import '../../views/deliverystatus/deliverystatus.css';
+//import '../../../assets/styles/application.css';
+import '../deliverystatus/deliverystatus.css';
 import TrackOrderImage from './../../../assets/images/TrackOrder.png';
 
 const DeliveryStatus = () => {
