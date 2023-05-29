@@ -4,7 +4,8 @@ import { ShoppingCartContext } from '../../../contexts/ShoppingCartProvider'
 import { NavLink } from 'react-router-dom'
 import "./shoppingCart.css"
 import { useState } from 'react'
-
+import emptyCartImg from '..//..//..//assets/images/EmptyShoppingCart.png'
+import TopHeader from '../../partials/shared/topHeader/TopHeader'
 
 
 const ShoppingCart = () => {
@@ -91,9 +92,17 @@ const ShoppingCart = () => {
     } else {
       return (
       <>
-      <div className='wishlist-empty-content'>
-      <img className='wishlist-empty' src="https://episodes.castos.com/633784b2510731-96124419/images/503435-137428.jpg"></img>
-      <NavLink to="/home"><div className='mt-5'><button className="button-wishlist-empty col-12 col-lg-6">SHOP NOW</button></div></NavLink>
+      <TopHeader />
+      <div className='cart-empty-content'>
+      <img className='cart-empty' src={emptyCartImg}></img>
+      
+      <div className='cart-empty-wrapper'>
+        <div className='vl'></div>
+        <h2>Your cart is empty!</h2>
+        <div className='cart-empty-text'>Looks like you haven't made your order yet.</div>
+      </div>
+      
+      <NavLink to="/home"><div className='cart-empty-button'><button className="button-cart-empty col-12 col-lg-6">SHOP NOW</button></div></NavLink>
       </div>
       </>
       )

@@ -25,6 +25,8 @@
 .top-header-title{
     font-family: monospace;
     font-size: 40px;
+    text-decoration: none;
+    color: black;
 }
 
 @media (max-width: 768px){
