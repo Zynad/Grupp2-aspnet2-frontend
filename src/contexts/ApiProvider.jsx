@@ -296,7 +296,7 @@ const createOrderAsync = async (order= {}) => {
 
 //GET REVIEWS BY ID    
 const getReviewsByIdAsync = async (id = "") => {
-    const response = await fetch(`https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Review/GetByProductId?productId=${id}&key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c`);
+    const response = await fetch(`https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Review/GetByProductId?productId=${id}&key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c`);
     const data = await response.json();
     return data;
     console.log(data)

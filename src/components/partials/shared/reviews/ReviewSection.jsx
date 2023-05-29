@@ -49,6 +49,7 @@ const ReviewSection = () => {
                  
                 </div>
                 {reviewList.map((review) => {
+                    const dateObject = new Date(review.createdDate);
                     return (
                         <div className='review-section'>
                             <div className='profile-image'>
@@ -57,7 +58,7 @@ const ReviewSection = () => {
                             <div className='text-section'>
                                 <div className='name'> {review.name} </div>
                                 <div className='star-rating-review'> <StarRating rating={review.rating} /> </div>
-                                <div className='date'>17 maj 2023</div>
+                                <div className='date'>{dateObject.toLocaleDateString()}</div>
                                 <div className='comment'> {review.comment} </div>
                             </div>
                         </div>

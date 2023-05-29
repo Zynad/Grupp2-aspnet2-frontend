@@ -10,6 +10,8 @@
   display: grid;
   grid-template-columns: 50px 80%;
   gap: 10px;
+  border-bottom: 1px solid black;
+  margin-bottom: 5px;
 }
 
 .header-section {
@@ -25,4 +27,9 @@
 
 .date {
   font-size: 0.8;
+}
+
+.text-section {
+  line-height: 1;
+  margin-bottom: 5px;
 }
