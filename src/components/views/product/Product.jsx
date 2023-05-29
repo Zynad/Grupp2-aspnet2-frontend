@@ -4,6 +4,7 @@ import DetailedItem from '../../partials/shared/detailedItem/DetailedItem';
 import ReviewSection from '../../partials/shared/reviews/ReviewSection';
 import { ProductContext } from '../../../contexts/ProductProvider';
 import { useContext } from 'react';
+import Header from '../../partials/header/Header';
 
 const Product = () => {
   
@@ -13,6 +14,7 @@ const Product = () => {
   
   return (
     <>
+      <Header route={"/home"} title={"Manero"}/>
       <DetailedItem item={ item } />
       <ReviewSection item={ item } />
     </>

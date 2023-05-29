@@ -8,7 +8,7 @@ const TopHeader = () => {
     
         <div className='top-header-container'>
             <Contact />
-            <div className='top-header-title'>MANERO</div>
+            <NavLink className='top-header-title' to="/home">MANERO</NavLink>
             <NavLink className="top-header-bag" to="/shoppingcart"><i className="fa-2xs fa-light fa-bag-shopping"></i></NavLink>
         </div>
     
