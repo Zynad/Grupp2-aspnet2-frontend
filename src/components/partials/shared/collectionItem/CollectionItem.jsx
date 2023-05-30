@@ -22,7 +22,7 @@ const CollectionItem = ({item}) => {
 
 
     return (
-            <div className='container'>
+
             <div className="item-wrapper">
                 <div className="image-section">
                         <img src={item.imageUrl} alt={item.name}/>
@@ -34,12 +34,11 @@ const CollectionItem = ({item}) => {
                             </NavLink>
                         </div>
                     </div>
-                    </div>
+                </div>
                     <div className="body-section">
                         <div className="name">{item.name}</div>
                         <StarRating rating={item.rating} numberOfReviews={item.reviewCount}/>
-                        <div className="price">${item.price}</div>
-                    </div>
+                    <div className="price">${item.price}</div>
                 </div>
             </div>
   )
