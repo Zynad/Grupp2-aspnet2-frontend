@@ -14,7 +14,7 @@ const getAllProductsAsync = async () => {
 
 // GET PRODUCT BY ID
 const getProductByIdAsync = async (id = "") => {
-    const response = await fetch(`https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Products/Get?${id}?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c`);
+    const response = await fetch(`https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Products/Get?${id}&key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c`);
     const data = await response.json();
     return data;
 }
@@ -32,25 +32,44 @@ const getProductsByCategory = async (category) => {
     return data;
 }
 
+// Get Products by filter
+const getProductsByFilters = async (data) => {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type' : 'application/json' },
+        body: JSON.stringify(data)
+        };
+    const response = await fetch('https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Products/Filter?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    return await response.json();
+}
+
 // PUT
-const putAsync = async (url = '', data = {}, handlePut) => { 
+const putAsync = async (url = '', data = {}) => { 
+
+    const token = Cookies.get('token');
+
+    console.log(url)
+    console.log(data)
+    console.log(token)
+
     const requestOptions = {
          method: 'PUT',
-         headers: { 'Content-Type' : 'application/json'},
+         headers: { 'Content-Type' : 'application/json', 'Authorization' : `Bearer ${ token }`},
          body: JSON.stringify(data)
          };
          await fetch(url, requestOptions)
          .then((response) => {
          if(!response.ok){
-              handlePut("false")
-              throw new Error(response.status);
+              
+              
            }
          else {
-             handlePut("true")
+            console.log(response)
+             
           }
           })
          .catch(() => {
-           handlePut("false")
+           
          });    
     };
 
@@ -120,14 +139,35 @@ const loginAsync = async (url = '', data = {}, handleLogin, validation) => {
 
 
     // Login Facebook
-    const loginFacebook = async () => {
-        const token = Cookies.get('token');
+    const loginFacebook = async (url = '', data = {}, handleLogin, validation) => {
+        //const token = Cookies.get('token');
         const requestOptions = {
-            method: 'GET',
-            headers:  { 'Authorization' : `Bearer ${ token }` }
+            method: 'POST',
+            headers: { /*'Authorization': `Bearer ${token}`, */'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
         }
-        const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Account/ExternalFacebook?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
-        console.log(response)
+        await fetch(url, requestOptions)
+            .then((response => {
+                if (!response.ok) {
+                    validation("The username or password is incorrect")
+                    handleLogin("false")
+                }
+                else {
+                    const res = response.text()
+                        .then(data => {
+                            validation("");
+                            handleLogin("true");
+                            const token = data;
+                            Cookies.set('token', token)
+                            // const decode = jwt(token);
+                            // const getToken = Cookies.get('token');                                        
+                        })
+                }
+            }))
+            .catch(() => {
+                validation("The username or password is incorrect")
+                handleLogin("false")
+            })   
     }
 
 
@@ -248,14 +288,68 @@ const removeCreditCard = async (id)=>{
 }
 
 
+//CREATE A NEW ORDER
+const createOrderAsync = async (order= {}) => {
+    const token = Cookies.get('token')
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type' : 'application/json', 'Authorization' : `Bearer ${ token }` },
+        body: JSON.stringify(order)
+    }
+    const response = await fetch('https://grupp2-aspnet2-inl-tobbe-test.azurewebsites.net/api/Order/CreateOrder?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    if (response.ok){ return true }
+    return false;
+    }
+    
+
+//GET REVIEWS BY ID    
+const getReviewsByIdAsync = async (id = "") => {
+    const response = await fetch(`https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Review/GetByProductId?productId=${id}&key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c`);
+    const data = await response.json();
+    return data;
+    console.log(data)
+    }
+
+// ADD REVIEW    
+const addReviewAsync = async (review = {}) => {
+    const token = Cookies.get('token')
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type' : 'application/json', 'Authorization' : `Bearer ${ token }` },
+        body: JSON.stringify(review)
+    }
+    const response = await fetch('https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Review/AddReview?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    if (response.ok){ return true }
+    return false;
+    }
+
+ 
+//VERIFY PHONE NUMBER
+const verifyPhoneNumber = async (phone = {})=>{
+    const token = Cookies.get('token')
+    const requestOptions = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${ token }`},
+        body: JSON.stringify(phone)
+    }
+
+    const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/account/ConfirmPhone?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    const data = await response.json();
+    return data;
+}
+
+
+
     return (
         <>
-            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress, loginFacebook, registerCreditCard, getUserCreditCards, removeCreditCard, getProductsByCategory }}>
+            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress, loginFacebook, registerCreditCard, getUserCreditCards, removeCreditCard, getProductsByCategory, getProductsByFilters, verifyPhoneNumber, createOrderAsync, getReviewsByIdAsync, addReviewAsync, putAsync }}>
                 {props.children}
             </ApiContext.Provider>
         </>
     )
 }
+
+
 
 export default ApiProvider
 

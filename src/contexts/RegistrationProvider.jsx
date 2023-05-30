@@ -29,7 +29,7 @@ const RegistrationProvider = (props) => {
     if(!regExPassword.test(password)) { handleRegistration("false"); }
     
     const data = {firstName : firstName, lastName : lastName, email : email, password : password, phoneNumber : phone}
-    const url = "https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/account/register?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c";
+    const url = "https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Account/Register?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c";
     await registrationAsync(url, data, handleRegistration);
   };
 

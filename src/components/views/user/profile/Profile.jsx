@@ -41,7 +41,7 @@ const Profile = () => {
         <div className="container profile-section">
         <div className="mt-5 upper-profile-content">
          <span className="line-login"></span>
-         <ProfilePicture/>
+         <NavLink to="/editprofile"><ProfilePicture></ProfilePicture></NavLink>
          <h2 className="heading-standard mt-3"> {userHasValue? user.firstName + " " + user.lastName : "" }
          </h2>
          <div className="standard-text">{user.email}</div>
@@ -77,6 +77,17 @@ const Profile = () => {
             </div>
             <div className="col profile-arrow">
             <NavLink className="nav-standard" to="/address"><i className="fa-light fa-chevron-right"></i></NavLink>
+            </div>
+         <hr className="mb-4 mt-4"/>
+         </div>
+
+         <div className="row profile-content">                   
+         <div className="col">
+         <i className="fa-regular fa-phone profile-icon"></i>
+            <NavLink className="nav-standard" to="/verifyphonenumber"> <span className="profile-text">Verify phone</span></NavLink>
+            </div>
+            <div className="col profile-arrow">
+            <NavLink className="nav-standard" to="/verifyphonenumber"><i className="fa-light fa-chevron-right"></i></NavLink>
             </div>
          <hr className="mb-4 mt-4"/>
          </div>

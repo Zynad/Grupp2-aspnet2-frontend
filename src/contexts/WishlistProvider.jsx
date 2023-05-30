@@ -6,7 +6,16 @@ const WishlistProvider = (props) => {
 const [wishlist, setWishlist] = useState([]);
 
 const handleWishlist = async (product) => {
-    await setWishlist([...wishlist, product]);
+
+    const filterWishList = wishlist.filter((item) => {
+        if(item.id == product.id){
+            return item;
+        }
+    })
+
+    if (filterWishList.length < 1){
+        await setWishlist([...wishlist, product]);
+    }   
 }
 
 const deleteWishlist = async (id) => {
