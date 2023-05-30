@@ -13,14 +13,15 @@ const PaymentMethod = () =>{
     const location = useLocation();
   
     useEffect(() => {
-      setNavigationSource(getNavigationSource());
+        setNavigationSource(getNavigationSource(),
+        getAllUserCreditCards(),
+        );
     }, []);
 
     const getNavigationSource = () => {
            return location.pathname;
     };
 
-    useEffect (() => { getAllUserCreditCards()}, []);
 
     const getAllUserCreditCards = async ()=>{
         const data = await getUserCreditCards();

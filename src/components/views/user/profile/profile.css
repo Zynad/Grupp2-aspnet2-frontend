@@ -1,5 +1,9 @@
 /* Profile Section */
 
+.container {
+  padding-bottom: 110px;
+}
+
 .upper-profile-content {
   text-align: center;
 }
@@ -123,33 +127,32 @@
 
 /* Profile Picture Section */
 
-
-.profile-picture-content{
-    text-align: center;
+.profile-picture-content {
+  text-align: center;
 }
 
-.profile-picture{
-    height: 250px;
-    width: 250px;
-    border: 5px solid lightgrey;
-    border-radius: 50%;
+.profile-picture {
+  height: 250px;
+  width: 250px;
+  border: 5px solid lightgrey;
+  border-radius: 50%;
 }
 
 .profile-circle {
-    background: lightgrey;
-    color: #000000;
-    height: 50px;
-    width: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    text-decoration: none;
-    cursor: pointer;
+  background: lightgrey;
+  color: #000000;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.profile-circle:hover{
-    background: grey;
+.profile-circle:hover {
+  background: grey;
 }
 
 /*Payment Section*/

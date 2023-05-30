@@ -53,7 +53,7 @@ const ReviewSection = () => {
                     return (
                         <div className='review-section'>
                             <div className='profile-image'>
-                                <img src="" alt="" className='circle' />
+                                <img src={review.imageUrl} alt="" className='circle' />
                             </div>
                             <div className='text-section'>
                                 <div className='name'> {review.name} </div>
