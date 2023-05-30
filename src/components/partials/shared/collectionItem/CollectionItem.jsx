@@ -58,10 +58,10 @@ const CollectionItem = ({item}) => {
                         <img src={item.imageUrl} alt={item.name}/>
                     <div className="image-menu">
                         <div className='icons'>
-                        <button onClick={() => { wishListHandle(item)}} className="image-link"><i id={item.id} onClick={(e) => {handleHeart(e)}} className="fa-solid fa-heart hej"></i></button>
+                        <button onClick={() => { wishListHandle(item)}} className="image-link"><i id={item.id} onClick={(e) => {handleHeart(e)}} className="fa-solid fa-heart fa-lg hej"></i></button>
                             
                             <NavLink to={"/products/" + item.id}>
-                            <button onClick={() => { showDetailedItem(item) }} className="image-link"><i className="fa-regular fa-bag-shopping"></i></button>
+                            <button onClick={() => { showDetailedItem(item) }} className="image-link mt-2"><i className="fa-regular fa-bag-shopping"></i></button>
                             </NavLink>
                         </div>
                     </div>
