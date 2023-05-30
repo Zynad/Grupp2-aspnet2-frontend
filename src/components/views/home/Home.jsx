@@ -7,6 +7,7 @@ import { ApiContext } from '../../../contexts/ApiProvider'
 import { useState, useEffect } from 'react'
 import DetailedItem from '../../partials/shared/detailedItem/DetailedItem'
 import ColorSelector from '../../partials/shared/colorSelector/ColorSelector'
+import TopHeader from '../../partials/shared/topHeader/TopHeader'
 
 const Home = () => {
   const { getAllProductsAsync } = useContext(ApiContext);
@@ -33,13 +34,14 @@ const Home = () => {
 
   if (loadState) {
   return (
-    <>
+    <div className='home-container'>
+        <TopHeader />
         <WelcomeBanner />
         <Collection title="Best sellers" itemList={bestSellerList} />
         <SaleBanner /> 
         <Collection title="Featured Products" itemList={featuredList} />
         <Navigation />
-    </>
+    </div>
   )
 }
   
