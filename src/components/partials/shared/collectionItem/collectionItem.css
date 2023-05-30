@@ -22,13 +22,15 @@ img {
 }
 
 .image-link {
-  margin: 5px;
   height: 50px;
   width: 50px;
-  font-size: 1.4em;
-  display: grid;
-  border-radius: 50%;
+  display: flex;
+  justify-content: center;
   align-items: center;
+  border-radius: 50%;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid lightgray;
 }
 
 .hej{
