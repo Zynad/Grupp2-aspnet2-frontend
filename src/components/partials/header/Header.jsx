@@ -6,14 +6,7 @@ import { useContext } from "react";
 const Header = ({route, title, link, shoppingBag }) => {
 
   const {totalItems, totalPrice} = useContext(ShoppingCartContext)
-  
-  const handleLink = () => {
-    if (link == null){
-      return (
-          <div className="col-4 header-icon-content"><NavLink to="cart" className="nav-standard"><i className="fa-regular fa-bag-shopping"></i></NavLink></div>
-      )
-    }
-  }
+ 
 
 
     return (
@@ -30,8 +23,7 @@ const Header = ({route, title, link, shoppingBag }) => {
           <span class='badge badge-warning' id='lblCartCount'> {totalItems} </span></NavLink></div>
           
           )}
-          <div className="col-4 header-title">{title}</div>
-          {handleLink()}
+         
           </div>
         </>
     )
