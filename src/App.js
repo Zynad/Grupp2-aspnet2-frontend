@@ -35,6 +35,7 @@ import AddCreditCard from "./components/views/user/profile/AddCreditCard";
 import ShoppingCartProvider from "./contexts/ShoppingCartProvider";
 import Checkout from "./components/views/shoppingCart/Checkout";
 import OrderConfirmationPage from "./components/views/oderResult/OrderConfirmationPage";
+import OrderDeclinedPage from "./components/views/oderResult/OrderDeclinedPage";
 
 function App() {
   return (
