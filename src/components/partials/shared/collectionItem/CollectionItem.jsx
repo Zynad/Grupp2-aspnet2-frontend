@@ -1,25 +1,55 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import "./collectionItem.css"
 import StarRating from '../starRating/StarRating'
 import { WishlistContext } from '../../../../contexts/WishlistProvider';
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { ProductContext } from '../../../../contexts/ProductProvider'
 
 
 const CollectionItem = ({item}) => {
     const { designateDetailedItem } = useContext(ProductContext)
-    const { handleWishlist } = useContext(WishlistContext);
-
-
+    const { handleWishlist, wishlist, deleteWishlist } = useContext(WishlistContext);
+  
     const showDetailedItem = async (item) => {
         await designateDetailedItem(item)
     }
  
-    const wishList = async (product) => {
+    const wishListHandle = async (product) => {
         await handleWishlist(product)
     }
 
+    useEffect (() => {
+        handleHeartOnStart()
+    }, [])
+
+    const handleHeartOnStart = () => {
+        const elements = document.querySelectorAll(".hej");
+        elements.forEach((item) => {
+            wishlist.filter((element) => {
+                if(item.id == element.id){
+                    item.classList.add("red")
+                }
+            })
+        })
+    }
+
+    const handleHeart = (e) => {
+        const id = e.target.id;
+        const icon = wishlist.filter((item) => {
+            if(item.id == id){
+                return item;
+            }
+        });
+        if (icon != null){
+            if(e.target.classList.contains("red")){
+                e.target.classList.remove("red")
+                deleteWishlist(id)
+            } else {
+                e.target.classList.add("red")
+            }
+        }
+    }
 
     return (
 
@@ -28,7 +58,8 @@ const CollectionItem = ({item}) => {
                         <img src={item.imageUrl} alt={item.name}/>
                     <div className="image-menu">
                         <div className='icons'>
-                            <button onClick={() => { wishList(item) }} className="image-link"><i className="fa-regular fa-heart"></i></button>
+                        <button onClick={() => { wishListHandle(item)}} className="image-link"><i id={item.id} onClick={(e) => {handleHeart(e)}} className="fa-solid fa-heart hej"></i></button>
+                            
                             <NavLink to={"/products/" + item.id}>
                             <button onClick={() => { showDetailedItem(item) }} className="image-link"><i className="fa-regular fa-bag-shopping"></i></button>
                             </NavLink>

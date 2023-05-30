@@ -30,3 +30,23 @@ img {
   border-radius: 50%;
   align-items: center;
 }
+
+.hej{
+  color: grey;
+  opacity: 0.9;
+}
+
+.hej:hover{
+  color: #E06469;
+  opacity: 1;
+
+}
+
+.red{
+  color: #E06469;
+  opacity: 0.9;
+}
+
+.red:hover{
+  opacity: 1;
+}
