@@ -50,9 +50,13 @@ const ShoppingCartProvider = (props) => {
   };
 
   const updatePrice = () => { 
-    setTotalPrice(shoppingCart.map(item => {
-      return item.price * item.quantity
-    }))
+    setTotalPrice(0)
+    let i;
+      shoppingCart.map(item => {
+      for (i = 1; i < item.quantity; i++){
+        setTotalPrice(prevTotalPrice => prevTotalPrice + item.price)
+      }
+    })
   }
   
 

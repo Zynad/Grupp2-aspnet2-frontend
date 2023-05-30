@@ -100,8 +100,8 @@ const ShoppingCart = () => {
   
   return (
     <>
-     <Header route={"/home"} title={"Order"} shoppingBag={"hidden"}/>
      <div className='container mt-5'>
+     <Header route={"/home"} title={"Order"} shoppingBag={"hidden"}/>
      {renderShoppingCart()}
      </div>
      <Navigation />

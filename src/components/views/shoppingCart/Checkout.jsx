@@ -16,8 +16,7 @@ const Checkout = () => {
     const [address, setAddress] = useState({});
     const [paymentMethod, setPaymentMethod] = useState({});
     const [showAdress, setShowAdress] = useState(false);
-  const [showPaymentMethod, setShowPaymentMethod] = useState(false);
-  console.log(shoppingCart)
+    const [showPaymentMethod, setShowPaymentMethod] = useState(false);
 
     const showAdresses = () => {
       setShowAdress(true);
@@ -53,6 +52,7 @@ const Checkout = () => {
 
   return (
     <>
+      <div className='container'>
       <Header route={"/shoppingcart"} title={"Checkout"} shoppingBag={"hidden"} />
 
           <div>
@@ -105,7 +105,8 @@ const Checkout = () => {
 
           <div>
             <button className="dark-btn-standard" onClick={placeOrder}>CONFIRM ORDER</button>   
-          </div>
+        </div>
+        </div>
       </>
   )
 }
