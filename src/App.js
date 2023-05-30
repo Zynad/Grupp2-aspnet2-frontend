@@ -35,6 +35,10 @@ import AddCreditCard from "./components/views/user/profile/AddCreditCard";
 import ShoppingCartProvider from "./contexts/ShoppingCartProvider";
 import Checkout from "./components/views/shoppingCart/Checkout";
 import OrderConfirmationPage from "./components/views/oderResult/OrderConfirmationPage";
+import AddReview from "./components/partials/shared/reviews/AddReview";
+import VerifyPhoneNumber from "./components/views/user/verifyphonenumber/VerifyPhoneNumber";
+import ConfirmCode from "./components/views/user/verifyphonenumber/ConfirmCode";
+import FilterProducts from "./components/views/filters/FilterProducts";
 
 function App() {
   return (
@@ -49,13 +53,21 @@ function App() {
                     <Routes>
                       <Route path="/products/:id" element={<Product />} />
                       <Route
-                        path="/products/reviews"
+                        path="/products/:id/reviews"
                         element={<ReviewSection />}
+                      />
+                      <Route
+                        path="/products/:id/reviews/add"
+                        element={<AddReview />}
                       />
                       <Route path="/editprofile" element={<EditProfile />} />
                       <Route
                         path="/recoverpassword"
                         element={<RecoverPassword />}
+                      />
+                      <Route
+                        path="/filterproducts"
+                        element={<FilterProducts />}
                       />
                       <Route path="/filter" element={<FilterAndSort />} />
                       <Route path="/" element={<Intro />} />
@@ -63,6 +75,11 @@ function App() {
                       <Route path="/SecondSlide" element={<SecondSlide />} />
                       <Route path="/ThirdSlide" element={<ThirdSlide />} />
                       <Route path="/home" element={<Home />} />
+                      <Route path="/products/:id" element={<Product />} />
+                      <Route
+                        path="/products/reviews"
+                        element={<ReviewSection />}
+                      />
                       <Route path="/search" element={<Search />} />
                       <Route path="/shoppingcart" element={<ShoppingCart />} />
                       <Route path="/checkout" element={<Checkout />} />
@@ -101,6 +118,8 @@ function App() {
                         }
                       />
                       <Route path="/login" element={<Login />} />
+                      <Route path="/verifyphonenumber" element={< VerifyPhoneNumber />} />
+                      <Route path="/verifyphonenumber/confirmcode" element={< ConfirmCode />} />
                     </Routes>
                   </ShoppingCartProvider>
                 </ProductProvider>
