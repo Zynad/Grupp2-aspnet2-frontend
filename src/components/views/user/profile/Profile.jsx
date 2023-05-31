@@ -50,14 +50,13 @@ const Profile = () => {
 
          <div className="row profile-content">
          <hr className="mt-5"/>       
-            <NavLink className="col" to="/orderHistory">
-            <i className="fa-sharp fa-regular fa-bag-shopping profile-icon"></i>
-            <span className="profile-text">Order history</span>
-            </NavLink>
+          <div className="col">
+            <i className="fa-light fa-bag-shopping profile-icon"></i>
+                   <NavLink className="nav-standard" to="/orderHistory"><span className="profile-text">Order history
+                   </span></NavLink>
+            </div>
             <div className="col profile-arrow">
-            <NavLink className="nav-standard" to="/orderHistory">
-            <i className="fa-light fa-chevron-right"></i>
-            </NavLink>
+            <NavLink className="nav-standard" to="/orderHistory"><i className="fa-light fa-chevron-right"></i></NavLink>
             </div>
         <hr className="mb-4 mt-4"/>
          </div>
