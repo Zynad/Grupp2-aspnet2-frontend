@@ -183,6 +183,21 @@ const loginAsync = async (url = '', data = {}, handleLogin, validation) => {
         return data;
 }
 
+// Forgot password
+    const forgotPassword = async (url = '', email = {}) => {
+        const token = Cookies.get('token');
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ Email : email })
+        };
+
+        console.log(requestOptions)
+
+        const response = await fetch(url, requestOptions)
+        if(response.statusText == "OK") { return true } else { return false }
+    }
+
 // Recover Password
 const recoverPassword = async (password = {}) => {
     const token = Cookies.get('token');
@@ -342,7 +357,7 @@ const verifyPhoneNumber = async (phone = {})=>{
 
     return (
         <>
-            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress, loginFacebook, registerCreditCard, getUserCreditCards, removeCreditCard, getProductsByCategory, getProductsByFilters, verifyPhoneNumber, createOrderAsync, getReviewsByIdAsync, addReviewAsync, putAsync }}>
+            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress, loginFacebook, registerCreditCard, getUserCreditCards, removeCreditCard, getProductsByCategory, getProductsByFilters, verifyPhoneNumber, createOrderAsync, getReviewsByIdAsync, addReviewAsync, putAsync, forgotPassword }}>
                 {props.children}
             </ApiContext.Provider>
         </>

@@ -24,7 +24,21 @@ const ResetPassword = () => {
 
      await recoverPassword(password)
 
-     // Skicka till API
+         // // Skicka en POST-förfrågan till API:et för att återställa lösenordet
+         // fetch("/api/recoverpassword", {
+         //  method: "POST",
+         //  headers: { "Content-Type": "application/json" },
+         //  body: JSON.stringify({ email: userEmail, token: userToken, newPassword }),
+         //})
+         //  .then((response) => {
+         //    if (response.ok) {
+         //      // Om lösenordet har återställts, skicka användaren till inloggningsidan
+         //      history.push("/login");
+         //    } else {
+         //      throw new Error("Failed to reset password");
+         //    }
+         //  })
+         //  .catch((error) => console.log(error));
     
   };
 
@@ -87,22 +101,3 @@ const ResetPassword = () => {
 }
 
 export default ResetPassword;
-
-
-
-
-//  // Skicka en POST-förfrågan till API:et för att återställa lösenordet
-//  fetch("/api/resetpassword", {
-//   method: "POST",
-//   headers: { "Content-Type": "application/json" },
-//   body: JSON.stringify({ email: userEmail, token: userToken, newPassword }),
-// })
-//   .then((response) => {
-//     if (response.ok) {
-//       // Om lösenordet har återställts, skicka användaren till inloggningsidan
-//       history.push("/login");
-//     } else {
-//       throw new Error("Failed to reset password");
-//     }
-//   })
-//   .catch((error) => console.log(error));
