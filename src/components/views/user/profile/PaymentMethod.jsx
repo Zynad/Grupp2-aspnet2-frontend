@@ -47,7 +47,7 @@ const PaymentMethod = () =>{
 
     const renderContent = () => {
     switch (navigationSource) {
-      case '/paymentMethod':
+      default:
         return(
         <>
             <div className="container my-5">
@@ -176,7 +176,7 @@ const PaymentMethod = () =>{
             </div>
         </>
     );
-      default:
+      
         return <div>Default content</div>;
     }
   };
