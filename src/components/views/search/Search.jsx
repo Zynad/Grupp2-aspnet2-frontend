@@ -25,7 +25,7 @@ const Search = () => {
 
   return (
      <>     
-    <Navigation className={showCategories ? 'navigation open' : 'navigation'} />
+    <Navigation />
      <div className='category-search-page'>
         <div className='top-navbar-grid'>
             <div className='top-navbar-menu-block' onClick ={handleMenuToggle}>
@@ -40,15 +40,13 @@ const Search = () => {
                 <i class="fa-light fa-bag-shopping"></i>
             </div> 
          
-        {showCategories ? (
-        <div className={`category-grid-links ${showCategories ? 'open' : ''}`}>
+        <div className='category-grid-links'>
             <div className='category-links'><a href='/men'>Men</a></div>
             <div className='category-links'><a href='/women'>Women</a></div>         
             <div className='category-links'><a href='/kids'>Kids</a></div>            
             <div className='category-links'><a href='/interior'>Interior</a></div>            
             <div className='category-links'><a href='/outdoor'>Outdoor</a></div>  
         </div>
-        ): null}
 
         <div className='category-page-grid'>
             <div className ='category-block-text'>Men</div>
