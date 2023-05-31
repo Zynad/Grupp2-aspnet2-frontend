@@ -134,7 +134,7 @@ const loginAsync = async (url = '', data = {}, handleLogin, validation) => {
             method: 'POST',
             headers: { 'Authorization' : `Bearer ${ token }` }
             };
-            const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Account/Logout?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+            const response = await fetch('https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Account/Logout?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
             if(response.statusText == "OK") { return true } else { return false }
     };
 
@@ -179,7 +179,7 @@ const loginAsync = async (url = '', data = {}, handleLogin, validation) => {
           method: 'GET',
           headers: { 'Authorization' : `Bearer ${ token }` }
           };
-        const response = await fetch ('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/account/getprofile?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions);
+        const response = await fetch ('https://grupp2-aspnet2-inl-master.azurewebsites.net/api/account/getprofile?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions);
         const data = await response.json();
         return data;
 }
@@ -216,7 +216,7 @@ const getAddress = async () => {
         method: 'GET',
         headers: { 'Authorization' : `Bearer ${ token }` }
     }
-    const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Address/GetUserAddresses?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions);
+    const response = await fetch('https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Address/GetUserAddresses?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions);
     const data = await response.json();
     return data;
 }
@@ -229,7 +229,7 @@ const registerAddress = async (adress = {}) => {
         headers: { 'Content-Type' : 'application/json', 'Authorization' : `Bearer ${ token }` },
         body: JSON.stringify(adress)
     }
-    const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Address/RegisterAddress?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    const response = await fetch('https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Address/RegisterAddress?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
     if (response.ok){ return true }
     return false;
 }
@@ -242,7 +242,7 @@ const removeAddress = async (id) => {
         method: 'DELETE',
         headers: { 'Content-Type' : 'application/json', 'Authorization' : `Bearer ${ token }` }
     }
-    const response = await fetch(`https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Address/RemoveAddress/${id}?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c`, requestOptions)
+    const response = await fetch(`https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Address/RemoveAddress/${id}?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c`, requestOptions)
     if(response.ok){
         return true;
     }
@@ -257,7 +257,7 @@ const updateAddress = async (address) => {
         body: JSON.stringify(address)
     }
 
-    const response = await fetch ('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Address/UpdateAddress?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    const response = await fetch ('https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Address/UpdateAddress?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
     if(response.ok)
         return true
 }
@@ -271,7 +271,7 @@ const registerCreditCard = async (creditCard = {})=>{
         headers: { 'Content-Type' : 'application/json', 'Authorization' : `Bearer ${ token }` },
         body: JSON.stringify(creditCard)
     }
-    const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Payment/RegisterCreditCard?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    const response = await fetch('https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Payment/RegisterCreditCard?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
     if (response.ok){ return true }
     return false;
 }
@@ -283,7 +283,7 @@ const getUserCreditCards = async ()=>{
         method: 'GET',
         headers: { 'Authorization' : `Bearer ${ token }` }
     }
-    const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Payment/GetUserCreditCards?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions);
+    const response = await fetch('https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Payment/GetUserCreditCards?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions);
     const data = await response.json();
     return data;
 }
@@ -295,7 +295,7 @@ const removeCreditCard = async (id)=>{
         method: 'DELETE',
         headers: { 'Content-Type' : 'application/json', 'Authorization' : `Bearer ${ token }` }
     }
-    const response = await fetch(`https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Payment/RemoveCreditCard/${id}?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c`, requestOptions);
+    const response = await fetch(`https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Payment/RemoveCreditCard/${id}?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c`, requestOptions);
     if(response.ok){
         return true;
     }
@@ -347,7 +347,7 @@ const verifyPhoneNumber = async (phone = {})=>{
         body: JSON.stringify(phone)
     }
 
-    const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/account/ConfirmPhone?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    const response = await fetch('https://grupp2-aspnet2-inl-master.azurewebsites.net/api/account/ConfirmPhone?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
     const data = await response.json();
     return data;
 }
@@ -359,7 +359,7 @@ const getAllCurrentPromocodes = async () =>{
         method: 'GET',
         headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${ token }`}
     }
-    const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/UserCoupon/GetAllUnused?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    const response = await fetch('https://grupp2-aspnet2-inl-master.azurewebsites.net/api/UserCoupon/GetAllUnused?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
     const data = await response.json();
     return data;
 }
@@ -369,7 +369,7 @@ const getAllUsedPromocodes = async () =>{
         method: 'GET',
         headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${ token }`}
     }
-    const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/UserCoupon/GetAllUsed?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    const response = await fetch('https://grupp2-aspnet2-inl-master.azurewebsites.net/api/UserCoupon/GetAllUsed?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
     const data = await response.json();
     return data;
 }
@@ -380,7 +380,7 @@ const addPromocodeVoucher = async (promocodeVoucher = {})=>{
         headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${ token }`},
         body: JSON.stringify(promocodeVoucher)
     }
-    const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/UserCoupon/AddUserCoupon?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    const response = await fetch('https://grupp2-aspnet2-inl-master.azurewebsites.net/api/UserCoupon/AddUserCoupon?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
     if(response.ok)
     {
         const data = await response.json();
@@ -395,7 +395,7 @@ const getAllPromocodes = async ()=>{
         method: 'GET',
         headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${ token }`}
     }
-    const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/UserCoupon/GetAll?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    const response = await fetch('https://grupp2-aspnet2-inl-master.azurewebsites.net/api/UserCoupon/GetAll?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
     const data = await response.json();
     return data;
 }
