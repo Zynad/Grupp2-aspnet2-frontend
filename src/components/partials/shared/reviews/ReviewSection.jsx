@@ -15,12 +15,10 @@ const ReviewSection = () => {
     
 
     const [reviewList, setReviewList] = useState([])
-    console.log(item.id)
     
     const initiateReviewList = async () => {
         let data = await getReviewsByIdAsync(item.id);
         setReviewList(data);
-        console.log(data)
     }
 
         useEffect(() => {

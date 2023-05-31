@@ -38,7 +38,7 @@ const EditProfile = () => {
   <div className="col-4"><NavLink className="nav-standard" to="/profile"><i className="fa-solid fa-angle-left"></i></NavLink></div>
   <div className="col-4 adress-title">Edit Profile</div>
 
-  <div className="container profile-section mt-5">
+  <div className="profile-section mt-5 mb-3">
      <ProfilePicture imageUrl={imageUrl} setUrl={setImageUrl}/>   
   </div>
 
