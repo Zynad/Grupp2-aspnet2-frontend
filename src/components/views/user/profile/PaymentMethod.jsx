@@ -12,15 +12,16 @@ const PaymentMethod = () =>{
     const [chosenDiv, setChosenDiv] = useState({});
     const location = useLocation();
   
-    useEffect(() => {
-      setNavigationSource(getNavigationSource());
-    }, []);
+  
 
     const getNavigationSource = () => {
            return location.pathname;
     };
 
-    useEffect (() => { getAllUserCreditCards()}, []);
+    useEffect(() => {
+    getAllUserCreditCards();
+    setNavigationSource(getNavigationSource());
+    }, []);
 
     const getAllUserCreditCards = async ()=>{
         const data = await getUserCreditCards();
@@ -41,7 +42,6 @@ const PaymentMethod = () =>{
 
     const declarePayment = (id) => {
       setChosenCreditCard(creditCards.filter(card => card.id === id))
-        console.log(chosenCreditCard)
         setChosenDiv(id)
     }
 
@@ -116,14 +116,13 @@ const PaymentMethod = () =>{
         <>
             <div className="container my-5">
                 <div className="row mb-5">
-                    <div className="col-4"><NavLink className="nav-standard" to="/checkout"><i className="fa-solid fa-angle-left"></i></NavLink></div>
+                    <div className="col-4"></div>
                     <div className="col-4 payment-title">Payment method</div>
                     <div className="col-4"></div>
                 </div>
                 <div className="row">
                     <div className="cards-title col">Credit Cards</div>
                 </div>
-                <div className="card-container">
                     <div className="card-container">
                         {creditCards.map((c) =>{
                             return (
@@ -132,48 +131,57 @@ const PaymentMethod = () =>{
                                 <div className="col">
                                 <span className="profile-text">{c.cardNo.substring(0, 4)}  {replaceNumbers(c.cardNo.substring(4, 12))} {c.cardNo.substring(12, 17)}</span>
                                 </div>
-                                    <div className="text-end">
+                                    <div className="col profile-arrow-default text-end">
                                             {chosenDiv == c.id ? (
-                                    <i className="fa-sharp fa-solid fa-circle"></i>
+                                    <i className="fa-sharp fa-solid fa-circle text-end"></i>
                                     ) : (
-                                    <i className="fa-sharp fa-regular fa-circle"></i>
+                                    <i className="fa-sharp fa-regular fa-circle text-end"></i>
                                     )}
                                 </div>
-                              
-                                
                             </div>  
                         )})} 
-                    </div>                    
-                <div className="row profile-content">
-                    <hr className="mt-5"/>       
+                  </div>      
+                <div className="row profile-content" onClick={() => {declarePayment("swish")}}> 
+                    <hr className="mt-3"/>       
                         <div className="col">
                         <span className="profile-text">Swish</span>
                         </div>
-                        <div className="col profile-arrow">
-                        <i className="fa-sharp fa-regular fa-circle"></i>
+                        <div className="col profile-arrow-default text-end">
+                            {chosenDiv == "swish" ? (
+                            <i className="fa-sharp fa-solid fa-circle text-end"></i>
+                            ) : (
+                            <i className="fa-sharp fa-regular fa-circle text-end"></i>
+                            )}
                         </div>
                     </div>     
-                    <div className="row profile-content">
+                    <div className="row profile-content" onClick={() => {declarePayment("directPay")}}>
                     <hr className="mt-3"/>       
                         <div className="col">
                         <span className="profile-text">Direct Payment</span>
                         </div>
-                        <div className="col profile-arrow">
-                        <i className="fa-sharp fa-regular fa-circle"></i>
+                        <div className="col profile-arrow-default text-end">
+                            {chosenDiv == "directPay" ? (
+                            <i className="fa-sharp fa-solid fa-circle text-end"></i>
+                            ) : (
+                            <i className="fa-sharp fa-regular fa-circle text-end"></i>
+                            )}
                         </div>
                     </div>  
-                    <div className="row profile-content">
+                    <div className="row profile-content" onClick={() => {declarePayment("klarna")}}>
                     <hr className="mt-3"/>       
                         <div className="col">
                         <span className="profile-text">Klarna Invoice</span>
                         </div>
-                        <div className="col profile-arrow">
-                        <i className="fa-sharp fa-regular fa-circle"></i>
+                        <div className="col profile-arrow-default text-end">
+                            {chosenDiv == "klarna" ? (
+                            <i className="fa-sharp fa-solid fa-circle text-end"></i>
+                            ) : (
+                            <i className="fa-sharp fa-regular fa-circle text-end"></i>
+                            )}
                         </div>
                     <hr className="mb-4 mt-3"/>
                     </div>  
                 </div>
-            </div>
         </>
     );
     }

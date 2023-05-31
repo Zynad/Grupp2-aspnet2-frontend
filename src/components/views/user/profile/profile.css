@@ -29,6 +29,11 @@
   cursor: pointer;
 }
 
+.profile-arrow-default i {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
 .profile-arrow i:hover {
   opacity: 1;
 }
@@ -124,7 +129,6 @@
   color: #e06469;
   font-size: 20px;
 }
-
 
 /* Profile Picture Section */
 

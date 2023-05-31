@@ -99,7 +99,7 @@ const Address = () => {
         <div className="container my-5">
 
         <div className="row">
-          <div className="col-4"><NavLink className="nav-standard" to="/checkout"><i className="fa-solid fa-angle-left"></i></NavLink></div>
+          <div className="col-4"></div>
           <div className="col-4 adress-title">Shipping Details</div>
           <div className="col-4"></div>
           </div>
@@ -109,23 +109,23 @@ const Address = () => {
           <hr className="mb-4 mt-4" />
           {address.map((item) => (
           <>   
-           
+          <div className="address-checkout-wrapper">
           <div id="item.id" onClick={() => { declareAddress(item.id) }}>
           <div className="col">
           <i class="fa-sharp fa-solid fa-location-dot address-icon"></i>
           <span className="profile-text">{item.title}</span>
           <div className="profile-addresses-text">{item.streetName}, {item.postalCode}, {item.city}</div>
-         </div>
+        </div>
 
     
-          <div className="text-end">
-                {chosenDiv == item.id ? (
-              <i className="fa-sharp fa-solid fa-circle"></i>
-            ) : (
-              <i className="fa-sharp fa-regular fa-circle"></i>
-            )}
-          </div>
-
+            <div className="profile-arrow-default text-end">
+                  {chosenDiv == item.id ? (
+                <i className="fa-sharp fa-solid fa-circle"></i>
+              ) : (
+                <i className="fa-sharp fa-regular fa-circle"></i>
+              )}
+            </div>
+          </div>    
           <hr className="mb-4 mt-4"/>
           </div>
         
