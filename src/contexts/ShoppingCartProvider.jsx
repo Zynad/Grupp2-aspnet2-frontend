@@ -1,4 +1,5 @@
 import { useState, useEffect, createContext } from "react";
+
 export const ShoppingCartContext = createContext();
 
 const ShoppingCartProvider = (props) => {
@@ -7,35 +8,25 @@ const ShoppingCartProvider = (props) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
 
-
-    const addProductToCart = (product, price, size, color, quantity) => {
-    const newProduct = { ...product,  size: size,  color: color, quantity: quantity};
-      setShoppingCart([...shoppingCart, newProduct]);
-      let i = 0
-      while (i < quantity) {
-      setTotalPrice(prevTotalPrice => prevTotalPrice + price);
-      i++;
-      setTotalItems(prevTotalItems => prevTotalItems + 1);
-      }
-      console.log(totalItems)
+  const addProductToCart = (product, price, size, color, quantity) => {
+    const newProduct = { ...product, size: size, color: color, quantity: quantity };
+    setShoppingCart([...shoppingCart, newProduct]);
   };
 
   const removeProductFromCart = (product, price) => {
-    const filterProducts = shoppingCart.filter((element) => {
-      if (element.id !== product.id) {
-        return element;
-      }
-    });
+    const filterProducts = shoppingCart.filter((element) => element.id !== product.id);
 
     setShoppingCart(filterProducts);
-    setTotalPrice(totalPrice - price);
   };
 
   const updateCart = (product, price, change) => {
-     setShoppingCart(prevData => {
-      const updatedData = prevData.map(item => {
-        if (item.id === product.id) {
+    setShoppingCart((prevData) => {
+      const updatedData = prevData.map((item) => {
+        if (item.id === product.id && item.size === product.size && item.color === product.color) {
           if (change === "-") {
+            if (item.quantity === 1) {
+              return null;
+            }
             return { ...item, quantity: item.quantity - 1 };
           } else {
             return { ...item, quantity: item.quantity + 1 };
@@ -43,21 +34,17 @@ const ShoppingCartProvider = (props) => {
         }
         return item;
       });
-       return updatedData;
-     });
-
-   
+          return updatedData.filter((item) => item !== null);
+    });
   };
 
-  const updatePrice = () => { 
-    setTotalPrice(shoppingCart.map(item => {
-      return item.price * item.quantity
-    }))
-  }
-  
+  useEffect(() => {
+    const updatedTotalItems = shoppingCart.reduce((total, item) => total + item.quantity, 0);
+    setTotalItems(updatedTotalItems);
 
-
-
+    const updatedTotalPrice = shoppingCart.reduce((total, item) => total + item.price * item.quantity, 0);
+    setTotalPrice(updatedTotalPrice.toFixed(2));
+  }, [shoppingCart]);
 
   return (
     <>
@@ -68,8 +55,7 @@ const ShoppingCartProvider = (props) => {
           totalPrice,
           removeProductFromCart,
           totalItems,
-          updateCart,
-          updatePrice
+          updateCart
         }}
       >
         {props.children}
