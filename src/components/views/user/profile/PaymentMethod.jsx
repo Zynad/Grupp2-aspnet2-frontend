@@ -176,8 +176,6 @@ const PaymentMethod = () =>{
             </div>
         </>
     );
-      
-        return <div>Default content</div>;
     }
   };
  
