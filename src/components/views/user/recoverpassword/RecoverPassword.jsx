@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { NavLink, Navigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { ApiContext } from "../../../../contexts/ApiProvider";
 
 const ResetPassword = () => {
@@ -8,6 +8,7 @@ const ResetPassword = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [validation, setValidation] = useState("");
   const regEx = new RegExp('^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^a-zA-Z0-9]).{8,}$');
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -18,18 +19,14 @@ const ResetPassword = () => {
     }
      setValidation("");
 
-     const password = {newPassword : newPassword, confirmPassword : confirmPassword}
-
-     console.log(password)
-
-      let params = new URLSearchParams(window.location.search);
+    let params = new URLSearchParams(window.location.search);
     var userEmail = params.get('email')
     var userToken = params.get('token')
 
      await recoverPassword(userEmail, userToken, newPassword)
     .then((response) => {
         if (response == true) {
-            return <Navigate to="/login" />;
+            navigate("/login");
         }
         else {
             throw new Error("Failed to reset password");
