@@ -13,10 +13,11 @@ const getAllProductsAsync = async () => {
 }
 
 // GET PRODUCT BY ID
-const getProductByIdAsync = async (id = "") => {
-    const response = await fetch(`https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Products/Get?${id}&key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c`);
+const getProductByIdAsync = async (id) => {
+    const response = await fetch(`https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Products/Get?id=${id}&key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c`);
     const data = await response.json();
-    return data;
+    if (response.ok) return data;
+    return("error")
 }
 
 // Get Products by category 
