@@ -1,24 +1,33 @@
 import {NavLink} from 'react-router-dom'
-import {useState} from 'react';
+import {useState, useContext} from 'react';
 import ProfilePicture from './ProfilePicture';
+import { ApiContext } from '../../../../contexts/ApiProvider';
 
 const EditProfile = () => {
+
+  const{putAsync} = useContext(ApiContext);
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
-    const [phone, setPhone] = useState("");
+    const [imageUrl, setImageUrl] = useState("");
     const [validation, setValidation] = useState("");
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
       event.preventDefault();
-      if (firstName.length < 2 || lastName.length < 2 || email.length < 2 || phone.length < 2)
+      if (firstName.length < 2 || lastName.length < 2 || email.length < 2)
       {
         setValidation("Saving profile faild. Try again!") 
         return;
       }
       setValidation("");
-      const profile = {firstName : firstName, lastName : lastName, email : email, phone : phone}
+      const data = {firstName : firstName, lastName : lastName, email : email, imageUrl : imageUrl}
+      const url = 'https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Account/UpdateProfile?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c'
+
+      const response = await putAsync(url, data )
+
+
+
     }
 
   return (
@@ -30,12 +39,12 @@ const EditProfile = () => {
   <div className="col-4 adress-title">Edit Profile</div>
 
   <div className="container profile-section mt-5">
-     <ProfilePicture/>   
+     <ProfilePicture imageUrl={imageUrl} setUrl={setImageUrl}/>   
   </div>
 
 <form onSubmit={handleSubmit}>
 
-  <div className="col-lg-12 mt-5 input-wrapper">
+  <div className="col-lg-12 input-wrapper">
     <label htmlFor="title">Firstname</label>
     <input name="title" value={firstName} onChange={(event) => setFirstName(event.target.value)} type="text" onKeyUp={(event) => {
       if (event.target.value.length <= 1) 
@@ -80,29 +89,11 @@ const EditProfile = () => {
     <div id="email" className="text-danger ml-5"></div>
  </div>
 
- <div className="col-lg-12 mt-3 input-wrapper">
-    <label htmlFor="phone">Phone number</label>
-    <input name="phone" value={phone} onChange={(event) => setPhone(event.target.value)} type="text" onKeyUp={(event) => {
-      if (event.target.value.length <= 1) 
-       {
-         document.querySelector("#phone").innerHTML = "Not a valid phone number"
-       } 
-      else 
-       {
-         document.querySelector("#phone").innerHTML = ""
-       }}}>
-    </input>
-    <div id="phone" className="text-danger ml-5"></div>
- </div>
-
  <div className="validation text-danger mt-3">{validation}</div>
 
  <button className="dark-btn-standard my-5" type="submit">Save Changes</button>
 
  </form>
-
-
-
 </div>
 </div>
         

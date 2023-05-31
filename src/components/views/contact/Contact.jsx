@@ -16,7 +16,7 @@ const Contact = () => {
     <>
     <div className="contact-container">
       <div className="contact-icon" onClick={handleToggle}>
-        <i className="fa-regular fa-bars-staggered"></i>
+      <i class="fa-regular fa-bars"></i>
       </div>
       {isOpen && (
         <div className="contact-side-menu">

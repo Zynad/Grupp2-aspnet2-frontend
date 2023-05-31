@@ -5,13 +5,19 @@ const ShoppingCartProvider = (props) => {
   const [shoppingCart, setShoppingCart] = useState([]);
   const [shipping, setShipping] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
+  const [totalItems, setTotalItems] = useState(0);
 
-//   const ordersCollectionRef = collection(db, "orders");
 
-  const addProductToCart = (product, price) => {
-    setShoppingCart([...shoppingCart, product]);
-      setTotalPrice(totalPrice + price);
-      console.log(totalPrice)
+    const addProductToCart = (product, price, size, color, quantity) => {
+    const newProduct = { ...product,  size: size,  color: color, quantity: quantity};
+      setShoppingCart([...shoppingCart, newProduct]);
+      let i = 0
+      while (i < quantity) {
+      setTotalPrice(prevTotalPrice => prevTotalPrice + price);
+      i++;
+      setTotalItems(prevTotalItems => prevTotalItems + 1);
+      }
+      console.log(totalItems)
   };
 
   const removeProductFromCart = (product, price) => {
@@ -25,28 +31,33 @@ const ShoppingCartProvider = (props) => {
     setTotalPrice(totalPrice - price);
   };
 
-//   const handlePostCart = async (
-//     cart,
-//     firstName,
-//     lastName,
-//     email,
-//     personalNumber
-//   ) => {
-//     setShipping(
-//       "Your order was successfully placed! The ordernumber will be sent to: " +
-//         email
-//     );
-
-//     const products = cart.map((product) => {
-//       return product.title + ", " + product.brand;
-//     });
-
-//     const productsId = cart.map((product) => {
-//       return product.id;
-//     });
+  const updateCart = (product, price, change) => {
+     setShoppingCart(prevData => {
+      const updatedData = prevData.map(item => {
+        if (item.id === product.id) {
+          if (change === "-") {
+            return { ...item, quantity: item.quantity - 1 };
+          } else {
+            return { ...item, quantity: item.quantity + 1 };
+          }
+        }
+        return item;
+      });
+       return updatedData;
+     });
 
    
-//   };
+  };
+
+  const updatePrice = () => { 
+    setTotalPrice(shoppingCart.map(item => {
+      return item.price * item.quantity
+    }))
+  }
+  
+
+
+
 
   return (
     <>
@@ -56,6 +67,9 @@ const ShoppingCartProvider = (props) => {
           shoppingCart,
           totalPrice,
           removeProductFromCart,
+          totalItems,
+          updateCart,
+          updatePrice
         }}
       >
         {props.children}
