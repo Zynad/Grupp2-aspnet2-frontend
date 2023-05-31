@@ -9,9 +9,17 @@ const ShoppingCartProvider = (props) => {
   const [totalItems, setTotalItems] = useState(0);
 
   const addProductToCart = (product, price, size, color, quantity) => {
+  const existingProduct = shoppingCart.find((item) => item.id === product.id && item.size === size && item.color === color);
+
+  if (existingProduct) {
+    existingProduct.quantity += quantity;
+    setShoppingCart([...shoppingCart]);
+  } else {
     const newProduct = { ...product, size: size, color: color, quantity: quantity };
     setShoppingCart([...shoppingCart, newProduct]);
-  };
+  }
+};
+
 
   const removeProductFromCart = (product, price) => {
     const filterProducts = shoppingCart.filter((element) => element.id !== product.id);
