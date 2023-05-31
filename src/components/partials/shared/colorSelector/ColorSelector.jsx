@@ -21,13 +21,13 @@ const Circle = ({ color, selectable, selectedCircle, onSelect }) => {
 
   return <div className="circle-color" style={circleStyle} onClick={handleClick}></div>;
 };
-const ColorSelector = () => {
+
+const ColorSelector = ({setColor}) => {
   const [selectedCircle, setSelectedCircle] = useState(null);
 
   const handleCircleSelect = (color) => {
     setSelectedCircle(color)
-    console.log(color)
-    // Perform additional actions based on the selected color
+    setColor(color)
   };
 
   return (

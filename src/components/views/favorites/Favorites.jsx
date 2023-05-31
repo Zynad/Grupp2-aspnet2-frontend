@@ -1,17 +1,18 @@
 import React from 'react'
 import "./favorites.css"
 import Navigation from '../../partials/navigation/Navigation'
-import {useContext} from 'react'
+import {useContext, useState, useEffect} from 'react'
 import { WishlistContext } from '../../../contexts/WishlistProvider'
 import StarRating from "../../partials/shared/starRating/StarRating"
 import wishImg from "../../../assets/images/wishlist.png"
 import { NavLink } from 'react-router-dom'
 import Header from "../../partials/header/Header"
+import Cookies from 'js-cookie'
 
 
 const Favorites = () => {
 
-  const { wishlist, deleteWishlist } = useContext(WishlistContext);
+  const { wishlist, deleteWishlist, setWishlist } = useContext(WishlistContext);
 
   const deleteProduct = async (id) => {
    await deleteWishlist(id)
@@ -19,12 +20,12 @@ const Favorites = () => {
 
   const renderWishlist = () => {
 
-    if(wishlist.length != 0){
+    if(wishlist != 0){
       return (    
         <>    
         {wishlist.map((item, index) => (
-          <div className="row wishlist-content mt-5">
-
+          <div className="row wishlist-content">
+      
           <div className="img-content">
           <img className="img-wishlist" src={item.imageUrl}></img>
           </div>
@@ -32,16 +33,14 @@ const Favorites = () => {
           <div className='col text-content'>
           <div className='text'> {item.description}</div>
           <div className='text'> ${item.price}</div>
-          <div className='text'><StarRating rating={item.rating}/></div> 
+          <div className='text'><StarRating rating={item.rating} numberOfReviews={item.reviewCount}/></div> 
           </div>
         
           <div className="col icon-content">
           <i class="fa-solid fa-heart icon-heart fa-lg" onClick={() => {deleteProduct(item.id)}}></i>
           </div>
   
-          <hr className='mt-4 mb-4'></hr>
-
-          
+          <hr className='mt-3'></hr>
           </div> 
         ))}
         </>
@@ -49,7 +48,7 @@ const Favorites = () => {
     } else {
       return (
       <>
-      <div className='wishlist-empty-content'>
+      <div className='wishlist-empty-content mb-5'>
       <img className='wishlist-empty' src={wishImg}></img>
       <NavLink to="/home"><div className='mt-5'><button className="button-wishlist-empty col-12 col-lg-6">SHOP NOW</button></div></NavLink>
       </div>
@@ -61,9 +60,11 @@ const Favorites = () => {
   
   return (
      <>
-     <div className='container mt-5'>
-     <Header title="Wishlist" route="/home"/>
+     <div className='container mt-5 mb-5'>
+     <Header title="Wishlist" route="/home" link="no"/>
+     <div className='mt-5'>
      {renderWishlist()}
+     </div>
      </div>
      <Navigation />
     </>

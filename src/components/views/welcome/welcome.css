@@ -74,18 +74,21 @@
 .Slide-header {
   font-size: 40px;
   width: 200px;
-  height: 45px;
+  text-align: center;
 }
 .Slide-info {
   padding: 20px;
+  text-align: center;
 }
 .Slide-header {
-  font-size: 25px;
+  font-size: 40px;
+  width: 250px
 }
 
 .Slide-info {
   padding: 40px;
   text-align: center;
+  font-size: 25px;
 }
 
 .Slide-button {
@@ -182,8 +185,10 @@
   }
   .Slide-info {
     padding: 20px;
+    font-size: 15px;
   }
   .Slide-header {
-    font-size: 25px;
+    font-size: 20px;
+    width: 150px;
   }
 }

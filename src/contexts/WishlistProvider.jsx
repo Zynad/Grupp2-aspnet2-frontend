@@ -1,13 +1,28 @@
 import { createContext, useState } from "react";
+import Cookies from 'js-cookie'
 export const WishlistContext = createContext();
 
 const WishlistProvider = (props) => {
 
 const [wishlist, setWishlist] = useState([]);
 
+
 const handleWishlist = async (product) => {
-    await setWishlist([...wishlist, product]);
+
+    const filterWishList = wishlist.filter((item) => {
+        if(item.id == product.id){
+            return item;
+        }
+    })
+
+    if (filterWishList.length < 1){
+        const updatedWishlist = [...wishlist, product];
+        await setWishlist(updatedWishlist);
+        Cookies.set('wishlist', JSON.stringify(updatedWishlist))
+    }  
+
 }
+
 
 const deleteWishlist = async (id) => {
 
@@ -17,13 +32,13 @@ const deleteWishlist = async (id) => {
         }
     });
 
-    setWishlist(filterWishlist)
-
+    await setWishlist(filterWishlist)
+    Cookies.set('wishlist', JSON.stringify(filterWishlist))
 } 
 
     return (
         <>
-        <WishlistContext.Provider value = { { handleWishlist, wishlist, deleteWishlist } }>
+        <WishlistContext.Provider value = { { handleWishlist, wishlist, deleteWishlist, setWishlist } }>
          {props.children}
         </WishlistContext.Provider>
         </>
