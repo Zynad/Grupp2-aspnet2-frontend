@@ -39,8 +39,6 @@ h1 {
   position: relative;
 }
 
-
-
 .step-icon::after {
   content: '';
   background-color: black;

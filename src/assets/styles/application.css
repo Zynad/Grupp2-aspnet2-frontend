@@ -119,11 +119,10 @@ label {
 
  /* Review */
  .review-container {
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
   padding: 20px;
   background-color: #ffff;
+  width: 100vw;
+  height: 100vh;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -171,6 +170,11 @@ form {
   color: #f1c40f;
 }
 
+.test-img{
+  width: 300px;
+  height: 300px;
+}
+
 .comment-container {
   margin-bottom: 20px;
 }
@@ -192,14 +196,6 @@ button[type="submit"] {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-}
-
-.reviews-container div {
-  margin-bottom: 10px;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
 }
 
 @media (max-width: 767px) {
@@ -230,7 +226,6 @@ button[type="submit"] {
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .review-container {
-    max-width: 400px;
     padding: 15px;
   }
 
@@ -257,7 +252,6 @@ button[type="submit"] {
 
 @media (min-width: 1024px) {
   .review-container {
-    max-width: 600px;
     padding: 20px;
   }
 }

@@ -9,8 +9,8 @@ const DeliveryStatus = () => {
   return (
     <div className="main_container">
       <h1>Track your order</h1>
-      <div className='TrackOrdaer.Png'>
-        <img src={TrackOrderImage} alt="Order tracking" style={{ width: '200px', height: '300px' }} />
+      <div className='test-img'>
+        <img src={TrackOrderImage} alt="Order tracking" />
       </div>
       <div className="container">
         <div className="card">

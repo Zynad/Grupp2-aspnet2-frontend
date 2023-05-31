@@ -39,11 +39,12 @@ function Review() {
       console.error(error);
     });
   }, []);
-
   return (
     <div className="review-container">
       <h2>Leave a review</h2>
-       { <img src={reviewImage} alt="Review" /> }
+      <div className='test-img'>
+        { <img src={reviewImage} alt="Review" /> }
+      </div>
       <h2>Please rate the quality of service for the order!</h2>
       <form onSubmit={handleSubmit}>
         <div className="rating-container">
@@ -59,7 +60,7 @@ function Review() {
         </div>
         <button type="submit">Send review</button>
       </form>
-      <div className="reviews-container">
+      <div className="review-container">
         {reviews.map((review) => (
           <div key={review.id}>
             <p>Rating: {review.rating.toFixed(1)}</p> {/* Använd toFixed för att visa rating med en decimal */}
