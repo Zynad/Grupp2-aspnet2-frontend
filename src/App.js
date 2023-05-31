@@ -37,6 +37,9 @@ import Checkout from "./components/views/shoppingCart/Checkout";
 import VerifyPhoneNumber from "./components/views/user/verifyphonenumber/VerifyPhoneNumber";
 import ConfirmCode from "./components/views/user/verifyphonenumber/ConfirmCode";
 import FilterProducts from "./components/views/filters/FilterProducts";
+import MyPromocodes from "./components/views/user/profile/MyPromocodes";
+import NoPromocodes from "./components/views/user/profile/NoPromocodes";
+import AddPromocode from "./components/views/user/profile/AddPromocode";
 
 
 function App() {
@@ -83,6 +86,9 @@ function App() {
                       <Route path="/addadress" element={<AddNewAdress />} />
                       <Route path="/address" element={<Address />} />
                       <Route path="/editaddress" element={<EditAddress />} />
+                      <Route path="/mypromocodes" element={<MyPromocodes/>}/>
+                      <Route path="/nopromocodes" element={<NoPromocodes />} />
+                      <Route path="/addpromocode" element={<AddPromocode />} />
                       <Route
                         path="/paymentmethod"
                         element={<PaymentMethod />}

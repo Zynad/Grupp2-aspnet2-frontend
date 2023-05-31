@@ -95,10 +95,10 @@ const Profile = () => {
          <div className="row profile-content">         
          <div className="col">
             <i className="fa-light fa-gift profile-icon"></i>
-            <span className="profile-text">My promocodes</span>
+            <NavLink className="nav-standard" to="/mypromocodes"><span className="profile-text">My promocodes</span></NavLink>
             </div>
             <div className="col profile-arrow">
-            <i className="fa-light fa-chevron-right"></i>
+            <NavLink className="nav-standard" to="/mypromocodes"><i className="fa-light fa-chevron-right"></i></NavLink>
             </div> 
          <hr className="mb-4 mt-4"/>
          </div>
