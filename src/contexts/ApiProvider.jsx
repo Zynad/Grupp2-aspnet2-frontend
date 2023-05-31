@@ -399,11 +399,21 @@ const getAllPromocodes = async ()=>{
     const data = await response.json();
     return data;
 }
+const OrderHistoryBySignedIn = async ()=>{
+    const token = Cookies.get('token')
+    const requestOptions = {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${ token }`}
+    }
+    const response = await fetch('https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Order/GetBySignedIn?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    const data = await response.json();
+    return data;
+}
 
 
     return (
         <>
-            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress, loginFacebook, registerCreditCard, getUserCreditCards, removeCreditCard, getProductsByCategory, getProductsByFilters, verifyPhoneNumber, createOrderAsync, getReviewsByIdAsync, addReviewAsync, putAsync, forgotPassword, getAllCurrentPromocodes, getAllUsedPromocodes, addPromocodeVoucher, getAllPromocodes }}>
+            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress, loginFacebook, registerCreditCard, getUserCreditCards, removeCreditCard, getProductsByCategory, getProductsByFilters, verifyPhoneNumber, createOrderAsync, getReviewsByIdAsync, addReviewAsync, putAsync, forgotPassword, getAllCurrentPromocodes, getAllUsedPromocodes, addPromocodeVoucher, getAllPromocodes,OrderHistoryBySignedIn }}>
                 {props.children}
             </ApiContext.Provider>
         </>
