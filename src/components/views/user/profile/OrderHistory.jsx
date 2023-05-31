@@ -22,6 +22,7 @@ const OrderHistory = () => {
   const showDetails = (items, address, id) => {
     setOrderItems(items);
     setOrderAddress(address);
+    console.log(address);
     setOrderId(id);
   };
 
@@ -48,8 +49,20 @@ const OrderHistory = () => {
               </div>
             </div>
           ))}
-        </div>
         <hr />
+       {orderAddress != null && 
+          <div key={orderAddress.id} className="row wishlist-content">
+            <p>Shipping Details:</p>
+            <div className="col text-space">
+            <div className="text-left">
+              {orderAddress.streetName}, {orderAddress.postalCode}, {orderAddress.city}, Sweden
+              </div>
+          </div>
+        </div>
+}
+        </div>
+
+    
       </>
     );
   };
