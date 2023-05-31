@@ -13,10 +13,11 @@ const getAllProductsAsync = async () => {
 }
 
 // GET PRODUCT BY ID
-const getProductByIdAsync = async (id = "") => {
-    const response = await fetch(`https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Products/Get?${id}?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c`);
+const getProductByIdAsync = async (id) => {
+    const response = await fetch(`https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Products/Get?id=${id}&key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c`);
     const data = await response.json();
-    return data;
+    if (response.ok) return data;
+    return("error")
 }
 
 // Get Products by category 
@@ -44,24 +45,32 @@ const getProductsByFilters = async (data) => {
 }
 
 // PUT
-const putAsync = async (url = '', data = {}, handlePut) => { 
+const putAsync = async (url = '', data = {}) => { 
+
+    const token = Cookies.get('token');
+
+    console.log(url)
+    console.log(data)
+    console.log(token)
+
     const requestOptions = {
          method: 'PUT',
-         headers: { 'Content-Type' : 'application/json'},
+         headers: { 'Content-Type' : 'application/json', 'Authorization' : `Bearer ${ token }`},
          body: JSON.stringify(data)
          };
          await fetch(url, requestOptions)
          .then((response) => {
          if(!response.ok){
-              handlePut("false")
-              throw new Error(response.status);
+              
+              
            }
          else {
-             handlePut("true")
+            console.log(response)
+             
           }
           })
          .catch(() => {
-           handlePut("false")
+           
          });    
     };
 
@@ -175,15 +184,28 @@ const loginAsync = async (url = '', data = {}, handleLogin, validation) => {
         return data;
 }
 
+// Forgot password
+    const forgotPassword = async (url = '', email = {}) => {
+        const token = Cookies.get('token');
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ Email : email })
+        };
+
+        const response = await fetch(url, requestOptions)
+        if(response.statusText == "OK") { return true } else { return false }
+    }
+
 // Recover Password
-const recoverPassword = async (password = {}) => {
+    const recoverPassword = async (userEmail = {}, userToken = {}, newPassword = {}) => {
     const token = Cookies.get('token');
     const requestOptions = {
         method: 'POST',
-        headers: { 'Authorization' : `Bearer ${ token }` },
-        body: JSON.stringify(password)
-        };
-    const response = await fetch ('https://grupp2-aspnet2-inl-alex-test.azurewebsites.net/api/account/recoverpassword?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+        headers: { 'Authorization': `Bearer ${token}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ Email: userEmail, Token: userToken, Password: newPassword })
+    };
+    const response = await fetch('https://grupp2-aspnet2-inl-master.azurewebsites.net/api/account/RecoverPassword?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
     if(response.statusText == "OK") { return true } else { return false }
 }
 
@@ -279,6 +301,43 @@ const removeCreditCard = async (id)=>{
     }
 }
 
+
+//CREATE A NEW ORDER
+const createOrderAsync = async (order= {}) => {
+    const token = Cookies.get('token')
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type' : 'application/json', 'Authorization' : `Bearer ${ token }` },
+        body: JSON.stringify(order)
+    }
+    const response = await fetch('https://grupp2-aspnet2-inl-tobbe-test.azurewebsites.net/api/Order/CreateOrder?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    if (response.ok){ return true }
+    return false;
+    }
+    
+
+//GET REVIEWS BY ID    
+const getReviewsByIdAsync = async (id = "") => {
+    const response = await fetch(`https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/Review/GetByProductId?productId=${id}&key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c`);
+    const data = await response.json();
+    return data;
+    console.log(data)
+    }
+
+// ADD REVIEW    
+const addReviewAsync = async (review = {}) => {
+    const token = Cookies.get('token')
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type' : 'application/json', 'Authorization' : `Bearer ${ token }` },
+        body: JSON.stringify(review)
+    }
+    const response = await fetch('https://grupp2-aspnet2-inl-master.azurewebsites.net/api/Review/AddReview?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    if (response.ok){ return true }
+    return false;
+    }
+
+ 
 //VERIFY PHONE NUMBER
 const verifyPhoneNumber = async (phone = {})=>{
     const token = Cookies.get('token')
@@ -344,12 +403,14 @@ const getAllPromocodes = async ()=>{
 
     return (
         <>
-            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress, loginFacebook, registerCreditCard, getUserCreditCards, removeCreditCard, getProductsByCategory, getProductsByFilters, verifyPhoneNumber, getAllCurrentPromocodes, getAllUsedPromocodes, addPromocodeVoucher, getAllPromocodes }}>
+            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress, loginFacebook, registerCreditCard, getUserCreditCards, removeCreditCard, getProductsByCategory, getProductsByFilters, verifyPhoneNumber, createOrderAsync, getReviewsByIdAsync, addReviewAsync, putAsync, forgotPassword, getAllCurrentPromocodes, getAllUsedPromocodes, addPromocodeVoucher, getAllPromocodes }}>
                 {props.children}
             </ApiContext.Provider>
         </>
     )
 }
+
+
 
 export default ApiProvider
 
