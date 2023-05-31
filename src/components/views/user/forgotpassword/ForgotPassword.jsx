@@ -25,7 +25,7 @@ const ForgotPassword = () => {
             <div className="row">
 
             <div className="col-lg-12 mt-3 input-wrapper">
-            <label for="email">Email</label>
+            <label htmlFor="email">Email</label>
             <input name="email" value={email} onChange={(e) => setEmail(e.target.value)} type="text"></input>
             </div>
 

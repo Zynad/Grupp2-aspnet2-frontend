@@ -24,6 +24,7 @@ const DetailedItem = () => {
     if (color != "" && size != "") {
         await addProductToCart(product, product.price, size, color, count)
       setAddedToCart(true)
+      console.log(count)
       
     }
     else {
