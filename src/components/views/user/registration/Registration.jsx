@@ -10,8 +10,7 @@ const Registration = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [phone, setPhone] = useState("");
-
+  
   if(registrationResult == "true"){
     return <Navigate to="/registrationsuccess"/>;
   }
@@ -58,11 +57,6 @@ const Registration = () => {
       <span id="email" className="text-danger"></span>
       </div>
 
-      <div className="col-lg-6 mt-3 input-wrapper">
-      <label htmlFor="phone">Phone</label>
-      <input name="phone" value={phone} onChange={(e) => setPhone(e.target.value)} onKeyUp={(event) => {if(event.target.value.length < 10){document.querySelector("#phone").innerHTML = "Not a valid phone number"}else{document.querySelector("#phone").innerHTML = ""}}} type="text"></input>
-      <span id="phone" className="text-danger"></span>
-      </div>
       
       <div className="col-lg-6 mt-3 input-wrapper">
       <label htmlFor="password">Password</label>

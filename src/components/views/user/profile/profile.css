@@ -125,10 +125,15 @@
   font-size: 20px;
 }
 
+
 /* Profile Picture Section */
 
 .profile-picture-content {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 3px;
 }
 
 .profile-picture {
@@ -136,6 +141,7 @@
   width: 250px;
   border: 5px solid lightgrey;
   border-radius: 50%;
+  display: flex;
 }
 
 .profile-circle {
@@ -143,12 +149,15 @@
   color: #000000;
   height: 50px;
   width: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: 50%;
   text-decoration: none;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 80px;
+  left: 100px;
 }
 
 .profile-circle:hover {
