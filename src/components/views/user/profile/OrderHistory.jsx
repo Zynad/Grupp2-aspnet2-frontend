@@ -1,21 +1,26 @@
-import React from 'react';
-import { Link, NavLink} from 'react-router-dom';
+import { useContext, useEffect, useState } from "react";
+import { ApiContext } from "../../../../contexts/ApiProvider";
+import { NavLink} from 'react-router-dom';
 import './orderHistory.css'; // Import the local CSS file
 
 const OrderHistory = () => {
-  // Sample order history data
-  const orders = [
-    { id: 1, orderNumber: '#1234', date: '2023-05-12', status: 'Delivered' },
-    { id: 2, orderNumber: '#5678', date: '2023-05-08', status: 'Shipping' },
-    { id: 3, orderNumber: '#0876',date: '2023-05-03', status: 'Cancelled' },
-  ];
+
+  const {OrderHistoryBySignedIn} = useContext(ApiContext);
+  const [orders, setOrders] = useState([])
+
+  useEffect (() => {GetAllOrders()}, []);
+
+  const GetAllOrders = async () =>{
+    var list = await OrderHistoryBySignedIn();
+    setOrders(list);
+  }
 
   return (
       <div className="order-history-container">
         <div className="top-bar">
-          <Link to="/profile" className="go-back-link">
+          <NavLink to="/profile" className="go-back-link">
             <i className="fas fa-arrow-left"></i>
-          </Link>
+          </NavLink>
           <h2 className="order-history-heading">Order History</h2>
         </div>
         <div className="order-list">
@@ -23,9 +28,9 @@ const OrderHistory = () => {
             <div key={order.id} className="order-item">
               <div className="order-info">
                 <div className="order-details">
-                  <div className="order-id">Order ID: {order.orderNumber}</div>
+                  <div className="order-id">Order ID: {order.id}</div>
                   <div className="order-date-time">
-                    Date: {order.date}
+                    Date: {order.orderDate}
                   </div>
                   <div className="order-date-time">
                     Time: {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
