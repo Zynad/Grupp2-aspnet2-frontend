@@ -15,12 +15,12 @@ const Checkout = () => {
     const { totalPrice, shoppingCart } = useContext(ShoppingCartContext);
     const { chosenAddress} = useContext(AddressContext);
     const { createOrderAsync } = useContext(ApiContext);
-    const [address, setAddress] = useState({});
     const [paymentMethod, setPaymentMethod] = useState({});
     const [showAddress, setShowAddress] = useState(false);
     const [showPaymentMethod, setShowPaymentMethod] = useState(false);
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [showDeclined, setShowDeclined] = useState(false);
+    const [orderConfirmed, setOrderConfirmed] = useState(true);
 
     const showAddresses = () => {
       setShowAddress(!showAddress);
@@ -34,8 +34,9 @@ const Checkout = () => {
      
     };
   
-    const placeOrder = async () => {
-      var orderItems = shoppingCart.map((item) => {
+  const placeOrder = async () => {
+    if (chosenAddress.id != null) {
+        var orderItems = shoppingCart.map((item) => {
         let orderItem = {
           "id": item.id,
           "productId": item.id,
@@ -59,6 +60,10 @@ const Checkout = () => {
         } else {
           setShowDeclined(true);
         }
+    } else {
+      setOrderConfirmed(false)
+      }
+      
   }
   
   if (showConfirmation) {
@@ -131,7 +136,9 @@ return (
                 {showPaymentMethod && <PaymentMethod />}
               </div>
             
-          <div>
+             <div>
+            {!orderConfirmed && <p className='center'>You must choose an address and a payment method</p>}
+        
             <button className="dark-btn-standard" onClick={placeOrder}>CONFIRM ORDER</button>   
           </div>
       </div>    
