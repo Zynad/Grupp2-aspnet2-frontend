@@ -94,7 +94,7 @@ const Search = () => {
   </NavLink>
 </div>
 
-<div onClick={() => {handleProducts("accesories")}} className='category-block-2'>
+<div onClick={() => {handleProducts("accessories")}} className='category-block-2'>
   <NavLink to="/filter" className ="category-block-link">
   <img src={accImage} alt="Acc"/>
     <div className='category-block-text'>ACCESORIES</div>
