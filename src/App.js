@@ -63,7 +63,7 @@ function App() {
                       />
                       <Route path="/editprofile" element={<EditProfile />} />
                       <Route
-                        path="/recoverpassword"
+                        path="/RecoverPassword"
                         element={<RecoverPassword />}
                       />
                       <Route

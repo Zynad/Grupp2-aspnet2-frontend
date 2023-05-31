@@ -8,7 +8,7 @@ const ForgotPasswordProvider = (props) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const url = "https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/account/resetpassword?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c";
+        const url = "https://grupp2-aspnet2-inl-master.azurewebsites.net/api/account/resetpassword?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c";
         const email = event.target.elements.email.value
         var bool = await forgotPassword(url, email)
         return bool;
