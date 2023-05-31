@@ -17,7 +17,6 @@ const ShoppingCart = () => {
 
   const updateQuantity = (item, change) => {
     updateCart(item, item.price, change);
-    updatePrice();
   }
   
   const renderShoppingCart = () => {
@@ -25,6 +24,7 @@ const ShoppingCart = () => {
     if(shoppingCart.length != 0){
       return (    
         <>    
+          <div className='container'>
           {shoppingCart.map((item) => (
           
           
@@ -79,7 +79,7 @@ const ShoppingCart = () => {
             <button className="dark-btn-standard">PROCEED TO CHECKOUT</button>   
             </NavLink>
           </div>
-          
+          </div>
         </>
       )
     } else {
