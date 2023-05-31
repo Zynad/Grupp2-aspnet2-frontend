@@ -13,15 +13,14 @@ const PaymentMethod = () =>{
     const location = useLocation();
   
     useEffect(() => {
-        setNavigationSource(getNavigationSource(),
-        getAllUserCreditCards(),
-        );
+      setNavigationSource(getNavigationSource());
     }, []);
 
     const getNavigationSource = () => {
            return location.pathname;
     };
 
+    useEffect (() => { getAllUserCreditCards()}, []);
 
     const getAllUserCreditCards = async ()=>{
         const data = await getUserCreditCards();
@@ -48,7 +47,7 @@ const PaymentMethod = () =>{
 
     const renderContent = () => {
     switch (navigationSource) {
-      case '/paymentMethod':
+      default:
         return(
         <>
             <div className="container my-5">
@@ -177,8 +176,6 @@ const PaymentMethod = () =>{
             </div>
         </>
     );
-      default:
-        return <div>Default content</div>;
     }
   };
  
