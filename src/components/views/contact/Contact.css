@@ -29,6 +29,7 @@
   font-size: 2em;
   color: #111111;
   justify-self: center;
+  cursor: pointer;
 }
 .contact-grid{
   display: grid;

@@ -352,11 +352,58 @@ const verifyPhoneNumber = async (phone = {})=>{
     return data;
 }
 
+//PROMOCODES
+const getAllCurrentPromocodes = async () =>{
+    const token = Cookies.get('token')
+    const requestOptions = {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${ token }`}
+    }
+    const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/UserCoupon/GetAllUnused?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    const data = await response.json();
+    return data;
+}
+const getAllUsedPromocodes = async () =>{
+    const token = Cookies.get('token')
+    const requestOptions = {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${ token }`}
+    }
+    const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/UserCoupon/GetAllUsed?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    const data = await response.json();
+    return data;
+}
+const addPromocodeVoucher = async (promocodeVoucher = {})=>{
+    const token = Cookies.get('token')
+    const requestOptions = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${ token }`},
+        body: JSON.stringify(promocodeVoucher)
+    }
+    const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/UserCoupon/AddUserCoupon?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    if(response.ok)
+    {
+        const data = await response.json();
+        return data;
+    }
+    else
+        return null;
+}
+const getAllPromocodes = async ()=>{
+    const token = Cookies.get('token')
+    const requestOptions = {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${ token }`}
+    }
+    const response = await fetch('https://grupp2-aspnet2-inl-dev.azurewebsites.net/api/UserCoupon/GetAll?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+    const data = await response.json();
+    return data;
+}
 
 
     return (
         <>
-            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress, loginFacebook, registerCreditCard, getUserCreditCards, removeCreditCard, getProductsByCategory, getProductsByFilters, verifyPhoneNumber, createOrderAsync, getReviewsByIdAsync, addReviewAsync, putAsync, forgotPassword }}>
+            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress, loginFacebook, registerCreditCard, getUserCreditCards, removeCreditCard, getProductsByCategory, getProductsByFilters, verifyPhoneNumber, createOrderAsync, getReviewsByIdAsync, addReviewAsync, putAsync, forgotPassword, getAllCurrentPromocodes, getAllUsedPromocodes, addPromocodeVoucher, getAllPromocodes }}>
                 {props.children}
             </ApiContext.Provider>
         </>
