@@ -27,7 +27,7 @@ const RegistrationSuccess = () => {
             </div>
 
             <div className="col-lg-12">
-           <NavLink to="/"><button className="dark-btn-standard mt-5">SHOP NOW</button></NavLink>
+           <NavLink to="/login"><button className="dark-btn-standard mt-5">SHOP NOW</button></NavLink>
             </div>
 
             </div>

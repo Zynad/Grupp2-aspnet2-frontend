@@ -30,7 +30,9 @@ img {
   border-radius: 50%;
   text-decoration: none;
   cursor: pointer;
-  border: 1px solid lightgray;
+  border: none;
+  color: grey;
+  
 }
 
 .hej{
@@ -41,7 +43,10 @@ img {
 .hej:hover{
   color: #E06469;
   opacity: 1;
+}
 
+.bag-icon-hej:hover{
+ color: black;
 }
 
 .red{
