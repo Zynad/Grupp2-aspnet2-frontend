@@ -48,11 +48,6 @@ const getProductsByFilters = async (data) => {
 const putAsync = async (url = '', data = {}) => { 
 
     const token = Cookies.get('token');
-
-    console.log(url)
-    console.log(data)
-    console.log(token)
-
     const requestOptions = {
          method: 'PUT',
          headers: { 'Content-Type' : 'application/json', 'Authorization' : `Bearer ${ token }`},
@@ -60,13 +55,9 @@ const putAsync = async (url = '', data = {}) => {
          };
          await fetch(url, requestOptions)
          .then((response) => {
-         if(!response.ok){
-              
-              
+         if(!response.ok){ 
            }
-         else {
-            console.log(response)
-             
+         else { 
           }
           })
          .catch(() => {

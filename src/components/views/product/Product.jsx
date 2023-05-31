@@ -28,7 +28,10 @@ const Product = () => {
  
     return (
     <>
-      <Header route={"/home"} title={"Manero"}/>
+    <div className="container mt-5">
+    <Header route={"/home"} title={"Manero"}/>
+    </div>
+      
       <DetailedItem item={item} />
       {showReview && <ReviewSection item={ item }/>}       
     </>

@@ -1,6 +1,6 @@
 import Navigation from '../../partials/navigation/Navigation'
 import './Search.css';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Contact from '../contact/Contact';
 import {NavLink} from 'react-router-dom';
@@ -9,19 +9,35 @@ import pantsImage from '../../../assets/images/pants.jpg';
 import accImage from '../../../assets/images/accesories.jpg';
 import shoeImage from '../../../assets/images/shoes.jpg';
 import tshirtImage from '../../../assets/images/tshirts.jpg';
+import { ApiContext } from '../../../contexts/ApiProvider';
+import { ProductContext } from "../../../contexts/ProductProvider"
+
 
 
 const Search = () => {
+
+    const {getAllProductsAsync} = useContext(ApiContext);
+    const {setProducts} = useContext(ProductContext)
     const [showCategories, setShowCategories] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
 
     const handleMenuToggle = () => {
-        //console.log('Menu toggled');
         setShowCategories(!showCategories);
       };
     const handleDropdownToggle = () => {
     setShowDropdown(!showDropdown);
     };
+
+    const handleProducts = async (category) => {
+      console.log(category)
+      let products = await getAllProductsAsync();
+      let filterProducts = products.filter(item => item.tags == category);
+      setProducts(filterProducts)
+
+      console.log(products)
+      console.log(filterProducts)
+      
+  }
 
   return (
      <>     
@@ -64,36 +80,41 @@ const Search = () => {
 </div>*/}
 
 {/*replace the href attribute with the actual URL of the page you want to navigate to. */}
-<div className='category-block-1'>
-  <NavLink to="/dresses" className ="category-block-link">
+<div onClick={() => {handleProducts("dresses")}} className='category-block-1'>
+  <NavLink to="/filter" className ="category-block-link">
     <img src={dressesImage} alt="Dresses"/>
     <div className='category-block-text'>Dresses</div>
   </NavLink>
 </div>
 
-<div className='category-block-1'>
-  <NavLink to="/pants" className ="category-block-link">
+<div onClick={() => {handleProducts("pants")}} className='category-block-1'>
+  <NavLink to="/filter" className ="category-block-link">
     <img src={pantsImage} alt="Pants"/>
     <div className='category-block-text'>PANTS</div>
   </NavLink>
 </div>
-<div className='category-block-2'>
-  <NavLink to="/accesories" className ="category-block-link">
+
+<div onClick={() => {handleProducts("accesories")}} className='category-block-2'>
+  <NavLink to="/filter" className ="category-block-link">
   <img src={accImage} alt="Acc"/>
     <div className='category-block-text'>ACCESORIES</div>
   </NavLink>
 </div>
-<div className='category-block-1'>
-  <NavLink to="/shoes" className ="category-block-link">
+
+<div onClick={() => {handleProducts("shoes")}} className='category-block-1'>
+  <NavLink to="/filter" className ="category-block-link">
   <img src={shoeImage} alt="Shoes"/>
     <div className='category-block-text'>SHOES</div>
   </NavLink>
 </div>
-<div className='category-block-1'>
-  <a href="/tshirts" className ="category-block-link">
+
+<div onClick={() => {handleProducts("t-shirt")}} className='category-block-1'>
+  <NavLink to="/filter"  className ="category-block-link">
   <img src={tshirtImage} alt="Tshirt"/>
-    <div className='category-block-text'>T-SHIRTS</div>
-  </a>
+  <div className='category-block-text'>T-SHIRTS</div>
+  </NavLink>
+  
+  
 </div>
         </div>
     </div>
