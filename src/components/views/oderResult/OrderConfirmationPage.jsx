@@ -11,7 +11,7 @@ const OrderConfirmationPage = () => {
   const handleViewOrders = () => {
     console.log('View orders');
     // Add the logic to navigate to the profile page
-    navigate('/profile'); //och länka till order history
+    navigate('/orderHistory'); //och länka till order history
   };
 
   const handleContinueShopping = () => {
