@@ -184,15 +184,28 @@ const loginAsync = async (url = '', data = {}, handleLogin, validation) => {
         return data;
 }
 
+// Forgot password
+    const forgotPassword = async (url = '', email = {}) => {
+        const token = Cookies.get('token');
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ Email : email })
+        };
+
+        const response = await fetch(url, requestOptions)
+        if(response.statusText == "OK") { return true } else { return false }
+    }
+
 // Recover Password
-const recoverPassword = async (password = {}) => {
+    const recoverPassword = async (userEmail = {}, userToken = {}, newPassword = {}) => {
     const token = Cookies.get('token');
     const requestOptions = {
         method: 'POST',
-        headers: { 'Authorization' : `Bearer ${ token }` },
-        body: JSON.stringify(password)
-        };
-    const response = await fetch ('https://grupp2-aspnet2-inl-alex-test.azurewebsites.net/api/account/recoverpassword?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
+        headers: { 'Authorization': `Bearer ${token}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ Email: userEmail, Token: userToken, Password: newPassword })
+    };
+    const response = await fetch('https://grupp2-aspnet2-inl-master.azurewebsites.net/api/account/RecoverPassword?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c', requestOptions)
     if(response.statusText == "OK") { return true } else { return false }
 }
 
@@ -343,7 +356,7 @@ const verifyPhoneNumber = async (phone = {})=>{
 
     return (
         <>
-            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress, loginFacebook, registerCreditCard, getUserCreditCards, removeCreditCard, getProductsByCategory, getProductsByFilters, verifyPhoneNumber, createOrderAsync, getReviewsByIdAsync, addReviewAsync, putAsync }}>
+            <ApiContext.Provider value={{ getAllProductsAsync, getProductByIdAsync, registrationAsync, loginAsync, logoutAsync, getProfile, recoverPassword, getAddress, registerAddress, removeAddress, updateAddress, loginFacebook, registerCreditCard, getUserCreditCards, removeCreditCard, getProductsByCategory, getProductsByFilters, verifyPhoneNumber, createOrderAsync, getReviewsByIdAsync, addReviewAsync, putAsync, forgotPassword }}>
                 {props.children}
             </ApiContext.Provider>
         </>
