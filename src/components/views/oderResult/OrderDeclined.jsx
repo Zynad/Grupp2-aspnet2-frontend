@@ -7,6 +7,7 @@ import Home from '../home/Home';
 const OrderDeclinedPage = () => {
     const [showDeclined, setShowDeclined] = useState(true);
     const [isRefreshing, setIsRefreshing] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
    
     const handleTryAgain = () => {
@@ -23,7 +24,17 @@ const OrderDeclinedPage = () => {
             //window.location.reload();
           }, 1000); // Delay reloading for 1 second
         }
-      }, [isRefreshing]);
+      }, [isRefreshing, navigate]);
+
+      useEffect (() =>{
+        const timer = setTimeout(() =>{
+            setIsLoading(false);
+        }, 2000);
+      
+        return () => {
+            clearTimeout(timer);
+        };
+    },[]);
     
     return (
         <>
@@ -39,8 +50,8 @@ const OrderDeclinedPage = () => {
             </div>
         </div>
     )}
-    {isRefreshing && <div>Loading...</div>}
-    {!showDeclined && !isRefreshing && <Home/>}
+    {isLoading && <div>Loading...</div>}
+    {!showDeclined && !isRefreshing && !isLoading && <Home/>}
     </>
     );
 };
