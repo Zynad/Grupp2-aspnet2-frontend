@@ -37,7 +37,7 @@ return (
             
 
     <div className='col-lg-12 mt-5 text-center'>
-      <StarRating rating={0} onStarClick={handleStarClick} />
+      <StarRating rating={0} onStarClick={handleStarClick} clickable={true} />
     </div>
 
       
