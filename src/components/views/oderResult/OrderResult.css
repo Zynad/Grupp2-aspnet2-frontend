@@ -12,8 +12,10 @@
 .btn-container{
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
     margin-top: 20px;
+    text-align: center;
 }
 .btn-container button,
 .button-container a {
@@ -31,6 +33,8 @@
     text-decoration: none;
     margin-top: 8px;
     font-size: 10px;
+    /* display: flex;
+    justify-content: center; */
 }
 .button {
     background-color: black;

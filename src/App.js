@@ -36,6 +36,7 @@ import ShoppingCartProvider from "./contexts/ShoppingCartProvider";
 import Checkout from "./components/views/shoppingCart/Checkout";
 import OrderConfirmationPage from "./components/views/oderResult/OrderConfirmationPage";
 import OrderDeclinedPage from "./components/views/oderResult/OrderDeclined";
+import OrderHistory from "./components/views/user/profile/OrderHistory";
 
 function App() {
   return (
@@ -77,6 +78,8 @@ function App() {
                       <Route path="/addadress" element={<AddNewAdress />} />
                       <Route path="/address" element={<Address />} />
                       <Route path="/editaddress" element={<EditAddress />} />
+                      <Route path="/orderhistory" element={<OrderHistory />} />
+
                       <Route
                         path="/paymentmethod"
                         element={<PaymentMethod />}

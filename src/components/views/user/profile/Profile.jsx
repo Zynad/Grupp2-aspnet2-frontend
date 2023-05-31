@@ -1,4 +1,5 @@
 import "./profile.css"
+import React from "react";
 import Navigation from "../../../partials/navigation/Navigation";
 import { useContext, useState, useEffect } from "react";
 import { NavLink, Navigate } from "react-router-dom";
@@ -49,12 +50,14 @@ const Profile = () => {
 
          <div className="row profile-content">
          <hr className="mt-5"/>       
-            <div className="col">
+            <NavLink className="col" to="/orderHistory">
             <i className="fa-sharp fa-regular fa-bag-shopping profile-icon"></i>
             <span className="profile-text">Order history</span>
-            </div>
+            </NavLink>
             <div className="col profile-arrow">
+            <NavLink className="nav-standard" to="/orderHistory">
             <i className="fa-light fa-chevron-right"></i>
+            </NavLink>
             </div>
         <hr className="mb-4 mt-4"/>
          </div>
@@ -106,4 +109,4 @@ const Profile = () => {
 
 }
 
-export default Profile;
+export default Profile; 
