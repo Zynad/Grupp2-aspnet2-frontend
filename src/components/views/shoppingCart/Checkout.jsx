@@ -7,6 +7,8 @@ import Address from '../user/profile/Address'
 import PaymentMethod from '../user/profile/PaymentMethod'
 import { AddressContext } from '../../../contexts/AddressProvider'
 import Header from '../../partials/header/Header'
+import OrderDeclinedPage from '../oderResult/OrderDeclined'
+import OrderConfirmationPage from '../oderResult/OrderConfirmationPage'
 
 
 const Checkout = () => {
@@ -15,16 +17,21 @@ const Checkout = () => {
     const { createOrderAsync } = useContext(ApiContext);
     const [address, setAddress] = useState({});
     const [paymentMethod, setPaymentMethod] = useState({});
-    const [showAdress, setShowAdress] = useState(false);
-  const [showPaymentMethod, setShowPaymentMethod] = useState(false);
-  console.log(shoppingCart)
+    const [showAddress, setShowAddress] = useState(false);
+    const [showPaymentMethod, setShowPaymentMethod] = useState(false);
+    const [showConfirmation, setShowConfirmation] = useState(false);
+    const [showDeclined, setShowDeclined] = useState(false);
 
-    const showAdresses = () => {
-      setShowAdress(true);
+    const showAddresses = () => {
+      setShowAddress(!showAddress);
+      setShowPaymentMethod(false);
+     
     };
   
     const showPaymentMethods = () => {
-      setShowPaymentMethod(true);
+      setShowPaymentMethod(!showPaymentMethod);
+      setShowAddress(false);
+     
     };
   
     const placeOrder = async () => {
@@ -46,14 +53,23 @@ const Checkout = () => {
         "addressId": chosenAddress.id,
         "items": orderItems
       }
-      console.log(order)
       const response = await createOrderAsync(order);
-
-    }
-
-  return (
+       if (response) {
+          setShowConfirmation(true);
+        } else {
+          setShowDeclined(true);
+        }
+  }
+  
+  if (showConfirmation) {
+    return <OrderConfirmationPage />
+  } else if (showDeclined) {
+    return <OrderDeclinedPage />
+  } else {
+return (
     <>
-      <Header route={"/shoppingcart"} title={"Checkout"} shoppingBag={"hidden"} />
+      <div className='container'>
+         <Header route={"/shoppingcart"} title={"Checkout"} shoppingBag={"hidden"} />
 
           <div>
             <div className='text-space mt-4'>
@@ -65,21 +81,19 @@ const Checkout = () => {
               <div>
         {shoppingCart.map((item) => (
           
-          
           <div className="row wishlist-content">
-
-          
           <div className='col text-space'>
             <div className='text'> {item.name}, {item.size}, {item.color}</div>
             <div className='text'> {item.quantity} X ${item.price} </div>
-          </div>
+            </div>
           </div> 
-          ))}   
-              </div>
+        ))}   
+            <hr />
+            </div>
               
             <div className='text-space'>
               <div><p>Discount </p></div>
-              <div><p> -0 </p></div>
+              <div><p> $0 </p></div>
             </div>
             <div className='text-space'>
               <div><p>Delivery</p></div>
@@ -89,25 +103,42 @@ const Checkout = () => {
           
           <hr className='mt-4 mb-4'></hr>
 
-          <div>
-            <button onClick={showAdresses}>Adress</button>
-            {showAdress && <Address/>}
+        <div className="row profile-content">          
+                <div className="col" onClick={showAddresses}>
+                 <i className="fa-regular fa-location-dot profile-icon"></i>
+                <span className="profile-text">Adress</span>
+                </div>
+                <div className="col profile-arrow">
+              <i className={!showAddress? 'fa-light fa-chevron-right' : 'fa-light fa-chevron-left'} ></i>
           </div>
           
-            <hr className='mt-4 mb-4'></hr>
+                <hr className="mb-4 mt-4" />
+                {showAddress && <Address />}
+              </div>
 
       
-          <div>
-            <button onClick={showPaymentMethods}>Payment Methods</button>
-            {showPaymentMethod && <PaymentMethod />}
+          
+          <div className="row profile-content" >          
+                <div className="col" onClick={showPaymentMethods}>
+                <i className="fa-light fa-credit-card-blank profile-icon"></i>
+                <span className="profile-text">Payment method</span>
+                </div>
+                <div className="col profile-arrow">
+              <i className={!showPaymentMethod? 'fa-light fa-chevron-right' : 'fa-light fa-chevron-left'} ></i>
           </div>
-         
-
+          
+                <hr className="mb-4 mt-4" />
+                {showPaymentMethod && <PaymentMethod />}
+              </div>
+            
           <div>
             <button className="dark-btn-standard" onClick={placeOrder}>CONFIRM ORDER</button>   
           </div>
+      </div>    
       </>
   )
+  }
+  
 }
 
 export default Checkout
