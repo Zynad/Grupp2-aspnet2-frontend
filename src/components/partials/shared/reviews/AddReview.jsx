@@ -10,18 +10,19 @@ const AddReview = () => {
   const { item } = useContext(ProductContext);
   const [rating, setRating] = useState(0)
   const [comment, setComment] = useState("")
-    const { addReviewAsync } = useContext(ApiContext)
+  const { addReviewAsync } = useContext(ApiContext)
+  const [ submittedReview, setSubmittedReview] = useState(false)
     
     
     const handleStarClick = (selectedRating) => {
         setRating(selectedRating)
     };
 
-    const handleSubmit = async () => {
-
+  const handleSubmit = async (event) => {
+        event.preventDefault();
         const review = { productId: item.id, comment: comment, rating: rating }
         const response = await addReviewAsync(review);
-  
+        setSubmittedReview(true);
     };
 
     
@@ -49,9 +50,9 @@ return (
     </div>
 
  
-
-    <button className="dark-btn-standard my-5" onClick={handleSubmit}>ADD REVIEW</button>
-
+    {!submittedReview && <button className="dark-btn-standard my-5" onClick={handleSubmit}>ADD REVIEW</button>}
+    
+    {submittedReview && <p>Thank you for leaving a review!</p>}
  </div>
 </form>
 
