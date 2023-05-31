@@ -52,8 +52,11 @@ const Checkout = () => {
 
       const order = {
         "addressId": chosenAddress.id,
-        "items": orderItems
+        "items": orderItems,
+        "price": totalPrice
       }
+      console.log(order)
+
       const response = await createOrderAsync(order);
        if (response) {
           setShowConfirmation(true);
@@ -113,7 +116,7 @@ return (
                  <i className="fa-regular fa-location-dot profile-icon"></i>
                 <span className="profile-text">Adress</span>
                 </div>
-                <div className="col profile-arrow">
+                <div className="col profile-arrow" onClick={showAddresses}>
               <i className={!showAddress? 'fa-light fa-chevron-right' : 'fa-light fa-chevron-left'} ></i>
           </div>
           
@@ -128,7 +131,7 @@ return (
                 <i className="fa-light fa-credit-card-blank profile-icon"></i>
                 <span className="profile-text">Payment method</span>
                 </div>
-                <div className="col profile-arrow">
+                <div className="col profile-arrow" onClick={showPaymentMethods}>
               <i className={!showPaymentMethod? 'fa-light fa-chevron-right' : 'fa-light fa-chevron-left'} ></i>
           </div>
           

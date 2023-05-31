@@ -11,7 +11,6 @@ const AddressProvider = (props) => {
     
     const handleChosenAddress = async (adress) => {
         await setChosenAddress(adress);
-        
     }
 
     return (
