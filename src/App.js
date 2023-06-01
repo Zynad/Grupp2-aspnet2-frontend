@@ -34,11 +34,14 @@ import PaymentMethod from "./components/views/user/profile/PaymentMethod";
 import AddCreditCard from "./components/views/user/profile/AddCreditCard";
 import ShoppingCartProvider from "./contexts/ShoppingCartProvider";
 import Checkout from "./components/views/shoppingCart/Checkout";
-
+import OrderConfirmationPage from "./components/views/orderResult/OrderConfirmationPage";
+import OrderDeclinedPage from "./components/views/orderResult/OrderDeclinedPage";
 
 function App() {
   return (
     <>
+    <OrderConfirmationPage/>
+    <OrderDeclinedPage/>
       <ApiProvider>
       <FilterProvider>
         <LoginProvider>
@@ -52,7 +55,7 @@ function App() {
                       path="/recoverpassword"
                       element={<RecoverPassword />}
                     />
-                    <Route path="/filter" element={<Filter />} />
+                    <Route path="/filter" element={<FilterProvider />} />
                     <Route path="/" element={<Intro />} />
                     <Route path="/FirstSlide" element={<FirstSlide />} />
                     <Route path="/SecondSlide" element={<SecondSlide />} />
@@ -61,7 +64,7 @@ function App() {
                     <Route path="/products/test" element={<Product />} />
                     <Route
                       path="/products/reviews"
-                      element={<ReviewSection />}
+                      element={<ReviewSection />}              
                     />
                     <Route path="/search" element={<Search />} />
                     <Route path="/shoppingcart" element={<ShoppingCart />} />
