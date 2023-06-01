@@ -1,0 +1,16 @@
+.category-container{
+  height: 100vh;
+  padding-top: 100px;
+}
+
+
+
+
+
+
+
+@media (max-width: 768px){
+  .category-container{
+    padding-top: 55px;
+  }
+}

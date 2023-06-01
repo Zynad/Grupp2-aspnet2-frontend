@@ -38,6 +38,7 @@ import AddReview from "./components/partials/shared/reviews/AddReview";
 import VerifyPhoneNumber from "./components/views/user/verifyphonenumber/VerifyPhoneNumber";
 import ConfirmCode from "./components/views/user/verifyphonenumber/ConfirmCode";
 import FilterProducts from "./components/views/filters/FilterProducts";
+import Category from "./components/views/categories/Category";
 
 
 
@@ -121,6 +122,7 @@ function App() {
                       <Route path="/login" element={<Login />} />
                       <Route path="/verifyphonenumber" element={< VerifyPhoneNumber />} />
                       <Route path="/verifyphonenumber/confirmcode" element={< ConfirmCode />} />
+                      <Route path="/category" element={<Category />} />
                     </Routes>
                   </ShoppingCartProvider>
                 </ProductProvider>
