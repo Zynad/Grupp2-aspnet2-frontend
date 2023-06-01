@@ -127,14 +127,9 @@ function App() {
                         }
                       />
                       <Route path="/login" element={<Login />} />
-                      <Route
-                        path="/verifyphonenumber"
-                        element={<VerifyPhoneNumber />}
-                      />
-                      <Route
-                        path="/verifyphonenumber/confirmcode"
-                        element={<ConfirmCode />}
-                      />
+                      <Route path="/verifyphonenumber" element={< VerifyPhoneNumber />} />
+                      <Route path="/verifyphonenumber/confirmcode" element={< ConfirmCode />} />
+                      <Route path="/category" element={<Category />} />
                     </Routes>
                   </ShoppingCartProvider>
                 </ProductProvider>

@@ -1,12 +1,10 @@
-import React from 'react'
+import {React, useContext, useRef} from 'react'
 import "./collection.css"
 import CollectionItem from '../collectionItem/CollectionItem'
 import { NavLink } from 'react-router-dom'
-import { useContext } from "react"
 import { FilterContext } from "../../../../contexts/FilterProvider";
 import { ProductContext } from '../../../../contexts/ProductProvider'
 import { ApiContext } from "../../../../contexts/ApiProvider";
-import { useRef } from "react"
 
 
 const Collection = ({ title, itemList }) => {
@@ -66,8 +64,8 @@ const Collection = ({ title, itemList }) => {
      </div>
 
      <div className='carousel-snap-container'>
-            <button className='carousel-btn fa-solid fa-chevron-left' onClick={scrollLeft}></button>
-            <button className='carousel-btn fa-solid fa-chevron-right' onClick={scrollRight}></button>
+            <button className='camo-btn fa-solid fa-chevron-left' onClick={scrollLeft}></button>
+            <button className='camo-btn fa-solid fa-chevron-right' onClick={scrollRight}></button>
       </div>
 
     </div>
