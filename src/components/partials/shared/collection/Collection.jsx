@@ -66,8 +66,8 @@ const Collection = ({ title, itemList }) => {
      </div>
 
      <div className='carousel-snap-container'>
-            <button className='carousel-btn fa-solid fa-chevron-left' onClick={scrollLeft}></button>
-            <button className='carousel-btn fa-solid fa-chevron-right' onClick={scrollRight}></button>
+            <button className='camo-btn fa-solid fa-chevron-left' onClick={scrollLeft}></button>
+            <button className='camo-btn fa-solid fa-chevron-right' onClick={scrollRight}></button>
       </div>
 
     </div>
