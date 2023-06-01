@@ -32,11 +32,13 @@ const Search = () => {
     setProducts(filterProducts);
   };
 
+
   const handleProductsCategory = async (category) => {
     let products = await getAllProductsAsync();
     let filterProducts = products.filter((item) => item.category == category);
     setProducts(filterProducts);
   };
+
 
   return (
     <>
@@ -98,23 +100,16 @@ const Search = () => {
             >
               Accessories
             </div>
+
           </NavLink>
-        </div>
 
-        <div className="category-page-grid">
-          <div className="category-block-text">Men</div>
-          <div className="category-block-text">Women</div>
-          <div className="category-block-text">Kids</div>
-          <div className="category-block-text">Interior</div>
-          <div className="category-block-text">Outdoor</div>
+                </div>
 
-          {/*<div className='category-block-1'>
-  <a href='/dresses'>
-    <div className='category-block-text'>DRESSES</div>
-  </a>
-</div>*/}
-
-          {/*replace the href attribute with the actual URL of the page you want to navigate to. */}
+            <div className='top-navbar-cart' style={{ justifySelf: 'end' }}>
+                <i class="fa-light fa-bag-shopping"></i>
+            </div> 
+         
+ 
           <div
             onClick={() => {
               handleProducts("dresses");
