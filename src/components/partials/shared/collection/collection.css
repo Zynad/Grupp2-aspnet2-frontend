@@ -9,12 +9,6 @@
     margin: 10px;
 }
 
-.carousel-btn{
-    width: 50px;
-    border-radius: 10px;
-    opacity: 0.9;
-}
-
 .carousel-btn:hover{
     opacity: 1;
     background-color: rgb(183, 183, 183);
