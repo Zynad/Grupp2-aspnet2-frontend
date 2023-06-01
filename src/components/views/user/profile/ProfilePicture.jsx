@@ -27,15 +27,20 @@ const ProfilePicture = ({ imageUrl,setUrl}) => {
 
     return (
         <>
-        <div className="mt-3 mb-5 profile-picture-content container">
+        <div className="mt-3 mb-3 profile-picture-content container">
+
 
         <img className="profile-picture" src={showImage? getUrl : ""}></img>
-        
         <i onClick={() => {addUrl? setAddUrl(false) : setAddUrl (true)}} className="profile-circle fa-thin fa-pen"></i>
-      
+
+
         </div>
+
+
+
+        
         {addUrl && 
-            <div className="col-lg-12 mt-5 mb-3 input-wrapper">
+            <div className="col-lg-12 input-wrapper">
             <label>Image Url</label>
            <input name="imageUrl" value={imageUrl} onChange={(event) => setUrl(event.target.value)} type="text" onKeyUp={(event) => {
             if (event.target.value.length <= 1) 
@@ -47,8 +52,8 @@ const ProfilePicture = ({ imageUrl,setUrl}) => {
              document.querySelector("#image").innerHTML = ""
            }}}>
          </input>
-    <div id="image" className="text-danger ml-5"></div>
- </div>
+          <div id="image" className="text-danger"></div>
+        </div>
         }
         </>
     )

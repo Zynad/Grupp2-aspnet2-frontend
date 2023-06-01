@@ -10,6 +10,7 @@ const Address = () => {
     const { getAddress, removeAddress } = useContext(ApiContext);
     const { handleEditAdress, handleChosenAddress } = useContext(AddressContext);
     const [address, setAddress] = useState([]);
+    const [orderAddress, setOrderAddress] = useState([]);
     const [deleteResult, setDeleteResult] = useState(1);
     const [navigationSource, setNavigationSource] = useState('');
     const [chosenDiv, setChosenDiv] = useState({});
@@ -27,15 +28,15 @@ const Address = () => {
 
     const handleGetAdress = async () => {     
         const response = await getAddress();
-        setAddress(response.map((item) => ({...item.address, id: item.id, title: item.title})))
+        setOrderAddress(response.map((item) => ({...item.address, title: item.title})))
+        setAddress(response.map((item) => ({ ...item.address, id: item.id, title: item.title })))
     }
     
-    const declareAddress = (id) => {
-      const filteredAddress = address.filter((address) => address.id === id);
+  const declareAddress = (adress) => {
+      const filteredAddress = orderAddress.filter((orderAddress) => orderAddress.name === address.name );
       const chosenAddress = filteredAddress.length > 0 ? filteredAddress[0] : null;
       handleChosenAddress(chosenAddress);
-      console.log(chosenAddress)
-      setChosenDiv(id)
+      setChosenDiv(adress.id)
     }
 
     const updatingAddress = async (address) => {
@@ -67,8 +68,8 @@ const Address = () => {
         <div className="row profile-content mb-5">
           <hr className="mb-4 mt-4"/>
           {address.map((item) => (
-          <>   
-
+            <>   
+              {console.log(item.id)}
           <div className="col">
           <i class="fa-sharp fa-solid fa-location-dot address-icon"></i>
           <span className="profile-text">{item.title}</span>
@@ -99,7 +100,7 @@ const Address = () => {
         <div className="container my-5">
 
         <div className="row">
-          <div className="col-4"><NavLink className="nav-standard" to="/checkout"><i className="fa-solid fa-angle-left"></i></NavLink></div>
+          <div className="col-4"></div>
           <div className="col-4 adress-title">Shipping Details</div>
           <div className="col-4"></div>
           </div>
@@ -109,23 +110,23 @@ const Address = () => {
           <hr className="mb-4 mt-4" />
           {address.map((item) => (
           <>   
-           
-          <div id="item.id" onClick={() => { declareAddress(item.id) }}>
+          <div className="address-checkout-wrapper">
+          <div id="item.id" onClick={() => { declareAddress(item) }}>
           <div className="col">
           <i class="fa-sharp fa-solid fa-location-dot address-icon"></i>
           <span className="profile-text">{item.title}</span>
           <div className="profile-addresses-text">{item.streetName}, {item.postalCode}, {item.city}</div>
-         </div>
+        </div>
 
     
-          <div className="text-end">
-                {chosenDiv == item.id ? (
-              <i className="fa-sharp fa-solid fa-circle"></i>
-            ) : (
-              <i className="fa-sharp fa-regular fa-circle"></i>
-            )}
-          </div>
-
+            <div className="profile-arrow-default text-end">
+                  {chosenDiv == item.id ? (
+                <i className="fa-sharp fa-solid fa-circle"></i>
+              ) : (
+                <i className="fa-sharp fa-regular fa-circle"></i>
+              )}
+            </div>
+          </div>    
           <hr className="mb-4 mt-4"/>
           </div>
         

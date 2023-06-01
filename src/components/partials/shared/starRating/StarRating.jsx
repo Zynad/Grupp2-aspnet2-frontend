@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const StarRating = ({ rating, numberOfReviews, onStarClick }) => {
+const StarRating = ({ rating, numberOfReviews, onStarClick, clickable }) => {
   const [selectedRating, setSelectedRating] = useState(rating);
 
   const handleStarClick = (selectedRating) => {
@@ -10,7 +10,7 @@ const StarRating = ({ rating, numberOfReviews, onStarClick }) => {
     }
   };
 
-  const stars = Array.from({ length: 5 }, (_, index) => (
+  const clickableStars = Array.from({ length: 5 }, (_, index) => (
     <i
       key={index}
       className={`fa-sharp fa-star ${
@@ -20,13 +20,25 @@ const StarRating = ({ rating, numberOfReviews, onStarClick }) => {
     ></i>
   ));
 
-  if (numberOfReviews != null)
-    return (
+  const stars = Array.from({ length: 5 }, (_, index) => (
+    <i
+      key={index}
+      className={`fa-sharp fa-star ${
+        index < selectedRating ? "fa-solid" : "fa-regular"
+      }`}
+    ></i>
+  ));
+
+  if (numberOfReviews != null) {
+       return (
       <div className="star-rating">
         {stars} ({numberOfReviews})
       </div>
     );
-
+  } else if (clickable) {
+  return <div className="star-rating">{clickableStars}</div>;
+    
+  }
   return <div className="star-rating">{stars}</div>;
 };
 

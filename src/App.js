@@ -34,13 +34,16 @@ import PaymentMethod from "./components/views/user/profile/PaymentMethod";
 import AddCreditCard from "./components/views/user/profile/AddCreditCard";
 import ShoppingCartProvider from "./contexts/ShoppingCartProvider";
 import Checkout from "./components/views/shoppingCart/Checkout";
+import OrderConfirmationPage from "./components/views/oderResult/OrderConfirmationPage";
+import OrderDeclinedPage from "./components/views/oderResult/OrderDeclined";
+import OrderHistory from "./components/views/user/profile/OrderHistory";
 import AddReview from "./components/partials/shared/reviews/AddReview";
 import VerifyPhoneNumber from "./components/views/user/verifyphonenumber/VerifyPhoneNumber";
 import ConfirmCode from "./components/views/user/verifyphonenumber/ConfirmCode";
 import FilterProducts from "./components/views/filters/FilterProducts";
-import Category from "./components/views/categories/Category";
-
-
+import MyPromocodes from "./components/views/user/profile/MyPromocodes";
+import NoPromocodes from "./components/views/user/profile/NoPromocodes";
+import AddPromocode from "./components/views/user/profile/AddPromocode";
 
 function App() {
   return (
@@ -64,7 +67,7 @@ function App() {
                       />
                       <Route path="/editprofile" element={<EditProfile />} />
                       <Route
-                        path="/recoverpassword"
+                        path="/RecoverPassword"
                         element={<RecoverPassword />}
                       />
                       <Route
@@ -95,6 +98,10 @@ function App() {
                       <Route path="/addadress" element={<AddNewAdress />} />
                       <Route path="/address" element={<Address />} />
                       <Route path="/editaddress" element={<EditAddress />} />
+                      <Route path="/mypromocodes" element={<MyPromocodes/>}/>
+                      <Route path="/nopromocodes" element={<NoPromocodes />} />
+                      <Route path="/addpromocode" element={<AddPromocode />} />
+                      <Route path="/orderhistory" element={<OrderHistory />} />
                       <Route
                         path="/paymentmethod"
                         element={<PaymentMethod />}

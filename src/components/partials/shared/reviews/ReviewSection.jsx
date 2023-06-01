@@ -15,12 +15,10 @@ const ReviewSection = () => {
     
 
     const [reviewList, setReviewList] = useState([])
-    console.log(item.id)
     
     const initiateReviewList = async () => {
         let data = await getReviewsByIdAsync(item.id);
         setReviewList(data);
-        console.log(data)
     }
 
         useEffect(() => {
@@ -53,7 +51,7 @@ const ReviewSection = () => {
                     return (
                         <div className='review-section'>
                             <div className='profile-image'>
-                                <img src="" alt="" className='circle' />
+                                <img src={review.imageUrl} alt="" className='circle' />
                             </div>
                             <div className='text-section'>
                                 <div className='name'> {review.name} </div>

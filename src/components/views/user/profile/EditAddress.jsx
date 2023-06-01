@@ -43,7 +43,7 @@ return (
   <div className="container mt-5"> 
 
   <div className="row">
-        <div className="col-4"><NavLink className="nav-standard" to="/Address"><i className="fa-solid fa-angle-left"></i></NavLink></div>
+        <div className="col-4"><NavLink className="nav-standard" to="/address"><i className="fa-solid fa-angle-left"></i></NavLink></div>
         <div className="col-4 adress-title">Update current adress</div>
         <div className="col-4"></div>
     </div>

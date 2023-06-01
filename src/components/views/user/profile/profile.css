@@ -1,5 +1,9 @@
 /* Profile Section */
 
+.container {
+  padding-bottom: 110px;
+}
+
 .upper-profile-content {
   text-align: center;
 }
@@ -22,6 +26,11 @@
   font-weight: bold;
   margin-right: 10px;
   opacity: 0.9;
+  cursor: pointer;
+}
+
+.profile-arrow-default i {
+  margin-right: 10px;
   cursor: pointer;
 }
 
@@ -123,33 +132,40 @@
 
 /* Profile Picture Section */
 
-
-.profile-picture-content{
-    text-align: center;
+.profile-picture-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 3px;
 }
 
-.profile-picture{
-    height: 250px;
-    width: 250px;
-    border: 5px solid lightgrey;
-    border-radius: 50%;
+.profile-picture {
+  height: 250px;
+  width: 250px;
+  border: 5px solid lightgrey;
+  border-radius: 50%;
+  display: flex;
 }
 
 .profile-circle {
-    background: lightgrey;
-    color: #000000;
-    height: 50px;
-    width: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    text-decoration: none;
-    cursor: pointer;
+  background: lightgrey;
+  color: #000000;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 80px;
+  left: 100px;
 }
 
-.profile-circle:hover{
-    background: grey;
+.profile-circle:hover {
+  background: grey;
 }
 
 /*Payment Section*/
@@ -327,28 +343,29 @@
 }
 
 .slider-wrapper {
-  margin: 1rem;
-  position: relative;
-  overflow: hidden;
-  justify-self: center;
-}
-
+    margin: 1rem;
+    position: relative;
+    overflow: hidden;
+    justify-self: center;
+  }
+  
 .slides-container {
-  height: auto;
-  width: auto;
-  display: flex;
-  overflow: scroll;
-  scroll-behavior: smooth;
-  overflow-y: hidden;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  scrollbar-width: auto;
-}
-.slide {
-  width: auto;
-  height: auto;
-  margin: 2em;
+height: auto;
+width: auto;
+display: flex;
+overflow: scroll;
+scroll-behavior: smooth;
+overflow-y: hidden;
+list-style: none;
+margin: 0;
+padding: 0;
+scrollbar-width: auto;
+    
+  }  
+.slide{
+width: auto;
+height: auto;
+margin: 2em;
 }
 
 .slides-container::-webkit-scrollbar {
@@ -369,6 +386,208 @@
   cursor: grab;
 }
 
+/*Promocode*/
+.promocodes-container{
+    
+}
+.promocode-container-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: auto;
+    column-gap: 5px;
+}
+.promocode-border{
+    grid-column: 1/5;
+    height: 1px;
+    width: 100%;
+    background-color: #dbe3f5;
+    align-self: center;
+}
+.promocode-btn{
+    align-self: center;
+    justify-self: center;
+    font-family: "Mulish";
+    text-align: center;
+    padding: 0;
+    width: 74px;
+    height: 28px;
+    border-radius: 14px;
+    font-size: 0.8em;
+    border: none;
+}
+.promocode-btn-current{
+    grid-row: 1;
+    grid-column: 2;
+}
+.promocode-btn-used{
+    grid-row: 1;
+    grid-column: 3;
+}
+.promocode-btn-focus{
+    background-color: #111111;
+    color: #f7f7f7;
+}
+.promocode-btn-nonfocus{
+    background-color: #dbe3f5;
+}
+
+.promocode-item{
+    grid-column: 1/5;
+    grid-row: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 3;
+    padding: 10px 0px;
+    font-family: "Mulish";
+}
+.promocode-box-img{
+    grid-column: 1;
+    grid-row: 1/3;
+    width: 73px;
+    height: 84px;
+    background-color: #dbe3f5;
+    align-self: center;
+    margin-left: 10px;
+}
+.promocode-item-text{
+    grid-column: 2/4;
+    justify-content: left;
+}
+.promocode-title{
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0;
+}
+.promocode-discount{
+    font-size: 1.2em;
+    color:#f4303c;
+    margin: 0;
+}
+.promocode-expire{
+    font-size: 0.8em;
+    margin: 0;
+}
+
+/*No Promocodes*/
+.no-promocodes-container-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 3;
+}
+.no-promocodes-img{
+    grid-column: 1/5;
+    grid-row: 1/3;
+    justify-self: center;
+    align-self: center;
+}
+.no-promocodes-img img{
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+}
+.no-promocodes-icon{
+    grid-column: 1/5;
+    justify-self: center;
+}
+.no-promocodes-text{
+    grid-column: 2/4;
+    justify-self: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+.no-promocodes-input{
+    grid-column: 1/5;
+    font-size: 0.8em;
+    justify-items: center;
+}
+.no-promocodes-input input:focus{
+    border-color:#acacac;
+}
+.no-promocodes-btn{
+    grid-column: 1/5;
+}
+.no-promocodes-add-promocode{
+    text-align: center;
+}
+.no-promocodes-add-promocode a{
+    text-decoration: none;
+    color:#4b4b4b;
+}
+.no-promo-error-message{
+    grid-column: 1/5;
+}
+.add-promocode-icon{
+    grid-column: 1/5;
+    justify-self: center;
+    align-self: center;
+    border: 2px solid #dbe3f5;
+    border-radius: 50%;
+    padding: 8px 13px;
+    cursor: pointer;
+    opacity: 0.8;
+    box-shadow: #bec4d3 0.5px 0.5px 0.5px 0.5px;
+    color:#696969;
+}
+.add-promocode-icon a{
+    color:#575757;
+}
+.add-promocode-icon a:hover{
+    color:#3d3d3d;
+}
+.add-promocode-icon:hover{
+    opacity: 1;
+}
+
+@media screen and (min-width: 768px){
+    .promocode-container-grid{
+        margin-left: 25%;
+        margin-right: 25%;
+    }
+    .no-promocodes-container-grid{
+        margin-left: 25%;
+        margin-right: 25%;
+    }
+}
+@media screen and (min-width: 990px){
+    .promocode-container-grid{
+        margin-left: 30%;
+        margin-right: 30%;
+    }
+    .promocode-btn-current{
+        margin-right: 10px;
+    }
+    .promocode-btn-used{
+        margin-left: 10px;
+    }
+    .no-promocodes-container-grid{
+        margin-left: 30%;
+        margin-right: 30%;
+    }
+}
+@media screen and (min-width: 1200px){
+    .promocode-btn-current{
+        justify-self: right;
+        margin-right: 10px;
+    }
+    .promocode-btn-used{
+        justify-self: left;
+        margin-left: 10px;
+    }
+    .no-promocodes-container-grid{
+        margin-left: 35%;
+        margin-right: 35%;
+    }
+}
+@media screen and (min-width: 1400px){
+    .promocode-box-img{
+        justify-self: center;
+    }
+    .promocode-item-text{
+        grid-column: 2/4;
+        justify-content: left;
+    }
+}
 .card-container {
   display: block;
 }
@@ -378,3 +597,4 @@
   border-top: 1px solid gray;
   border-bottom: 1px solid gray;
 }
+

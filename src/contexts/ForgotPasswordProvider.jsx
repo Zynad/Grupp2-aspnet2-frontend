@@ -4,12 +4,14 @@ export const ForgotPasswordContext = createContext();
 
 const ForgotPasswordProvider = (props) => {
 
-    const {} = useContext(ApiContext);
+    const {forgotPassword} = useContext(ApiContext);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const url = "";
-        const data = {email : event.target.elements.email.value}
+        const url = "https://grupp2-aspnet2-inl-master.azurewebsites.net/api/account/resetpassword?key=75e76fd2-f98d-42b5-96ab-9a0d2c20cf6c";
+        const email = event.target.elements.email.value
+        var bool = await forgotPassword(url, email)
+        return bool;
     }
 
     return (

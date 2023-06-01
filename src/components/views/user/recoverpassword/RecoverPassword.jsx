@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { ApiContext } from "../../../../contexts/ApiProvider";
 
 const ResetPassword = () => {
@@ -8,6 +8,7 @@ const ResetPassword = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [validation, setValidation] = useState("");
   const regEx = new RegExp('^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^a-zA-Z0-9]).{8,}$');
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -18,14 +19,20 @@ const ResetPassword = () => {
     }
      setValidation("");
 
-     const password = {newPassword : newPassword, confirmPassword : confirmPassword}
+    let params = new URLSearchParams(window.location.search);
+    var userEmail = params.get('email')
+    var userToken = params.get('token')
 
-     console.log(password)
-
-     await recoverPassword(password)
-
-     // Skicka till API
-    
+     await recoverPassword(userEmail, userToken, newPassword)
+    .then((response) => {
+        if (response == true) {
+            navigate("/login");
+        }
+        else {
+            throw new Error("Failed to reset password");
+        }
+    })
+    .catch((error) => console.log(error));
   };
 
   return (
@@ -87,22 +94,3 @@ const ResetPassword = () => {
 }
 
 export default ResetPassword;
-
-
-
-
-//  // Skicka en POST-förfrågan till API:et för att återställa lösenordet
-//  fetch("/api/resetpassword", {
-//   method: "POST",
-//   headers: { "Content-Type": "application/json" },
-//   body: JSON.stringify({ email: userEmail, token: userToken, newPassword }),
-// })
-//   .then((response) => {
-//     if (response.ok) {
-//       // Om lösenordet har återställts, skicka användaren till inloggningsidan
-//       history.push("/login");
-//     } else {
-//       throw new Error("Failed to reset password");
-//     }
-//   })
-//   .catch((error) => console.log(error));
