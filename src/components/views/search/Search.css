@@ -47,17 +47,24 @@
     justify-items: center;
     align-items: center;
     font-size: 0.9em;
+    color: black;
     text-decoration: none;    
   
   }
   .category-links a{
     text-decoration: none;
     padding: 8px;
+    color:black;
   }
   .category-links a:hover{
     text-decoration: none;
     background-color: rgba(201, 216, 250, 0.801);
     border-radius: 15px;
+  }
+  .category-links a:hover,
+  .category-links a.focus {
+    background-color: lightgray;
+    color:black;
   }
   .category-page-grid{
     display: grid;

@@ -1,4 +1,5 @@
 import "./profile.css"
+import React from "react";
 import Navigation from "../../../partials/navigation/Navigation";
 import { useContext, useState, useEffect } from "react";
 import { NavLink, Navigate } from "react-router-dom";
@@ -41,7 +42,7 @@ const Profile = () => {
         <div className="container profile-section">
         <div className="mt-5 upper-profile-content">
          <span className="line-login"></span>
-         <ProfilePicture/>
+         <NavLink to="/editprofile"><ProfilePicture></ProfilePicture></NavLink>
          <h2 className="heading-standard mt-3"> {userHasValue? user.firstName + " " + user.lastName : "" }
          </h2>
          <div className="standard-text">{user.email}</div>
@@ -49,12 +50,13 @@ const Profile = () => {
 
          <div className="row profile-content">
          <hr className="mt-5"/>       
-            <div className="col">
-            <i className="fa-sharp fa-regular fa-bag-shopping profile-icon"></i>
-            <span className="profile-text">Order history</span>
+          <div className="col">
+            <i className="fa-light fa-bag-shopping profile-icon"></i>
+                   <NavLink className="nav-standard" to="/orderHistory"><span className="profile-text">Order history
+                   </span></NavLink>
             </div>
             <div className="col profile-arrow">
-            <i className="fa-light fa-chevron-right"></i>
+            <NavLink className="nav-standard" to="/orderHistory"><i className="fa-light fa-chevron-right"></i></NavLink>
             </div>
         <hr className="mb-4 mt-4"/>
          </div>
@@ -81,13 +83,24 @@ const Profile = () => {
          <hr className="mb-4 mt-4"/>
          </div>
 
+         <div className="row profile-content">                   
+         <div className="col">
+         <i className="fa-regular fa-phone profile-icon"></i>
+            <NavLink className="nav-standard" to="/verifyphonenumber"> <span className="profile-text">Verify phone</span></NavLink>
+            </div>
+            <div className="col profile-arrow">
+            <NavLink className="nav-standard" to="/verifyphonenumber"><i className="fa-light fa-chevron-right"></i></NavLink>
+            </div>
+         <hr className="mb-4 mt-4"/>
+         </div>
+
          <div className="row profile-content">         
          <div className="col">
             <i className="fa-light fa-gift profile-icon"></i>
-            <span className="profile-text">My promocodes</span>
+            <NavLink className="nav-standard" to="/mypromocodes"><span className="profile-text">My promocodes</span></NavLink>
             </div>
             <div className="col profile-arrow">
-            <i className="fa-light fa-chevron-right"></i>
+            <NavLink className="nav-standard" to="/mypromocodes"><i className="fa-light fa-chevron-right"></i></NavLink>
             </div> 
          <hr className="mb-4 mt-4"/>
          </div>
@@ -106,4 +119,4 @@ const Profile = () => {
 
 }
 
-export default Profile;
+export default Profile; 

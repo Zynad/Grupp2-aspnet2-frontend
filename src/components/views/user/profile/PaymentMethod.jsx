@@ -1,15 +1,27 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import "./profile.css";
 import { useContext, useState, useEffect } from "react";
 import { ApiContext } from "../../../../contexts/ApiProvider";
 
 
-const PaymentMethod = ()=>{
-
+const PaymentMethod = () =>{
     const {getUserCreditCards, removeCreditCard} = useContext(ApiContext);
     const [creditCards, setCreditCards] = useState([]);
+    const [chosenCreditCard, setChosenCreditCard] = useState({});
+    const [navigationSource, setNavigationSource] = useState('');
+    const [chosenDiv, setChosenDiv] = useState({});
+    const location = useLocation();
+  
+  
 
-    useEffect (() => { getAllUserCreditCards()}, []);
+    const getNavigationSource = () => {
+           return location.pathname;
+    };
+
+    useEffect(() => {
+    getAllUserCreditCards();
+    setNavigationSource(getNavigationSource());
+    }, []);
 
     const getAllUserCreditCards = async ()=>{
         const data = await getUserCreditCards();
@@ -22,7 +34,21 @@ const PaymentMethod = ()=>{
             getAllUserCreditCards();
     }
 
-    return(
+    const replaceNumbers = (string) => {
+        const hiddenString = string.replace(/./g, '*');
+        return hiddenString;
+
+    }
+
+    const declarePayment = (id) => {
+      setChosenCreditCard(creditCards.filter(card => card.id === id))
+        setChosenDiv(id)
+    }
+
+    const renderContent = () => {
+    switch (navigationSource) {
+      default:
+        return(
         <>
             <div className="container my-5">
                 <div className="row mb-5">
@@ -85,6 +111,84 @@ const PaymentMethod = ()=>{
             </div>
         </>
     );
+      case '/checkout':
+      return(
+        <>
+            <div className="container my-5">
+                <div className="row mb-5">
+                    <div className="col-4"></div>
+                    <div className="col-4 payment-title">Payment method</div>
+                    <div className="col-4"></div>
+                </div>
+                <div className="row">
+                    <div className="cards-title col">Credit Cards</div>
+                </div>
+                    <div className="card-container">
+                        {creditCards.map((c) =>{
+                            return (
+                            <div className="row profile-content" onClick={() => {declarePayment(c.id)}}>
+                            <hr className="mt-3"/>       
+                                <div className="col">
+                                <span className="profile-text">{c.cardNo.substring(0, 4)}  {replaceNumbers(c.cardNo.substring(4, 12))} {c.cardNo.substring(12, 17)}</span>
+                                </div>
+                                    <div className="col profile-arrow-default text-end">
+                                            {chosenDiv == c.id ? (
+                                    <i className="fa-sharp fa-solid fa-circle text-end"></i>
+                                    ) : (
+                                    <i className="fa-sharp fa-regular fa-circle text-end"></i>
+                                    )}
+                                </div>
+                            </div>  
+                        )})} 
+                  </div>      
+                <div className="row profile-content" onClick={() => {declarePayment("swish")}}> 
+                    <hr className="mt-3"/>       
+                        <div className="col">
+                        <span className="profile-text">Swish</span>
+                        </div>
+                        <div className="col profile-arrow-default text-end">
+                            {chosenDiv == "swish" ? (
+                            <i className="fa-sharp fa-solid fa-circle text-end"></i>
+                            ) : (
+                            <i className="fa-sharp fa-regular fa-circle text-end"></i>
+                            )}
+                        </div>
+                    </div>     
+                    <div className="row profile-content" onClick={() => {declarePayment("directPay")}}>
+                    <hr className="mt-3"/>       
+                        <div className="col">
+                        <span className="profile-text">Direct Payment</span>
+                        </div>
+                        <div className="col profile-arrow-default text-end">
+                            {chosenDiv == "directPay" ? (
+                            <i className="fa-sharp fa-solid fa-circle text-end"></i>
+                            ) : (
+                            <i className="fa-sharp fa-regular fa-circle text-end"></i>
+                            )}
+                        </div>
+                    </div>  
+                    <div className="row profile-content" onClick={() => {declarePayment("klarna")}}>
+                    <hr className="mt-3"/>       
+                        <div className="col">
+                        <span className="profile-text">Klarna Invoice</span>
+                        </div>
+                        <div className="col profile-arrow-default text-end">
+                            {chosenDiv == "klarna" ? (
+                            <i className="fa-sharp fa-solid fa-circle text-end"></i>
+                            ) : (
+                            <i className="fa-sharp fa-regular fa-circle text-end"></i>
+                            )}
+                        </div>
+                    <hr className="mb-4 mt-3"/>
+                    </div>  
+                </div>
+        </>
+    );
+    }
+  };
+ 
+    return <div>{renderContent()}</div>;
+
 }
 
 export default PaymentMethod;

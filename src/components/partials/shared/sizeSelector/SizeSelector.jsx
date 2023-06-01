@@ -28,13 +28,12 @@ const Circle = ({ text, selectable, selectedCircle, onSelect }) => {
   );
 };
 
-const SizeSelector = () => {
+const SizeSelector = ({size, setSize}) => {
   const [selectedCircle, setSelectedCircle] = useState(null);
 
   const handleCircleSelect = (text) => {
     setSelectedCircle(text);
-    console.log(`Selected text: ${text}`);
-    // Perform additional actions based on the selected text
+    setSize(text)
   };
 
   return (

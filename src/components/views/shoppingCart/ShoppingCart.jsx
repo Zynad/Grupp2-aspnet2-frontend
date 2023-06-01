@@ -4,39 +4,34 @@ import { ShoppingCartContext } from '../../../contexts/ShoppingCartProvider'
 import { NavLink } from 'react-router-dom'
 import "./shoppingCart.css"
 import { useState } from 'react'
-
+import Header from '../../partials/header/Header'
+import emptyCartImg from '..//..//..//assets/images/EmptyShoppingCart.png'
+import TopHeader from '../../partials/shared/topHeader/TopHeader'
 
 
 const ShoppingCart = () => {
-  const { shoppingCart, totalPrice, removeProductFromCart } = useContext(ShoppingCartContext);
-  console.log(totalPrice)
+  const { shoppingCart, totalPrice, removeProductFromCart, updateCart, updatePrice } = useContext(ShoppingCartContext);
   const [count, setCount] = useState(1);
+  const [item, setItem] = useState({});
  
-  
-  const incrementCount = () => {
-    setCount(count + 1);
-  };
 
-  const decrementCount = () => {
-    if (count != 1) {
-      setCount(count - 1);
-    }
-   
-  };
-
+  const updateQuantity = (item, change) => {
+    updateCart(item, item.price, change);
+  }
   
   const renderShoppingCart = () => {
 
     if(shoppingCart.length != 0){
       return (    
         <>    
+          <div className='container'>
           {shoppingCart.map((item) => (
           
           
-          <div className="row schoppingcart-content">
+          <div className="row schoppingcart-content border-top border-bottom">
 
           <div className="img-content">
-          <img className="img-wishlist" src={item.imageUrl}></img>
+          <img className="img-cart" src={item.imageUrl}></img>
           </div>
           
           <div className='col text-content'>
@@ -47,12 +42,11 @@ const ShoppingCart = () => {
           </div>
             
           <div className='right'>
-            <button className='camo-btn' onClick={decrementCount}>-</button>
-            <p>{count}</p>
-            <button className='camo-btn' onClick={incrementCount}>+</button>
-          </div>
-
-          </div> 
+            <button className='camo-btn' onClick={() => { updateQuantity(item, "+") }}>+</button>
+            <p>{item.quantity}</p>
+            <button className='camo-btn' onClick={() => { updateQuantity(item, "-") }}>-</button>  
+              </div>
+            </div>
           ))}
           
 
@@ -85,15 +79,23 @@ const ShoppingCart = () => {
             <button className="dark-btn-standard">PROCEED TO CHECKOUT</button>   
             </NavLink>
           </div>
-          
+          </div>
         </>
       )
     } else {
       return (
       <>
-      <div className='wishlist-empty-content'>
-      <img className='wishlist-empty' src="https://episodes.castos.com/633784b2510731-96124419/images/503435-137428.jpg"></img>
-      <NavLink to="/home"><div className='mt-5'><button className="button-wishlist-empty col-12 col-lg-6">SHOP NOW</button></div></NavLink>
+      <TopHeader />
+      <div className='cart-empty-content'>
+      <img className='cart-empty' src={emptyCartImg}></img>
+      
+      <div className='cart-empty-wrapper'>
+        <div className='vl'></div>
+        <h2>Your cart is empty!</h2>
+        <div className='cart-empty-text'>Looks like you haven't made your order yet.</div>
+      </div>
+      
+      <NavLink to="/home"><div className='cart-empty-button'><button className="button-cart-empty col-12 col-lg-6">SHOP NOW</button></div></NavLink>
       </div>
       </>
       )
@@ -106,8 +108,9 @@ const ShoppingCart = () => {
 
   
   return (
-     <>
-     <div className='container mt-5'>
+    <>
+     <Header route={"/home"} title={"Order"} shoppingBag={"hidden"}/>
+     <div className='shopping-container mt-5'>
      {renderShoppingCart()}
      </div>
      <Navigation />

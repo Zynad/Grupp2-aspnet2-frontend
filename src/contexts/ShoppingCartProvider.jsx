@@ -1,52 +1,58 @@
 import { useState, useEffect, createContext } from "react";
+
 export const ShoppingCartContext = createContext();
 
 const ShoppingCartProvider = (props) => {
   const [shoppingCart, setShoppingCart] = useState([]);
   const [shipping, setShipping] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
+  const [totalItems, setTotalItems] = useState(0);
 
-//   const ordersCollectionRef = collection(db, "orders");
+  const addProductToCart = (product, price, size, color, quantity) => {
+  const existingProduct = shoppingCart.find((item) => item.id === product.id && item.size === size && item.color === color);
 
-  const addProductToCart = (product, price) => {
-    setShoppingCart([...shoppingCart, product]);
-      setTotalPrice(totalPrice + price);
-      console.log(totalPrice)
-  };
+  if (existingProduct) {
+    existingProduct.quantity += quantity;
+    setShoppingCart([...shoppingCart]);
+  } else {
+    const newProduct = { ...product, size: size, color: color, quantity: quantity };
+    setShoppingCart([...shoppingCart, newProduct]);
+  }
+};
+
 
   const removeProductFromCart = (product, price) => {
-    const filterProducts = shoppingCart.filter((element) => {
-      if (element.id !== product.id) {
-        return element;
-      }
-    });
+    const filterProducts = shoppingCart.filter((element) => element.id !== product.id);
 
     setShoppingCart(filterProducts);
-    setTotalPrice(totalPrice - price);
   };
 
-//   const handlePostCart = async (
-//     cart,
-//     firstName,
-//     lastName,
-//     email,
-//     personalNumber
-//   ) => {
-//     setShipping(
-//       "Your order was successfully placed! The ordernumber will be sent to: " +
-//         email
-//     );
+  const updateCart = (product, price, change) => {
+    setShoppingCart((prevData) => {
+      const updatedData = prevData.map((item) => {
+        if (item.id === product.id && item.size === product.size && item.color === product.color) {
+          if (change === "-") {
+            if (item.quantity === 1) {
+              return null;
+            }
+            return { ...item, quantity: item.quantity - 1 };
+          } else {
+            return { ...item, quantity: item.quantity + 1 };
+          }
+        }
+        return item;
+      });
+          return updatedData.filter((item) => item !== null);
+    });
+  };
 
-//     const products = cart.map((product) => {
-//       return product.title + ", " + product.brand;
-//     });
+  useEffect(() => {
+    const updatedTotalItems = shoppingCart.reduce((total, item) => total + item.quantity, 0);
+    setTotalItems(updatedTotalItems);
 
-//     const productsId = cart.map((product) => {
-//       return product.id;
-//     });
-
-   
-//   };
+    const updatedTotalPrice = shoppingCart.reduce((total, item) => total + item.price * item.quantity, 0);
+    setTotalPrice(updatedTotalPrice.toFixed(2));
+  }, [shoppingCart]);
 
   return (
     <>
@@ -56,6 +62,8 @@ const ShoppingCartProvider = (props) => {
           shoppingCart,
           totalPrice,
           removeProductFromCart,
+          totalItems,
+          updateCart
         }}
       >
         {props.children}

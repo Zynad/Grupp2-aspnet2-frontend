@@ -22,11 +22,38 @@ img {
 }
 
 .image-link {
-  margin: 5px;
   height: 50px;
   width: 50px;
-  font-size: 1.4em;
-  display: grid;
-  border-radius: 50%;
+  display: flex;
+  justify-content: center;
   align-items: center;
+  border-radius: 50%;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  color: grey;
+  
+}
+
+.hej{
+  color: grey;
+  opacity: 0.9;
+}
+
+.hej:hover{
+  color: #E06469;
+  opacity: 1;
+}
+
+.bag-icon-hej:hover{
+ color: black;
+}
+
+.red{
+  color: #E06469;
+  opacity: 0.9;
+}
+
+.red:hover{
+  opacity: 1;
 }
